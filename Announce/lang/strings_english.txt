@@ -1,0 +1,25 @@
+<?php
+
+# Copyright (c) 2010 John Reese
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Announcements';
+$s_plugin_Announce_plugin_description = 'Allows administrators to create announcements to users in various locations.';
+
+$s_plugin_Announce_title = 'Title';
+$s_plugin_Announce_message = 'Message';
+$s_plugin_Announce_timestamp = 'Timestamp';
+$s_plugin_Announce_ttl = 'Time to Live';
+$s_plugin_Announce_block = 'Block';
+$s_plugin_Announce_access = 'Access';
+$s_plugin_Announce_project = 'Project';
+$s_plugin_Announce_dismiss = 'Dismiss';
+$s_plugin_Announce_dismissed = 'Dismissed';
+$s_plugin_Announce_dismissable = 'Dismissable';
+
+$s_plugin_Announce_list_title = 'Announcements';
+$s_plugin_Announce_create_title = 'New Announcement';
+
+$s_plugin_Announce_action_create = 'Create';
+
