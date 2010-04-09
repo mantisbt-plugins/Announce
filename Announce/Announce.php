@@ -27,6 +27,7 @@ class AnnouncePlugin extends MantisPlugin {
 	function hooks() {
 		return array(
 			"EVENT_CORE_READY" => "api",
+			"EVENT_LAYOUT_RESOURCES" => "resources",
 			"EVENT_MENU_MANAGE" => "menu_manage",
 
 			"EVENT_LAYOUT_BODY_BEGIN" => "body_begin",
@@ -35,6 +36,10 @@ class AnnouncePlugin extends MantisPlugin {
 
 	function api() {
 		require_once("Announce.API.php");
+	}
+
+	function resources($event) {
+		return '<link rel="stylesheet" type="text/css" href="'.plugin_file("announce.css").'"/>';
 	}
 
 	function menu_manage($event, $user_id) {
