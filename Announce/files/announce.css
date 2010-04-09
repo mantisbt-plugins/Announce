@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2010 John Reese
+ * Licensed under the MIT license
+ */
+
+.announcement {
+	background: #FAF3AA;
+	border: 1px dashed #986;
+	margin: 3px;
+	padding: 4px;
+	font-size: 8pt;
+}
+
+.announcement-float-right {
+	float: right;
+}
+
