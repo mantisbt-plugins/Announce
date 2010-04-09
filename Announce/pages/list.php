@@ -4,17 +4,20 @@
 # Licensed under the MIT license
 
 access_ensure_global_level(plugin_config_get("manage_threshold"));
+$admin = access_has_global_level(config_get("manage_plugin_threshold"));
 
 $messages = AnnounceMessage::clean(AnnounceMessage::load_all(), "view");
 
 html_page_top(plugin_lang_get("list_title"));
+print_manage_menu();
 ?>
 
 <br/>
 <table class="width90" align="center">
 
 <tr>
-<td class="form-title" colspan="3"><?php echo plugin_lang_get("list_title") ?></td>
+<td class="form-title" colspan="2"><?php echo plugin_lang_get("list_title") ?></td>
+<td class="right" colspan="2"><?php if ($admin) { print_bracket_link(plugin_page("config_page"), plugin_lang_get("config")); } ?></td>
 </tr>
 
 <tr class="row-category">
