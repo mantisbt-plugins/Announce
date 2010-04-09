@@ -20,20 +20,30 @@ class AnnouncePlugin extends MantisPlugin {
 
 	function config() {
 		return array(
-			"manage_threshold" => ADMINISTRATOR,
+			"manage_threshold" => MANAGER,
 		);
 	}
 
 	function hooks() {
 		return array(
 			"EVENT_CORE_READY" => "api",
+			"EVENT_MENU_MANAGE" => "menu_manage",
+
 			"EVENT_LAYOUT_BODY_BEGIN" => "body_begin",
-			"EVENT_LAYOUT_PAGE_HEADER" => "body_begin",
 		);
 	}
 
 	function api() {
 		require_once("Announce.API.php");
+	}
+
+	function menu_manage($event, $user_id) {
+		if (access_has_global_level(plugin_config_get("manage_threshold"))) {
+			$page = plugin_page("list");
+			$label = plugin_lang_get("list_title");
+
+			return "<a href=\"{$page}\">{$label}</a>";
+		}
 	}
 
 	function body_begin() {
