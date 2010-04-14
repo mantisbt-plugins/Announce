@@ -182,7 +182,7 @@ class AnnounceMessage {
 			$contexts = AnnounceContext::load_by_message_id($message_ids);
 
 			foreach ($contexts as $context) {
-				$messages[$context->message_id]->contexts[] = $context;
+				$messages[$context->message_id]->contexts[$context->id] = $context;
 			}
 		}
 
@@ -278,8 +278,7 @@ class AnnounceMessage {
 }
 
 class AnnounceContext {
-	private $_new = true;
-
+	public $id;
 	public $message_id;
 	public $project_id;
 	public $location;
@@ -294,7 +293,7 @@ class AnnounceContext {
 		$context_table = plugin_table("context", "Announce");
 
 		# create
-		if ($this->_new) {
+		if ($this->id === null) {
 			$query = "INSERT INTO {$context_table}
 				(
 					message_id,
@@ -321,23 +320,25 @@ class AnnounceContext {
 				$this->dismissable,
 			));
 
+			$this->id = db_insert_id($context_table);
+
 		# update
 		} else {
 			$query = "UPDATE {$context_table} SET
+				project_id=".db_param().",
+				location=".db_param().",
 				access=".db_param().",
 				ttl=".db_param().",
 				dismissable=".db_param()."
-				WHERE message_id=".db_param()."
-				AND project_id=".db_param()."
-				AND location=".db_param();
+				WHERE id=".db_param();
 
 			db_query_bound($query, array(
+				$this->project_id,
+				$this->location,
 				$this->access,
 				$this->ttl,
 				$this->dismissable,
-				$this->message_id,
-				$this->project_id,
-				$this->location,
+				$this->id,
 			));
 		}
 	}
@@ -382,7 +383,7 @@ class AnnounceContext {
 
 		while($row = db_fetch_array($result)) {
 			$context = new AnnounceContext();
-			$context->_new = false;
+			$context->id = $row["id"];
 			$context->message_id = $row["message_id"];
 			$context->project_id = $row["project_id"];
 			$context->location = $row["location"];
@@ -390,7 +391,7 @@ class AnnounceContext {
 			$context->ttl = $row["ttl"];
 			$context->dismissable = $row["dismissable"];
 
-			$contexts[] = $context;
+			$contexts[$context->id] = $context;
 		}
 
 		return $contexts;

@@ -65,9 +65,10 @@ class AnnouncePlugin extends MantisPlugin {
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
 			array( "CreateTableSQL", array( plugin_table( "context" ), "
-				message_id	I		NOTNULL UNSIGNED PRIMARY,
-				project_id	I		NOTNULL PRIMARY,
-				location	C(20)	NOTNULL PRIMARY,
+				id			I		NOTNULL UNSIGNED AUTOINCREMENT PRIMARY,
+				message_id	I		NOTNULL UNSIGNED,
+				project_id	I		NOTNULL UNSIGNED,
+				location	C(20)	NOTNULL,
 				access		I		NOTNULL UNSIGNED,
 				ttl			I		NOTNULL UNSIGNED DEFAULT \" '0' \",
 				dismissable	L		NOTNULL
@@ -78,6 +79,8 @@ class AnnouncePlugin extends MantisPlugin {
 				user_id		I		NOTNULL UNSIGNED PRIMARY
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
+			#2010-04-14
+			array( "CreateIndexSQL", array( "idx_plugin_announce_context", plugin_table( "context" ), "message_id, project_id, location", array( "UNIQUE" ) ) ),
 		);
 	}
 }
