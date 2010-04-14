@@ -105,6 +105,11 @@ class AnnounceMessage {
 
 		if (is_array($id)) {
 			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return array();
+			}
+
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$message_table} WHERE id IN ({$ids}) ORDER BY timestamp DESC";
@@ -320,6 +325,11 @@ class AnnounceContext {
 
 		if (is_array($message_id)) {
 			$ids = array_filter($message_id, "is_int");
+
+			if (count($ids) < 1) {
+				return array();
+			}
+
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$context_table} WHERE message_id IN ({$ids})";
