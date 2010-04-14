@@ -64,10 +64,10 @@ class AnnouncePlugin extends MantisPlugin {
 				message		XL		NOTNULL
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
-			array( "CreateTableSQL", array( plugin_table( "display" ), "
+			array( "CreateTableSQL", array( plugin_table( "context" ), "
 				message_id	I		NOTNULL UNSIGNED PRIMARY,
 				project_id	I		NOTNULL PRIMARY,
-				block		C(20)	NOTNULL PRIMARY,
+				location	C(20)	NOTNULL PRIMARY,
 				access		I		NOTNULL UNSIGNED,
 				ttl			I		NOTNULL UNSIGNED DEFAULT \" '0' \",
 				dismissable	L		NOTNULL
