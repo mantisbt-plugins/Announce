@@ -173,10 +173,11 @@ class AnnounceMessage {
 		}
 
 		if ($load_contexts) {
-			$contexts = AnnounceContext::load_by_message_id(array_keys($messages));
+			$message_ids = array_keys($messages);
+			$contexts = AnnounceContext::load_by_message_id($message_ids);
 
 			foreach ($contexts as $context) {
-				$message[$context->message_id][] = $context;
+				$messages[$context->message_id]->contexts[] = $context;
 			}
 		}
 
@@ -214,6 +215,7 @@ class AnnounceMessage {
 			$cleaned = new AnnounceMessage($title, $message);
 			$cleaned->id = $dirty->id;
 			$cleaned->timestamp = $dirty->timestamp;
+			$cleaned->contexts = $dirty->contexts;
 		}
 
 		return $cleaned;
@@ -243,6 +245,8 @@ class AnnounceMessage {
 }
 
 class AnnounceContext {
+	private $_new = true;
+
 	public $message_id;
 	public $project_id;
 	public $location;
@@ -257,7 +261,7 @@ class AnnounceContext {
 		$context_table = plugin_table("context", "Announce");
 
 		# create
-		if ($this->message_id === null) {
+		if ($this->_new) {
 			$query = "INSERT INTO {$context_table}
 				(
 					message_id,
@@ -314,8 +318,8 @@ class AnnounceContext {
 	public static function load_by_message_id($message_id) {
 		$context_table = plugin_table("context", "Announce");
 
-		if (is_array($id)) {
-			$ids = array_filter($id, "is_int");
+		if (is_array($message_id)) {
+			$ids = array_filter($message_id, "is_int");
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$context_table} WHERE message_id IN ({$ids})";
@@ -323,7 +327,7 @@ class AnnounceContext {
 
 		} else {
 			$query = "SELECT * FROM {$context_table} WHERE message_id=".db_param();
-			$result = db_query_bound($query, array($id));
+			$result = db_query_bound($query, array($message_id));
 		}
 
 		return self::from_db_result($result);
@@ -340,6 +344,7 @@ class AnnounceContext {
 
 		while($row = db_fetch_array($result)) {
 			$context = new AnnounceContext();
+			$context->_new = false;
 			$context->message_id = $row["message_id"];
 			$context->project_id = $row["project_id"];
 			$context->location = $row["location"];
