@@ -41,7 +41,7 @@ print_manage_menu();
 <br/>
 <form action="<?php echo plugin_page("create") ?>" method="post">
 <?php echo form_security_field("plugin_Announce_create") ?>
-<table class="width60" align="center">
+<table class="width90" align="center">
 
 <tr>
 <td class="form-title" colspan="2"><?php echo plugin_lang_get("create_title") ?></td>
@@ -54,7 +54,39 @@ print_manage_menu();
 
 <tr <?php echo helper_alternate_class() ?>>
 <td class="category"><?php echo plugin_lang_get("message") ?></td>
-<td><textarea name="message" cols="80" rows="4"></textarea></td>
+<td><textarea name="message" cols="70" rows="4"></textarea></td>
+</tr>
+
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get("location") ?></td>
+<td><select name="location">
+<option value=""><?php echo plugin_lang_get("select_one") ?></option>
+<?php foreach(Announce::locations() as $loc => $locname): ?>
+<option value="<?php echo $loc ?>"><?php echo $locname ?></option>
+<?php endforeach ?>
+</select></td>
+</tr>
+
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get("project") ?></td>
+<td><select name="project_id"><?php print_project_option_list() ?></select></td>
+</tr>
+
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get("access") ?></td>
+<td><select name="access"><?php print_enum_string_option_list("access_levels", VIEWER ) ?></select>
+<span class="small"><?php echo plugin_lang_get("access_help") ?></span></td>
+</tr>
+
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get("ttl") ?></td>
+<td><label class="announcement_ttl"><input name="ttl" size="8" value="0"/>
+<span class="small"><?php echo plugin_lang_get("ttl_help") ?></span></label></td>
+</tr>
+
+<tr <?php echo helper_alternate_class() ?>>
+<td class="category"><?php echo plugin_lang_get("dismissable") ?></td>
+<td><input type="checkbox" name="dismissable" checked="checked"/></td>
 </tr>
 
 <tr>
