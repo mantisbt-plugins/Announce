@@ -23,6 +23,7 @@ $s_plugin_Announce_select_one = '(select one)';
 
 $s_plugin_Announce_list_title = 'Announcements';
 $s_plugin_Announce_create_title = 'New Announcement';
+$s_plugin_Announce_edit_title = 'Edit Announcements';
 
 $s_plugin_Announce_config = 'Configuration';
 $s_plugin_Announce_config_title = 'Announcement Configuration';

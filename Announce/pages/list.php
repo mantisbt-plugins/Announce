@@ -43,13 +43,13 @@ print_manage_menu();
 <td class="center" rowspan="<?php echo $rowspan ?>"><input type="checkbox" name="message_list[]" value="<?php echo $message_id ?>"/></td>
 <td rowspan="<?php echo $rowspan ?>"><?php echo $message->title ?></td>
 <td rowspan="<?php echo $rowspan ?>"><?php echo $message->message ?></td>
-<?php if ($context_count > 0): foreach($message->contexts as $context): ?>
-<?php if ($first): $first = false; else: ?>
+<?php if ($context_count > 0): $first = true; foreach($message->contexts as $context): ?>
+<?php if (!$first): ?>
 <tr <?php echo $color ?>>
 <?php endif ?>
 <td class="center"><?php echo string_display_line(project_get_name($context->project_id)) ?></td>
 <td class="center"><?php echo $locations[$context->location] ?></td>
-<?php endforeach; else: ?>
+<?php $first = false; endforeach; else: ?>
 <td colspan="2"></td>
 <?php endif ?>
 </tr>
@@ -90,12 +90,7 @@ print_manage_menu();
 
 <tr <?php echo helper_alternate_class() ?>>
 <td class="category"><?php echo plugin_lang_get("location") ?></td>
-<td><select name="location">
-<option value=""><?php echo plugin_lang_get("select_one") ?></option>
-<?php foreach(Announce::locations() as $loc => $locname): ?>
-<option value="<?php echo $loc ?>"><?php echo $locname ?></option>
-<?php endforeach ?>
-</select></td>
+<td><select name="location"><?php Announce::print_location_option_list() ?></select></td>
 </tr>
 
 <tr <?php echo helper_alternate_class() ?>>

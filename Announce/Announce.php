@@ -52,6 +52,11 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function body_begin() {
+		$messages = AnnounceMessage::clean(AnnounceMessage::load_visible(auth_get_current_user_id()), "view");
+
+		foreach ($messages as $message) {
+			echo '<div class="announcement announcement-float-right">', $message->message, '</div>';
+		}
 	}
 
 	function schema() {

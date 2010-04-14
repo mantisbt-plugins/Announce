@@ -3,6 +3,23 @@
 # Copyright (c) 2010 John Reese
 # Licensed under the MIT license
 
+function xmlhttprequest_plugin_announce_add_context() {
+	$row = gpc_get_int("row");
+	$message_id = gpc_get_int("message_id");
+?>
+<tr class="row-<?php echo $row ?>">
+<td class="center">
+<a class="announce_delete_context_new" href="#" value="<?php echo $message_id ?>">-<img src="<?php echo plugin_file("delete_context.png") ?>" border="0"/></a>
+<input type="hidden" name="context_new[]" value="<?php echo $message_id ?>"/></td>
+<td class="center"><select name="location_new[]"><?php Announce::print_location_option_list() ?></select></td>
+<td class="center"><select name="project_new[]"><?php print_project_option_list() ?></select></td>
+<td class="center"><select name="access_new[]"><?php print_enum_string_option_list("access_levels", VIEWER) ?></select></td>
+<td class="center"><input name="ttl_new[]" value="0" size="8"/></td>
+<td class="center"><input type="checkbox" name="dismissable_new[]" checked="checked"/></td>
+</tr>
+<?php
+}
+
 class Announce {
 	/**
 	 * Generate a list of available announcement locations.
@@ -17,10 +34,21 @@ class Announce {
 		}
 
 		$locs = array(
-			"header" => plugin_lang_get("location_header"),
+			"header" => plugin_lang_get("location_header", "Announce"),
 		);
 
 		return $locs;
+	}
+
+	public static function print_location_option_list($value=null) {
+		if ($value === null) {
+			echo '<option value="">', plugin_lang_get("select_one", "Announce"), '</option>';
+		}
+
+		foreach(Announce::locations() as $loc => $locname) {
+			$selected = check_selected($loc, $value);
+			echo "<option value=\"{$loc}\" {$selected}>{$locname}</option>";
+		}
 	}
 }
 
@@ -286,6 +314,8 @@ class AnnounceContext {
 	public $ttl;
 	public $dismissable;
 
+	public $_delete = false;
+
 	/**
 	 * Save a new or existing context to the database.
 	 */
@@ -293,7 +323,7 @@ class AnnounceContext {
 		$context_table = plugin_table("context", "Announce");
 
 		# create
-		if ($this->id === null) {
+		if ($this->id === null && !$this->_delete) {
 			$query = "INSERT INTO {$context_table}
 				(
 					message_id,
@@ -321,6 +351,11 @@ class AnnounceContext {
 			));
 
 			$this->id = db_insert_id($context_table);
+
+		# delete
+		} elseif ($this->_delete) {
+			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
+			db_query_bound($query, array($this->id));
 
 		# update
 		} else {
