@@ -190,6 +190,34 @@ class AnnounceMessage {
 	}
 
 	/**
+	 * Delete messages with the given ID.
+	 *
+	 * @param mixed Message ID (int or array)
+	 */
+	public static function delete_by_id($id) {
+		$message_table = plugin_table("message");
+
+		AnnounceContext::delete_by_message_id($id);
+
+		if (is_array($id)) {
+			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return;
+			}
+
+			$ids = implode(",", $ids);
+
+			$query = "DELETE FROM {$message_table} WHERE id IN ({$ids})";
+			db_query_bound($query);
+
+		} else {
+			$query = "DELETE FROM {$message_table} WHERE id=".db_param();
+			db_query_bound($query, array($id));
+		}
+	}
+
+	/**
 	 * Create a copy of the given object with strings cleaned for output.
 	 *
 	 * @param object Message object
@@ -366,6 +394,32 @@ class AnnounceContext {
 		}
 
 		return $contexts;
+	}
+
+	/**
+	 * Delete contexts for the given Message ID.
+	 *
+	 * @param mixed Message ID (int or array)
+	 */
+	public static function delete_by_message_id($id) {
+		$context_table = plugin_table("context");
+
+		if (is_array($id)) {
+			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return;
+			}
+
+			$ids = implode(",", $ids);
+
+			$query = "DELETE FROM {$context_table} WHERE message_id IN ({$ids})";
+			db_query_bound($query);
+
+		} else {
+			$query = "DELETE FROM {$context_table} WHERE message_id=".db_param();
+			db_query_bound($query, array($id));
+		}
 	}
 }
 
