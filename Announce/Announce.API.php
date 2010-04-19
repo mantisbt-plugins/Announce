@@ -169,14 +169,14 @@ class AnnounceMessage {
 
 	/**
 	 * Load a list of message objects visible to a given user.
-	 * Optionally, specify a block or project to further narrow the results.
+	 * Optionally, specify a location or project to further narrow the results.
 	 *
 	 * @param int User ID
-	 * @param string Block name (optional)
+	 * @param string Location name (optional)
 	 * @param int Project ID (optional)
 	 * @return array Message objects
 	 */
-	public static function load_visible($user_id, $block="", $project_id=0) {
+	public static function load_visible($user_id, $location="", $project_id=0) {
 		$message_table = plugin_table("message", "Announce");
 
 		/* todo: update query to pay attention to display and dismissed tables */
