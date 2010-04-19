@@ -3,6 +3,9 @@
 # Copyright (c) 2010 John Reese
 # Licensed under the MIT license
 
+/**
+ * Generate HTML row to be inserted while editing an announcement.
+ */
 function xmlhttprequest_plugin_announce_add_context() {
 	$row = gpc_get_int("row");
 	$message_id = gpc_get_int("message_id");
@@ -40,6 +43,9 @@ class Announce {
 		return $locs;
 	}
 
+	/**
+	 * Generate HTML dropdown options for the list of available locations.
+	 */
 	public static function print_location_option_list($value=null) {
 		if ($value === null) {
 			echo '<option value="">', plugin_lang_get("select_one", "Announce"), '</option>';
