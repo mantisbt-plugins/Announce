@@ -7,11 +7,18 @@
 	background: #FAF3AA;
 	border: 1px dashed #986;
 	margin: 3px;
-	padding: 4px;
+	padding: 5px;
 	font-size: 8pt;
 }
 
-.announcement-float-right {
+.announcement-dismiss {
 	float: right;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.announcement-header {
+	float: right;
+	width: 50%;
 }
 

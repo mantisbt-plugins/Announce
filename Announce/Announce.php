@@ -40,7 +40,8 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function resources($event) {
-		return '<link rel="stylesheet" type="text/css" href="'.plugin_file("announce.css").'"/>';
+		return '<link rel="stylesheet" type="text/css" href="'.plugin_file("announce.css").'"/>
+			<script type="text/javascript" src="'.plugin_file("announce.js").'"></script>';
 	}
 
 	function menu_manage($event, $user_id) {
@@ -53,11 +54,7 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function body_begin() {
-		$messages = AnnounceMessage::clean(AnnounceMessage::load_visible(auth_get_current_user_id()), "view");
-
-		foreach ($messages as $message) {
-			echo '<div class="announcement announcement-float-right">', $message->message, '</div>';
-		}
+		Announce::display("header", helper_get_current_project(), "announcement-header");
 	}
 
 	function schema() {

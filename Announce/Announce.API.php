@@ -26,9 +26,51 @@ function xmlhttprequest_plugin_announce_add_context() {
 
 	plugin_pop_current();
 }
+
+/**
+ * Generate HTML row to be inserted while editing an announcement.
+ */
+function xmlhttprequest_plugin_announce_dismiss_context() {
+	$context_id = gpc_get_int("context_id");
+
+	/* todo: mark the context as dismissed in the database */
+
+	# echoing the context ID as "success"
+	echo json_encode($context_id);
 }
 
 class Announce {
+	/**
+	 * Generate the HTML for displaying (and potentially dismissing) an announcement.
+	 * A div element is created with the CSS class "announcement", which can optionally
+	 * contain other classes as well for extra CSS styling.  For dismissable contexts,
+	 * an image is added that hooks to an AJAX call to dismiss the announcement.
+	 *
+	 * @param string Location name
+	 * @param int Project ID (optional)
+	 * @param string CSS class
+	 */
+	public static function display($location, $project_id=0, $css_class="") {
+		if (auth_is_user_authenticated()) {
+			$message = AnnounceMessage::load_random(auth_get_current_user_id(), "header", $project_id);
+
+			if ($message !== null) {
+				$css_class = string_attribute($css_class);
+				$message = AnnounceMessage::clean($message, "links");
+				$context = array_shift($message->contexts);
+
+				$html = "<span><strong>{$message->title}</strong><br/>{$message->message}<span>";
+
+				if ($context->dismissable) {
+					$image = plugin_file("dismiss.png");
+					$html = "<img class=\"announcement-dismiss\" src=\"{$image}\" alt=\"Dismiss Announcement\" value=\"{$context->id}\"/>{$html}";
+				}
+
+				echo "<div class=\"announcement {$css_class}\">{$html}</div>";
+			}
+		}
+	}
+
 	/**
 	 * Generate a list of available announcement locations.
 	 *
@@ -183,18 +225,66 @@ class AnnounceMessage {
 	 * Optionally, specify a location or project to further narrow the results.
 	 *
 	 * @param int User ID
-	 * @param string Location name (optional)
+	 * @param string Location name
 	 * @param int Project ID (optional)
 	 * @return array Message objects
 	 */
-	public static function load_visible($user_id, $location="", $project_id=0) {
+	public static function load_visible($user_id, $location, $project_id=0) {
+		$context_table = plugin_table("context", "Announce");
 		$message_table = plugin_table("message", "Announce");
 
-		/* todo: update query to pay attention to display and dismissed tables */
-		$query = "SELECT * FROM {$message_table} ORDER BY timestamp DESC";
-		$result = db_query_bound($query);
+		/* todo: update query to pay attention to dismissed table */
+		$query = "SELECT m.*, c.*, c.id AS context_id FROM {$message_table} AS m
+			JOIN {$context_table} AS c ON c.message_id=m.id
+			WHERE c.location = ".db_param();
+		$params = array($location);
 
-		return self::from_db_result($result);
+		$project_id = (int) $project_id;
+		$global_access = (int) access_get_global_level($user_id);
+
+		if ($project_id == ALL_PROJECTS) {
+			$query .= " AND c.project_id = ".db_param()."
+				AND c.access <= ".db_param();
+			$params[] = ALL_PROJECTS;
+			$params[] = $global_access;
+		} else {
+			$query .= " AND (
+				(c.project_id = ".db_param()." AND c.access <= ".db_param().")
+				OR (c.project_id = ".db_param()." AND c.access <= ".db_param().") )";
+
+			$params[] = ALL_PROJECTS;
+			$params[] = $global_access;
+			$params[] = $project_id;
+			$params[] = (int) access_get_project_level($project_id, $user_id);
+		}
+
+		$query .= " ORDER BY timestamp DESC";
+		$result = db_query_bound($query, $params);
+
+		return self::from_db_result($result, "join");
+	}
+
+	/**
+	 * Load a list of message objects visible to a given user.
+	 * Optionally, specify a location or project to further narrow the results.
+	 *
+	 * @param int User ID
+	 * @param string Location name
+	 * @param int Project ID (optional)
+	 * @return object Message object
+	 */
+	public static function load_random($user_id, $location, $project_id=0) {
+		$visible = self::load_visible($user_id, $location, $project_id);
+
+		if (count($visible) > 0) {
+			$message_id = array_rand($visible);
+			$message = $visible[$message_id];
+
+			return $message;
+
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -213,10 +303,23 @@ class AnnounceMessage {
 			$message->title = $row["title"];
 			$message->message = $row["message"];
 
+			if ($load_contexts === "join") {
+				$context = new AnnounceContext();
+				$context->id = $row["context_id"];
+				$context->message_id = $row["message_id"];
+				$context->project_id = $row["project_id"];
+				$context->location = $row["location"];
+				$context->access = $row["access"];
+				$context->ttl = $row["ttl"];
+				$context->dismissable = $row["dismissable"];
+
+				$message->contexts[] = $context;
+			}
+
 			$messages[$message->id] = $message;
 		}
 
-		if ($load_contexts) {
+		if ($load_contexts === true) {
 			$message_ids = array_keys($messages);
 			$contexts = AnnounceContext::load_by_message_id($message_ids);
 
@@ -278,6 +381,10 @@ class AnnounceMessage {
 			if ($target == "view") {
 				$title = string_display_line($dirty->title);
 				$message = string_display($dirty->message);
+
+			} elseif ($target == "links") {
+				$title = string_display_line_links($dirty->title);
+				$message = string_display_links($dirty->message);
 
 			} elseif ($target == "form") {
 				$title = string_attribute($dirty->title);
