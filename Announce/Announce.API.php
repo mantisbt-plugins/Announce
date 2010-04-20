@@ -7,12 +7,14 @@
  * Generate HTML row to be inserted while editing an announcement.
  */
 function xmlhttprequest_plugin_announce_add_context() {
+	plugin_push_current("Announce");
+
 	$row = gpc_get_int("row");
 	$message_id = gpc_get_int("message_id");
 ?>
 <tr class="row-<?php echo $row ?>">
 <td class="center">
-<a class="announce_delete_context_new" href="#" value="<?php echo $message_id ?>">-<img src="<?php echo plugin_file("delete_context.png") ?>" border="0"/></a>
+<a class="announce_delete_context_new" href="#" value="<?php echo $message_id ?>"><img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0"/></a>
 <input type="hidden" name="context_new[]" value="<?php echo $message_id ?>"/></td>
 <td class="center"><select name="location_new[]"><?php Announce::print_location_option_list() ?></select></td>
 <td class="center"><select name="project_new[]"><?php print_project_option_list() ?></select></td>
@@ -21,6 +23,9 @@ function xmlhttprequest_plugin_announce_add_context() {
 <td class="center"><input type="checkbox" name="dismissable_new[]" checked="checked"/></td>
 </tr>
 <?php
+
+	plugin_pop_current();
+}
 }
 
 class Announce {
