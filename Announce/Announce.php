@@ -36,7 +36,10 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function api() {
-		require_once("Announce.API.php");
+		require_once("api/base.php");
+		require_once("api/message.php");
+		require_once("api/context.php");
+		require_once("api/dismiss.php");
 	}
 
 	function resources($event) {
