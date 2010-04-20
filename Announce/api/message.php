@@ -130,12 +130,14 @@ class AnnounceMessage {
 	public static function load_visible($user_id, $location, $project_id=0) {
 		$context_table = plugin_table("context", "Announce");
 		$message_table = plugin_table("message", "Announce");
+		$dismissed_table = plugin_table("dismissed", "Announce");
 
-		/* todo: update query to pay attention to dismissed table */
 		$query = "SELECT m.*, c.*, c.id AS context_id FROM {$message_table} AS m
 			JOIN {$context_table} AS c ON c.message_id=m.id
-			WHERE c.location = ".db_param();
-		$params = array($location);
+			WHERE c.id NOT IN (SELECT context_id FROM {$dismissed_table} WHERE user_id=".db_param().")
+				AND c.location = ".db_param();
+
+		$params = array($user_id, $location);
 
 		$project_id = (int) $project_id;
 		$global_access = (int) access_get_global_level($user_id);
@@ -143,8 +145,10 @@ class AnnounceMessage {
 		if ($project_id == ALL_PROJECTS) {
 			$query .= " AND c.project_id = ".db_param()."
 				AND c.access <= ".db_param();
+
 			$params[] = ALL_PROJECTS;
 			$params[] = $global_access;
+
 		} else {
 			$query .= " AND (
 				(c.project_id = ".db_param()." AND c.access <= ".db_param().")
@@ -156,7 +160,7 @@ class AnnounceMessage {
 			$params[] = (int) access_get_project_level($project_id, $user_id);
 		}
 
-		$query .= " ORDER BY timestamp DESC";
+		$query .= " ORDER BY m.timestamp DESC";
 		$result = db_query_bound($query, $params);
 
 		return self::from_db_result($result, "join");

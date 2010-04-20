@@ -106,6 +106,37 @@ class AnnounceContext {
 	 * @param mixed Message ID (int or array)
 	 * @return array Context objects (object or array)
 	 */
+	public static function load_by_id($id) {
+		$context_table = plugin_table("context", "Announce");
+
+		if (is_array($id)) {
+			$ids = array_filter($id, "is_int");
+
+			if (count($ids) < 1) {
+				return array();
+			}
+
+			$ids = implode(",", $ids);
+
+			$query = "SELECT * FROM {$context_table} WHERE id IN ({$ids})";
+			$result = db_query_bound($query);
+
+			return self::from_db_result($result);
+
+		} else {
+			$query = "SELECT * FROM {$context_table} WHERE id=".db_param();
+			$result = db_query_bound($query, array($id));
+
+			return array_shift(self::from_db_result($result));
+		}
+	}
+
+	/**
+	 * Load context objects from the database for the given message IDs.
+	 *
+	 * @param mixed Message ID (int or array)
+	 * @return array Context objects (object or array)
+	 */
 	public static function load_by_message_id($message_id) {
 		$context_table = plugin_table("context", "Announce");
 

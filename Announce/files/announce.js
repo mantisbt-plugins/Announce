@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 				xhr = $.ajax({
 					async: false,
 					dataType: "json",
-					url: "xmlhttprequest.php?entrypoint=plugin_announce_dismiss_context&context_id="+context_id,
+					url: "xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id="+context_id,
 					success: function(data) {
 							if (data == context_id) {
 								$(div).fadeOut();

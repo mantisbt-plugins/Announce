@@ -81,7 +81,7 @@ class AnnouncePlugin extends MantisPlugin {
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
 			array( "CreateTableSQL", array( plugin_table( "dismissed" ), "
-				message_id	I		NOTNULL UNSIGNED PRIMARY,
+				context_id	I		NOTNULL UNSIGNED PRIMARY,
 				user_id		I		NOTNULL UNSIGNED PRIMARY
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
