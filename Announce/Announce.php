@@ -57,7 +57,7 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function body_begin() {
-		Announce::display("header", helper_get_current_project(), "announcement-header");
+		Announce::display("header", null, "announcement-header");
 	}
 
 	function schema() {

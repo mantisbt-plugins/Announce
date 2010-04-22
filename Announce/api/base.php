@@ -14,8 +14,12 @@ class Announce {
 	 * @param int Project ID (optional)
 	 * @param string CSS class
 	 */
-	public static function display($location, $project_id=0, $css_class="") {
+	public static function display($location, $project_id=null, $css_class="") {
 		if (auth_is_user_authenticated()) {
+			if ($project_id === null) {
+				$project_id = helper_get_current_project();
+			}
+
 			$message = AnnounceMessage::load_random(auth_get_current_user_id(), "header", $project_id);
 
 			if ($message !== null) {
