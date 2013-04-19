@@ -14,7 +14,7 @@ class AnnouncePlugin extends MantisPlugin {
 			"jQuery" => "1.4",
 		);
 
-		$this->author		= "John Reese";
+		$this->author		= "John Reese & Sieuwe Geudens";
 		$this->contact		= "jreese@leetcode.net";
 		$this->url			= "http://leetcode.net";
 	}
