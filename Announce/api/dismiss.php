@@ -24,8 +24,8 @@ function xmlhttprequest_plugin_announce_dismiss() {
 		$result = db_query_bound($query, array($context_id, $user_id));
 
 		if (db_num_rows($result) < 1) {
-			$query = "INSERT INTO {$dismissed_table} (context_id, user_id) VALUES (".db_param().", ".db_param().")";
-			$result = db_query_bound($query, array($context_id, $user_id));
+			$query = "INSERT INTO {$dismissed_table} (context_id, user_id, timestamp) VALUES (".db_param().", ".db_param().", ".db_param().")";
+			$result = db_query_bound($query, array($context_id, $user_id, $timestamp));
 		} else  {
 			$query = "UPDATE {$dismissed_table} SET timestamp = ".db_param()." WHERE context_id=".db_param()." AND user_id=".db_param();
 			$result = db_query_bound($query, array($timestamp, $context_id, $user_id, ));
