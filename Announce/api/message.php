@@ -132,9 +132,17 @@ class AnnounceMessage {
 		$message_table = plugin_table("message", "Announce");
 		$dismissed_table = plugin_table("dismissed", "Announce");
 
+  	/**
 		$query = "SELECT m.*, c.*, c.id AS context_id FROM {$message_table} AS m
 			JOIN {$context_table} AS c ON c.message_id=m.id
 			WHERE c.id NOT IN (SELECT context_id FROM {$dismissed_table} WHERE user_id=".db_param().")
+				AND c.location = ".db_param();
+  	*/
+  
+		$query = "SELECT m.*, c.*, c.id AS context_id FROM {$message_table} AS m
+			JOIN {$context_table} AS c ON c.message_id=m.id
+      			LEFT JOIN {$dismissed_table} as d ON d.context_id=c.id and d.user_id=".db_param()."
+      			WHERE (d.timestamp IS NULL or d.timestamp < m.timestamp)
 				AND c.location = ".db_param();
 
 		$params = array($user_id, $location);
