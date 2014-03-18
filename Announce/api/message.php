@@ -28,7 +28,7 @@ class AnnounceMessage {
 	 */
 	public function save() {
 		$message_table = plugin_table("message", "Announce");
-
+		$timestamp = time();
 		# create
 		if ($this->id === null) {
 			$query = "INSERT INTO {$message_table}
@@ -59,7 +59,7 @@ class AnnounceMessage {
 				WHERE id=".db_param();
 
 			db_query_bound($query, array(
-				$this->timestamp,
+				$timestamp,
 				$this->title,
 				$this->message,
 				$this->id
