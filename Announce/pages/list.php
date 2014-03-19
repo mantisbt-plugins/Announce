@@ -90,7 +90,9 @@ print_manage_menu();
 
 <tr <?php echo helper_alternate_class() ?>>
 <td class="category"><?php echo plugin_lang_get("location") ?></td>
-<td><select name="location"><?php Announce::print_location_option_list() ?></select></td>
+<td><select name="location"><?php
+	Announce::print_location_option_list(count($locations) == 1 ? end($locations) : null)
+?></select></td>
 </tr>
 
 <tr <?php echo helper_alternate_class() ?>>
