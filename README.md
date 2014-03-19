@@ -1,6 +1,6 @@
 ## Announcements plugin for MantisBT
 
-Copyright (c) 2010 John Reese - [http://noswap.com]
+Copyright (c) 2010 John Reese - http://noswap.com
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
 
