@@ -85,7 +85,8 @@ class AnnouncePlugin extends MantisPlugin {
 				user_id		I		NOTNULL UNSIGNED PRIMARY
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
-			#2010-04-14
+
+			# 2010-04-14
 			array( "CreateIndexSQL", array( "idx_plugin_announce_context", plugin_table( "context" ), "message_id, project_id, location", array( "UNIQUE" ) ) ),
 
 			# 2014-03-18
@@ -96,4 +97,3 @@ class AnnouncePlugin extends MantisPlugin {
 		);
 	}
 }
-
