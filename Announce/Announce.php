@@ -8,7 +8,7 @@ class AnnouncePlugin extends MantisPlugin {
 		$this->name = plugin_lang_get("plugin_title");
 		$this->description = plugin_lang_get("plugin_description");
 
-		$this->version = "0.1";
+		$this->version = "0.2";
 		$this->requires		= array(
 			"MantisCore" => "1.2.0",
 			"jQuery" => "1.4",
