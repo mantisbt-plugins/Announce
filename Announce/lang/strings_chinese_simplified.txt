@@ -1,0 +1,39 @@
+<?php
+
+# Copyright (c) 2010 John Reese
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = '设置公告';
+$s_plugin_Announce_plugin_description = '允许管理员发布公告给不同场景下的用户。';
+
+$s_plugin_Announce_title = '标题';
+$s_plugin_Announce_message = '消息';
+$s_plugin_Announce_timestamp = '时间戳';
+$s_plugin_Announce_ttl = '有效时间';
+$s_plugin_Announce_ttl_help = '以秒计算，0 代表不会失效。';
+$s_plugin_Announce_location = '公告位置';
+$s_plugin_Announce_access = '查看权限';
+$s_plugin_Announce_access_help = '展示给该等级或者以上的用户。';
+$s_plugin_Announce_project = '项目';
+$s_plugin_Announce_dismiss = '忽略';
+$s_plugin_Announce_dismissed = '已忽略';
+$s_plugin_Announce_dismissable = '可忽略';
+$s_plugin_Announce_select_one = '(选择一个)';
+
+$s_plugin_Announce_list_title = '公告管理';
+$s_plugin_Announce_create_title = '新建公告信息';
+$s_plugin_Announce_edit_title = '编辑公告信息';
+
+$s_plugin_Announce_config = '配置';
+$s_plugin_Announce_config_title = '公告配置';
+$s_plugin_Announce_config_manage_threshold = '管理公告';
+
+$s_plugin_Announce_action_go = '应用';
+$s_plugin_Announce_action_create = '创建';
+$s_plugin_Announce_action_edit = '编辑';
+$s_plugin_Announce_action_delete = '删除';
+$s_plugin_Announce_action_delete_confirm = '你真的要删除以下公告信息吗？';
+$s_plugin_Announce_action_update = '更新';
+
+$s_plugin_Announce_location_header = '页头';
