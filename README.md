@@ -1,31 +1,31 @@
-## Announcements plugin for MantisBT
+# Announcements plugin for MantisBT
 
 Copyright (c) 2010 John Reese - http://noswap.com
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
 
 
-### Description
+## Description
 
 Lets privileged accounts create and post announcements that can be shown to
 users on a global or per-project basis, and allow users to dismiss individual
 messages.
 
 
-### Requirements
+## Requirements
 
 - MantisBT 1.2.0 or above
 - [jQuery plugin](https://github.com/mantisbt-plugins/jquery) 1.4 or above
 
 
-### Installation
+## Installation
 
 - Copy the whole *Announce* directory under mantisbt/plugins/
 - If not installed yet, install the jQuery plugin
 - Go to Manage -> Manage Plugins and install the plugin.
 
 
-### Usage
+## Usage
 
 A new *Announcements* item is added to the Manage menu.
 
@@ -40,7 +40,7 @@ The *Configuration* page lets the Administrator determine what access levels
 are allowed to manage announcements.
 
 
-### Support
+## Support
 
 Problems or questions dealing with use and installation should be
 directed to the [#mantisbt](irc://freenode.net/mantisbt) IRC channel
@@ -49,17 +49,16 @@ on Freenode.
 The latest source code can found on
 [Github](https://github.com/mantisbt-plugins/announce).
 
-We encourage you to submit Bug reports and enhancements requests on the
-[Github issues tracker](https://github.com/mantisbt-plugins/announce/issues).
-If you would like to propose a patch, do not hesitate to submit a new
-[Pull Request](https://github.com/mantisbt-plugins/announce/compare/).
 
+## Change Log
 
-### Change Log
-
-v0.1 - 2010-06-19
-- Initial release
+v0.3 - 2014-08-12
+- Chinese translation
 
 v0.2 - 2014-03-19
 - Added dismissal timestamps for announcements, allowing edited ones to be
   shown to users again, until they dismiss them a second time
+
+v0.1 - 2010-06-19
+- Initial release
+
