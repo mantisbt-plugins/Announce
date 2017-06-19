@@ -63,7 +63,7 @@ class AnnounceContext {
 					".db_param()."
 				)";
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$this->message_id,
 				$this->project_id,
 				$this->location,
@@ -77,7 +77,7 @@ class AnnounceContext {
 		# delete
 		} elseif ($this->_delete) {
 			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
-			db_query_bound($query, array($this->id));
+			db_query($query, array($this->id));
 
 		# update
 		} else {
@@ -89,7 +89,7 @@ class AnnounceContext {
 				dismissable=".db_param()."
 				WHERE id=".db_param();
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$this->project_id,
 				$this->location,
 				$this->access,
@@ -119,13 +119,13 @@ class AnnounceContext {
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$context_table} WHERE id IN ({$ids})";
-			$result = db_query_bound($query);
+			$result = db_query($query);
 
 			return self::from_db_result($result);
 
 		} else {
 			$query = "SELECT * FROM {$context_table} WHERE id=".db_param();
-			$result = db_query_bound($query, array($id));
+			$result = db_query($query, array($id));
 
 			return array_shift(self::from_db_result($result));
 		}
@@ -150,11 +150,11 @@ class AnnounceContext {
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$context_table} WHERE message_id IN ({$ids})";
-			$result = db_query_bound($query);
+			$result = db_query($query);
 
 		} else {
 			$query = "SELECT * FROM {$context_table} WHERE message_id=".db_param();
-			$result = db_query_bound($query, array($message_id));
+			$result = db_query($query, array($message_id));
 		}
 
 		return self::from_db_result($result);
@@ -203,11 +203,11 @@ class AnnounceContext {
 			$ids = implode(",", $ids);
 
 			$query = "DELETE FROM {$context_table} WHERE message_id IN ({$ids})";
-			db_query_bound($query);
+			db_query($query);
 
 		} else {
 			$query = "DELETE FROM {$context_table} WHERE message_id=".db_param();
-			db_query_bound($query, array($id));
+			db_query($query, array($id));
 		}
 	}
 }

@@ -86,7 +86,7 @@ if ($action == "delete") {
 <td class="center"><select name="project_<?php echo $context->id ?>"><?php print_project_option_list() ?></select></td>
 <td class="center"><select name="access_<?php echo $context->id ?>"><?php print_enum_string_option_list("access_levels", $context->access ) ?></select></td>
 <td class="center"><input name="ttl_<?php echo $context->id ?>" value="<?php echo $context->ttl ?>" size="8"/></td>
-<td class="center"><input type="checkbox" name="dismissable_<?php echo $context->id ?>" <?php echo check_checked($context->dismissable) ?>/></td>
+<td class="center"><input type="checkbox" name="dismissable_<?php echo $context->id ?>" <?php echo check_checked((bool)$context->dismissable) ?>/></td>
 </tr>
 <?php endforeach ?>
 

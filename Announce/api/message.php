@@ -42,7 +42,7 @@ class AnnounceMessage {
 					".db_param()."
 				)";
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$this->timestamp,
 				$this->title,
 				$this->message,
@@ -58,7 +58,7 @@ class AnnounceMessage {
 				message=".db_param()."
 				WHERE id=".db_param();
 
-			db_query_bound($query, array(
+			db_query($query, array(
 				$timestamp,
 				$this->title,
 				$this->message,
@@ -92,13 +92,13 @@ class AnnounceMessage {
 			$ids = implode(",", $ids);
 
 			$query = "SELECT * FROM {$message_table} WHERE id IN ({$ids}) ORDER BY timestamp DESC";
-			$result = db_query_bound($query);
+			$result = db_query($query);
 
 			return self::from_db_result($result, $load_contexts);
 
 		} else {
 			$query = "SELECT * FROM {$message_table} WHERE id=".db_param();
-			$result = db_query_bound($query, array($id));
+			$result = db_query($query, array($id));
 
 			return array_shift(self::from_db_result($result, $load_contexts));
 		}
@@ -113,7 +113,7 @@ class AnnounceMessage {
 		$message_table = plugin_table("message", "Announce");
 
 		$query = "SELECT * FROM {$message_table} ORDER BY timestamp DESC";
-		$result = db_query_bound($query);
+		$result = db_query($query);
 
 		return self::from_db_result($result, $load_contexts);
 	}
@@ -169,7 +169,7 @@ class AnnounceMessage {
 		}
 
 		$query .= " ORDER BY m.timestamp DESC";
-		$result = db_query_bound($query, $params);
+		$result = db_query($query, $params);
 
 		return self::from_db_result($result, "join");
 	}
@@ -261,11 +261,11 @@ class AnnounceMessage {
 			$ids = implode(",", $ids);
 
 			$query = "DELETE FROM {$message_table} WHERE id IN ({$ids})";
-			db_query_bound($query);
+			db_query($query);
 
 		} else {
 			$query = "DELETE FROM {$message_table} WHERE id=".db_param();
-			db_query_bound($query, array($id));
+			db_query($query, array($id));
 		}
 	}
 
