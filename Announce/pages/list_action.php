@@ -167,7 +167,7 @@ if ($action == "delete") {
 
 			if (
 				($context->project_id == 0 || project_exists($context->project_id)) &&
-				(!is_blank($context->location) && in_array($context->location, $locations)) &&
+				(!is_blank($context->location) && array_key_exists($context->location, $locations)) &&
 				($context->access >= 0 && $context->ttl >= 0)
 			) {
 				$context->save();
