@@ -7,6 +7,7 @@ class AnnouncePlugin extends MantisPlugin {
 	function register() {
 		$this->name = plugin_lang_get("plugin_title");
 		$this->description = plugin_lang_get("plugin_description");
+		$this->page = 'config_page';
 
 		$this->version = "0.3";
 		$this->requires		= array(
