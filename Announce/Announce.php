@@ -10,8 +10,7 @@ class AnnouncePlugin extends MantisPlugin {
 
 		$this->version = "0.3";
 		$this->requires		= array(
-			"MantisCore" => "1.2.0",
-			"jQuery" => "1.4",
+			"MantisCore" => "1.3.0",
 		);
 
 		$this->author		= "John Reese";
