@@ -14,14 +14,15 @@ messages.
 
 ## Requirements
 
-- MantisBT 1.2.0 or above
-- [jQuery plugin](https://github.com/mantisbt-plugins/jquery) 1.4 or above
+- MantisBT 1.3.0 or above
+
+If you need compatibility with MantisBT 1.2, please use legacy
+[version 0.3](https://github.com/mantisbt-plugins/announce/releases/tag/v0.3).
 
 
 ## Installation
 
 - Copy the whole *Announce* directory under mantisbt/plugins/
-- If not installed yet, install the jQuery plugin
 - Go to Manage -> Manage Plugins and install the plugin.
 
 
@@ -42,15 +43,22 @@ are allowed to manage announcements.
 
 ## Support
 
-Problems or questions dealing with use and installation should be
-directed to the [#mantisbt](irc://freenode.net/mantisbt) IRC channel
-on Freenode.
+The following support channels are available if you wish to file a
+[bug report](https://github.com/mantisbt-plugins/announce/issues/new),
+or have questions related to use and installation:
 
-The latest source code can found on
-[Github](https://github.com/mantisbt-plugins/announce).
+  - [GitHub issues tracker](http://github.com/mantisbt-plugins/announce/issues)
+  - MantisBT [Gitter chat room](https://gitter.im/mantisbt/mantisbt)
+  - If you feel lucky you may also want to try the legacy
+    [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
+    on Freenode (irc://freenode.net/mantisbt)
+    but since hardly anyone goes there nowadays, you may not get any response.
 
 
 ## Change Log
+
+v1.0.0 - 2017-06-20
+- MantisBT 1.3 compatibility
 
 v0.3 - 2014-08-12
 - Chinese translation
