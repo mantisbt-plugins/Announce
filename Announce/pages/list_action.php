@@ -83,7 +83,7 @@ if ($action == "delete") {
 <a class="announce_delete_context" href="#" value="<?php echo $context->id ?>"><img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0"/></a>
 <input type="hidden" name="context_delete_<?php echo $context->id ?>" value="0"/></td>
 <td class="center"><select name="location_<?php echo $context->id ?>"><?php Announce::print_location_option_list($context->location) ?></select></td>
-<td class="center"><select name="project_<?php echo $context->id ?>"><?php print_project_option_list() ?></select></td>
+<td class="center"><select name="project_<?php echo $context->id ?>"><?php print_project_option_list($context->project_id) ?></select></td>
 <td class="center"><select name="access_<?php echo $context->id ?>"><?php print_enum_string_option_list("access_levels", $context->access ) ?></select></td>
 <td class="center"><input name="ttl_<?php echo $context->id ?>" value="<?php echo $context->ttl ?>" size="8"/></td>
 <td class="center"><input type="checkbox" name="dismissable_<?php echo $context->id ?>" <?php echo check_checked((bool)$context->dismissable) ?>/></td>
