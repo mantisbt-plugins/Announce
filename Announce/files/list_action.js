@@ -16,7 +16,6 @@ jQuery(document).ready(function($) {
 				}
 
 				context_id = $(this).attr("value");
-				alert(context_id);
 
 				input_deleted = "input[name='context_delete_"+context_id+"']";
 				input_location = "select[name='location_"+context_id+"']";
