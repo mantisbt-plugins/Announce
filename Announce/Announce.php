@@ -10,7 +10,7 @@ class AnnouncePlugin extends MantisPlugin {
 		$this->description = plugin_lang_get("plugin_description");
 		$this->page = 'config_page';
 
-		$this->version = "0.3";
+		$this->version = "1.0.0";
 		$this->requires		= array(
 			"MantisCore" => "1.3.0",
 		);
