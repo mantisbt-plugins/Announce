@@ -5,6 +5,8 @@ Copyright (c) 2017 Damien Regad
 
 Released under the [MIT license](http://opensource.org/licenses/MIT)
 
+See the [Changelog](https://github.com/mantisbt-plugins/announce/blob/master/CHANGELOG.md).
+
 
 ## Description
 
@@ -54,20 +56,3 @@ or have questions related to use and installation:
     [#mantisbt IRC channel](https://webchat.freenode.net/?channels=%23mantisbt)
     on Freenode (irc://freenode.net/mantisbt)
     but since hardly anyone goes there nowadays, you may not get any response.
-
-
-## Change Log
-
-v1.0.0 - 2017-06-20
-- MantisBT 1.3 compatibility
-
-v0.3 - 2014-08-12
-- Chinese translation
-
-v0.2 - 2014-03-19
-- Added dismissal timestamps for announcements, allowing edited ones to be
-  shown to users again, until they dismiss them a second time
-
-v0.1 - 2010-06-19
-- Initial release
-
