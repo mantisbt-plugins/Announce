@@ -43,62 +43,110 @@ if ($action == "delete") {
 <script type="text/javascript" src="<?php echo plugin_file("list_action.js") ?>"></script>
 
 <br/>
+<div class="form-container">
 <form action="<?php echo plugin_page("list_action") ?>" method="post">
-<?php echo form_security_field("plugin_Announce_list_action") ?>
-<input type="hidden" name="action" value="update"/>
-<table class="width75" align="center">
+	<fieldset>
+		<legend><?php echo plugin_lang_get("edit_title") ?></legend>
 
-<tr>
-<td class="form-title" colspan="3"><?php echo plugin_lang_get("edit_title") ?></td>
-</tr>
+		<?php echo form_security_field("plugin_Announce_list_action") ?>
+		<input type="hidden" name="action" value="update"/>
 
-<?php $first = true; foreach($messages as $message_id => $message): $context_count = count($message->contexts) ?>
-<?php if (!$first): ?><tr class="spacer"><td></td></tr><?php endif ?>
+		<table>
+			<tbody>
+<?php
+	$first = true;
+	foreach($messages as $message_id => $message) {
+		$context_count = count($message->contexts);
+		if (!$first) {
+?>
+				<tr class="spacer"><td></td></tr>
+<?php
+		}
+?>
 
-<tr <?php echo helper_alternate_class() ?>>
-<td class="center announce_list_<?php echo $message_id ?>" rowspan="<?php echo 3 + $context_count ?>">
-<input type="checkbox" name="message_list[]" value="<?php echo $message_id ?>" checked="checked"/>
-</td>
-<td class="category" colspan="2"><?php echo plugin_lang_get("title") ?></td>
-<td colspan="4"><input name="title_<?php echo $message_id ?>" value="<?php echo $message->title ?>"/></td>
-</tr>
+				<tr>
+					<td class="center announce_list_<?php echo $message_id ?>" rowspan="<?php echo 3 + $context_count ?>">
+						<input type="checkbox" name="message_list[]" value="<?php echo $message_id ?>" checked="checked"/>
+					</td>
+					<td class="category" colspan="2"><?php echo plugin_lang_get("title") ?></td>
+					<td colspan="4">
+						<input name="title_<?php echo $message_id ?>" value="<?php echo $message->title ?>"/>
+					</td>
+				</tr>
 
-<tr <?php echo helper_alternate_class() ?>>
-<td class="category" colspan="2"><?php echo plugin_lang_get("message") ?></td>
-<td colspan="4"><textarea name="message_<?php echo $message_id ?>" cols="70" rows="4"><?php echo $message->message ?></textarea></td>
-</tr>
+				<tr>
+					<td class="category" colspan="2"><?php echo plugin_lang_get("message") ?></td>
+					<td colspan="4"><textarea name="message_<?php echo $message_id ?>" cols="70" rows="4"><?php echo $message->message ?></textarea></td>
+				</tr>
 
-<tr class="row-category">
-<td><a class="announce_add_context" href="#" value="<?php echo $message_id ?>"><img src="<?php echo plugin_file("add.png") ?>" alt="+" border="0"/></a></td>
-<td><?php echo plugin_lang_get("location") ?></td>
-<td><?php echo plugin_lang_get("project") ?></td>
-<td><?php echo plugin_lang_get("access") ?></td>
-<td><?php echo plugin_lang_get("ttl") ?></td>
-<td><?php echo plugin_lang_get("dismissable") ?></td>
-</tr>
+				<tr class="row-category">
+					<td class="category">
+						<a class="announce_add_context" href="#" value="<?php echo $message_id ?>">
+							<img src="<?php echo plugin_file("add.png") ?>" alt="+" border="0"/>
+						</a>
+					</td>
+					<td class="category"><?php echo plugin_lang_get("location") ?></td>
+					<td class="category"><?php echo plugin_lang_get("project") ?></td>
+					<td class="category"><?php echo plugin_lang_get("access") ?></td>
+					<td class="category"><?php echo plugin_lang_get("ttl") ?></td>
+					<td class="category"><?php echo plugin_lang_get("dismissable") ?></td>
+				</tr>
 
-<?php foreach($message->contexts as $context_id => $context): ?>
-<tr <?php echo helper_alternate_class() ?>>
-<td class="center">
-<a class="announce_delete_context" href="#" value="<?php echo $context->id ?>"><img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0"/></a>
-<input type="hidden" name="context_delete_<?php echo $context->id ?>" value="0"/></td>
-<td class="center"><select name="location_<?php echo $context->id ?>"><?php Announce::print_location_option_list($context->location) ?></select></td>
-<td class="center"><select name="project_<?php echo $context->id ?>"><?php print_project_option_list($context->project_id) ?></select></td>
-<td class="center"><select name="access_<?php echo $context->id ?>"><?php print_enum_string_option_list("access_levels", $context->access ) ?></select></td>
-<td class="center"><input name="ttl_<?php echo $context->id ?>" value="<?php echo $context->ttl ?>" size="8"/></td>
-<td class="center"><input type="checkbox" name="dismissable_<?php echo $context->id ?>" <?php echo check_checked((bool)$context->dismissable) ?>/></td>
-</tr>
-<?php endforeach ?>
+<?php
+		foreach($message->contexts as $context_id => $context) {
+?>
+				<tr>
+					<td class="center">
+						<a class="announce_delete_context" href="#" value="<?php echo $context->id ?>">
+							<img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0"/>
+						</a>
+						<input type="hidden" name="context_delete_<?php echo $context->id ?>" value="0"/>
+					</td>
+					<td class="center">
+						<select name="location_<?php echo $context->id ?>">
+							<?php Announce::print_location_option_list($context->location) ?>
+						</select>
+					</td>
+					<td class="center">
+						<select name="project_<?php echo $context->id ?>">
+							<?php print_project_option_list($context->project_id) ?>
+						</select>
+					</td>
+					<td class="center">
+						<select name="access_<?php echo $context->id ?>">
+							<?php print_enum_string_option_list("access_levels", $context->access ) ?>
+						</select>
+					</td>
+					<td class="center">
+						<input name="ttl_<?php echo $context->id ?>" value="<?php echo $context->ttl ?>" size="8"/>
+					</td>
+					<td class="center">
+						<input type="checkbox" name="dismissable_<?php echo $context->id ?>"
+							<?php echo check_checked((bool)$context->dismissable) ?>/>
+					</td>
+				</tr>
+<?php
+		}
 
-<?php $first = false; endforeach ?>
+		$first = false;
+	}
+?>
+			</tbody>
 
-<tr>
-<td><input type="checkbox" class="announce_select_all" checked="checked"/></td>
-<td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/></td>
-</tr>
-
-</table>
+			<tfoot>
+				<tr>
+					<td class="center">
+						<input type="checkbox" class="announce_select_all" checked="checked"/>
+					</td>
+					<td class="center" colspan="6">
+						<input type="submit" value="<?php echo plugin_lang_get("action_edit") ?>"/>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</fieldset>
 </form>
+</div>
 
 <?php
 	html_page_bottom();
@@ -179,4 +227,3 @@ if ($action == "delete") {
 	print_successful_redirect(plugin_page("list", true));
 
 }
-

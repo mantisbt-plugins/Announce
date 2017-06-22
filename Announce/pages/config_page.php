@@ -10,26 +10,40 @@ print_manage_menu();
 ?>
 
 <br/>
+<div class="form-container width60">
 <form action="<?php echo plugin_page("config") ?>" method="post">
-<?php echo form_security_field("plugin_Announce_config") ?>
-<table class="width60" align="center">
+	<fieldset>
+		<legend><?php echo plugin_lang_get("config_title") ?></legend>
 
-<tr>
-<td class="form-title" colspan="2"><?php echo plugin_lang_get("config_title") ?></td>
-</tr>
+		<?php echo form_security_field("plugin_Announce_config") ?>
 
-<tr <?php echo helper_alternate_class() ?>>
-<td class="category"><?php echo plugin_lang_get( 'config_manage_threshold' ) ?></td>
-<td><select name="manage_threshold"><?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'manage_threshold' ) ) ?></select></td>
-</tr>
+		<table>
+			<tbody>
+				<tr>
+					<th class="category">
+						<?php echo plugin_lang_get( 'config_manage_threshold' ) ?>
+					</th>
+					<td>
+						<select name="manage_threshold">
+							<?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'manage_threshold' ) ) ?>
+						</select>
+					</td>
+				</tr>
+			</tbody>
 
-<tr>
-<td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get("action_update") ?>"/></td>
-</tr>
 
-</table>
+			<tfoot>
+				<tr>
+					<td class="center" colspan="2">
+						<input type="submit" value="<?php echo plugin_lang_get("action_update") ?>"/>
+					</td>
+				</tr>
+
+			</tfoot>
+		</table>
+	</fieldset>
 </form>
+</div>
 
 <?php
 html_page_bottom();
-
