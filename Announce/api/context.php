@@ -103,8 +103,8 @@ class AnnounceContext {
 	/**
 	 * Load context objects from the database for the given message IDs.
 	 *
-	 * @param mixed Message ID (int or array)
-	 * @return array Context objects (object or array)
+	 * @param int|array Message ID (int or array)
+	 * @return AnnounceContext|array Context object(s)
 	 */
 	public static function load_by_id($id) {
 		$context_table = plugin_table("context", "Announce");
@@ -127,7 +127,8 @@ class AnnounceContext {
 			$query = "SELECT * FROM {$context_table} WHERE id=".db_param();
 			$result = db_query($query, array($id));
 
-			return array_shift(self::from_db_result($result));
+			$contexts = self::from_db_result($result);
+			return reset( $contexts );
 		}
 	}
 
