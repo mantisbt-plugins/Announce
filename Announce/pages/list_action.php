@@ -46,7 +46,12 @@ if ($action == "delete") {
 <div class="form-container">
 <form action="<?php echo plugin_page("list_action") ?>" method="post">
 	<fieldset>
-		<legend><?php echo plugin_lang_get("edit_title") ?></legend>
+		<legend>
+			<?php echo plugin_lang_get("edit_title") ?>
+		</legend>
+		<div class="floatright">
+			<?php print_bracket_link( plugin_page( 'list' ), lang_get( 'back_link' ) ); ?>
+		</div>
 
 		<?php echo form_security_field("plugin_Announce_list_action") ?>
 		<input type="hidden" name="action" value="update"/>
