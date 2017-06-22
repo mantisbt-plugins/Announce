@@ -1,6 +1,7 @@
 <?php
 
 # Copyright (c) 2010 John Reese
+# Copyright (c) 2017 Damien Regad
 # Licensed under the MIT license
 
 form_security_validate("plugin_Announce_create");

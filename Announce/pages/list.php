@@ -1,6 +1,7 @@
 <?php
 
 # Copyright (c) 2010 John Reese
+# Copyright (c) 2017 Damien Regad
 # Licensed under the MIT license
 
 access_ensure_global_level(plugin_config_get("manage_threshold"));
