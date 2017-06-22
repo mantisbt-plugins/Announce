@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 		function delete_action (event){
 				if ($(this).hasClass("announce_delete_context_added")) {
 					row = $("td.announce_list_"+$(this).attr("value"));
-					row.attr("rowspan", row.attr("rowspan")-1);
+					row.prop("rowspan", row.prop("rowspan")-1);
 					$(this).parents("tr").remove();
 					return;
 				}
@@ -27,19 +27,19 @@ jQuery(document).ready(function($) {
 				context_deleted = $(input_deleted).attr("value");
 
 				if (context_deleted == "0") {
-					$(input_deleted).attr("value", "1");
-					$(input_location).attr("disabled", "disabled");
-					$(input_project).attr("disabled", "disabled");
-					$(input_access).attr("disabled", "disabled");
-					$(input_ttl).attr("disabled", "disabled");
-					$(input_dismissable).attr("disabled", "disabled");
+					$(input_deleted).prop("value", "1");
+					$(input_location).prop("disabled", "disabled");
+					$(input_project).prop("disabled", "disabled");
+					$(input_access).prop("disabled", "disabled");
+					$(input_ttl).prop("disabled", "disabled");
+					$(input_dismissable).prop("disabled", "disabled");
 				} else {
-					$(input_deleted).attr("value", "0");
-					$(input_location).attr("disabled", "");
-					$(input_project).attr("disabled", "");
-					$(input_access).attr("disabled", "");
-					$(input_ttl).attr("disabled", "");
-					$(input_dismissable).attr("disabled", "");
+					$(input_deleted).prop("value", "0");
+					$(input_location).prop("disabled", "");
+					$(input_project).prop("disabled", "");
+					$(input_access).prop("disabled", "");
+					$(input_ttl).prop("disabled", "");
+					$(input_dismissable).prop("disabled", "");
 				}
 			}
 
@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 					url: "xmlhttprequest.php?entrypoint=plugin_announce_add_context&row=1&message_id="+message_id,
 					success: function(data) {
 							row = $("td.announce_list_"+message_id);
-							row.attr("rowspan", row.attr("rowspan")+1);
+							row.prop("rowspan", row.prop("rowspan")+1);
 
 							$(categoryrow).after(data);
 
