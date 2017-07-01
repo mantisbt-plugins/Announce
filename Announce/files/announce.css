@@ -6,10 +6,9 @@
 
 .announcement {
 	background: #FAF3AA;
-	border: 1px dashed #986;
-	margin: 3px;
-	padding: 5px;
-	font-size: 8pt;
+	margin: 8px 8px 0;
+	border-radius: 4px;
+	padding: 5px 5px 5px 12px;
 }
 
 .announcement-dismiss {
@@ -17,9 +16,3 @@
 	padding: 3px;
 	cursor: pointer;
 }
-
-.announcement-header {
-	float: right;
-	width: 50%;
-}
-
