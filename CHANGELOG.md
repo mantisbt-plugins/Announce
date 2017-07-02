@@ -8,6 +8,24 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.0.0] - 2017-07-02
+
+### Added
+
+- Support for MantisBT 2.0
+- Screenshots to README file
+  ([#4](https://github.com/mantisbt-plugins/announce/issues/4))
+
+### Removed
+
+- Support for MantisBT 1.3
+
+### Fixed
+
+- Highlight menu item on manage page
+  ([#8](https://github.com/mantisbt-plugins/announce/issues/8))
+
+
 ## [1.0.0] - 2017-06-20
 
 ### Added

@@ -42,17 +42,27 @@ If you need compatibility with MantisBT 1.2, please use legacy
 
 ## Usage
 
-A new *Announcements* item is added to the Manage menu.
+A new *Announcements* item is added to the Manage menu, as shown in the
+following screenshot.
 
-From there, new announcements can be added, targeted at All Projects or a
+![Manage Announcements](doc/ann_manage.png)
+
+From there, new announcements can be added, targeted at _All Projects_ or a
 specific one, restricted by access levels and limited in time.
 Existing announcements can be edited and deleted.
 
+![Manage Announcements](doc/ann_edit.png)
+
 At this time, the Announcements can only be displayed at the top of the page
-(Location = *Page Header*). In the future, other options may be added.
+(Location = *Page Header*), like in the example below. 
+In the future, other options may be added.
+
+![Manage Announcements](doc/ann_view.png)
 
 The *Configuration* page lets the Administrator determine what access levels
 are allowed to manage announcements.
+
+![Manage Announcements](doc/ann_config.png)
 
 
 ## Support
