@@ -10,38 +10,58 @@ $admin = access_has_global_level(config_get("manage_plugin_threshold"));
 $messages = AnnounceMessage::clean(AnnounceMessage::load_all(true), "view");
 $locations = Announce::locations();
 
-html_page_top(plugin_lang_get("list_title"));
+layout_page_header( plugin_lang_get( 'plugin_title' ) );
+layout_page_begin();
 print_manage_menu();
 ?>
 
 <script type="text/javascript" src="<?php echo plugin_file("list_action.js") ?>"></script>
 
-<br/>
+<div class="col-md-12 col-xs-12">
+<div class="space-10"></div>
 
 <div class="form-container">
 <form action="<?php echo plugin_page("list_action") ?>" method="post">
-	<fieldset>
-		<legend><?php echo plugin_lang_get("list_title") ?></legend>
-		<?php if ($admin): ?>
-			<div class="floatright">
-				<?php print_bracket_link(plugin_page("config_page"), plugin_lang_get("config")); ?>
-			</div>
-		<?php endif; ?>
 
-		<?php echo form_security_field("plugin_Announce_list_action") ?>
+	<?php echo form_security_field("plugin_Announce_list_action") ?>
 
-		<table>
-			<thead>
-				<tr class="row-category">
-					<th width="4%"></th>
-					<th><?php echo plugin_lang_get("title") ?></th>
-					<th><?php echo plugin_lang_get("message") ?></th>
-					<th><?php echo plugin_lang_get("project") ?></th>
-					<th><?php echo plugin_lang_get("location") ?></th>
-				</tr>
-			</thead>
+	<div class="widget-box widget-color-blue2">
+		<div class="widget-header widget-header-small">
+			<h4 class="widget-title lighter">
+				<i class="ace-icon fa fa-file-o"></i>
+				<?php echo plugin_lang_get( 'list_title' ); ?>
+			</h4>
+		</div>
 
-			<tbody>
+		<div class="widget-body">
+			<div class="widget-main no-padding">
+				<div class="table-responsive">
+<?php
+	if ($admin) {
+?>
+					<div class="widget-toolbox padding-8 clearfix">
+						<a class="btn btn-xs btn-primary btn-white btn-round"
+						   href="<?php echo plugin_page( 'config_page' ); ?>">
+							<?php echo plugin_lang_get( 'config' ); ?>
+						</a>
+					</div>
+	<?php } ?>
+
+				</div>
+
+				<table class="table table-striped table-bordered table-condensed">
+
+					<thead>
+						<tr class="row-category">
+							<th width="4%"></th>
+							<th><?php echo plugin_lang_get("title") ?></th>
+							<th><?php echo plugin_lang_get("message") ?></th>
+							<th><?php echo plugin_lang_get("project") ?></th>
+							<th><?php echo plugin_lang_get("location") ?></th>
+						</tr>
+					</thead>
+
+					<tbody>
 <?php
 	foreach($messages as $message_id => $message) {
 		$context_count = count($message->contexts);
@@ -49,12 +69,13 @@ print_manage_menu();
 		$rowspan = max( $context_count, 1 ) + 1 - $odd_rows;
 		$first = true;
 ?>
-				<tr>
-					<td class="center" rowspan="<?php echo $rowspan ?>">
-						<input type="checkbox" name="message_list[]" value="<?php echo $message_id ?>"/>
-					</td>
-					<td rowspan="<?php echo $rowspan ?>"><?php echo $message->title ?></td>
-					<td rowspan="<?php echo $rowspan ?>"><?php echo $message->message ?></td>
+						<tr>
+							<td class="center" rowspan="<?php echo $rowspan ?>">
+								<input type="checkbox" name="message_list[]"
+									   value="<?php echo $message_id ?>"/>
+							</td>
+							<td rowspan="<?php echo $rowspan ?>"><?php echo $message->title ?></td>
+							<td rowspan="<?php echo $rowspan ?>"><?php echo $message->message ?></td>
 <?php
 		if ($context_count > 0) {
 			$first = true;
@@ -63,10 +84,12 @@ print_manage_menu();
 					echo '<tr>';
 				}
 				?>
-				<td class="center"><?php echo string_display_line( project_get_name( $context->project_id
-					)
-					) ?></td>
-				<td class="center"><?php echo $locations[$context->location] ?></td>
+							<td class="center">
+								<?php echo string_display_line( project_get_name( $context->project_id ) ) ?>
+							</td>
+							<td class="center">
+								<?php echo $locations[$context->location] ?>
+							</td>
 				<?php
 				$first = false;
 			}
@@ -81,106 +104,124 @@ print_manage_menu();
 <?php
 		}
 ?>
-					</tr>
+						</tr>
 <?php
 	}
 ?>
-			</tbody>
+					</tbody>
 
-			<tfoot>
-					<tr>
-						<td class="center"><input class="announce_select_all" type="checkbox"/></td>
-						<td colspan="2">
-							<select class="announce_select_action" name="action">
-								<option value="edit"><?php echo plugin_lang_get("action_edit") ?></option>
-								<option value="delete"><?php echo plugin_lang_get("action_delete") ?></option>
-							</select>
-							<input class="announce_select_submit" type="submit" value="<?php echo plugin_lang_get("action_go") ?>"/>
-						</td>
-					</tr>
-			</tfoot>
+					<tfoot class="widget-toolbox">
+							<tr>
+								<td class="center"><input class="announce_select_all" type="checkbox"/></td>
+								<td colspan="4">
+									<select class="" name="action">
+										<option value="edit"><?php echo plugin_lang_get("action_edit") ?></option>
+										<option value="delete"><?php echo plugin_lang_get("action_delete") ?></option>
+									</select>
+									<input class="announce_select_submit btn btn-sm btn-primary btn-white btn-round"
+										   type="submit" value="<?php echo plugin_lang_get("action_go") ?>"/>
+								</td>
+							</tr>
+					</tfoot>
 
-		</table>
-	</fieldset>
+				</table>
+			</div>
+		</div>
+	</div>
 </form>
 </div>
 
 <br/>
+
 <div class="form-container">
 <form action="<?php echo plugin_page("create") ?>" method="post">
-	<fieldset>
-		<legend><?php echo plugin_lang_get("list_title") ?></legend>
 
-		<?php echo form_security_field("plugin_Announce_create") ?>
+	<?php echo form_security_field("plugin_Announce_create") ?>
 
-		<table>
-			<tbody>
-				<tr>
-					<th class="category"><?php echo plugin_lang_get("title") ?></th>
-					<td><input name="title"/></td>
-				</tr>
+	<div class="widget-box widget-color-blue2">
+		<div class="widget-header widget-header-small">
+			<h4 class="widget-title lighter">
+				<i class="ace-icon fa fa-file-o"></i>
+				<?php echo plugin_lang_get( 'create_title' ); ?>
+			</h4>
+		</div>
 
-				<tr>
-					<th class="category"><?php echo plugin_lang_get("message") ?></th>
-					<td><textarea name="message" cols="70" rows="4"></textarea></td>
-				</tr>
+		<div class="widget-body">
+			<div class="widget-main no-padding">
+				<div class="table-responsive">
 
-				<tr>
-					<td class="category"><?php echo plugin_lang_get("location") ?></td>
-					<td>
-						<select name="location">
-							<?php Announce::print_location_option_list(count($locations) == 1 ? end($locations) : null) ?>
-						</select>
-					</td>
-				</tr>
+					<table class="table table-striped table-bordered table-condensed">
+						<tbody>
+							<tr>
+								<th class="category"><?php echo plugin_lang_get("title") ?></th>
+								<td><input name="title" type="text" size="30"/></td>
+							</tr>
 
-				<tr>
-					<td class="category"><?php echo plugin_lang_get("project") ?></td>
-					<td><select name="project_id"><?php print_project_option_list() ?></select></td>
-				</tr>
+							<tr>
+								<th class="category"><?php echo plugin_lang_get("message") ?></th>
+								<td><textarea name="message" cols="70" rows="4"></textarea></td>
+							</tr>
 
-				<tr>
-					<td class="category">
-						<?php echo plugin_lang_get("access") ?>
-						<br>
-						<span class="small"><?php echo plugin_lang_get("access_help") ?></span>
-					</td>
-					<td>
-						<select name="access">
-							<?php print_enum_string_option_list("access_levels", VIEWER ) ?>
-						</select>
-					</td>
-				</tr>
+							<tr>
+								<td class="category"><?php echo plugin_lang_get("location") ?></td>
+								<td>
+									<select name="location">
+										<?php Announce::print_location_option_list(count($locations) == 1 ? end($locations) : null) ?>
+									</select>
+								</td>
+							</tr>
 
-				<tr>
-					<td class="category">
-						<?php echo plugin_lang_get("ttl") ?>
-						<br>
-						<span class="small"><?php echo plugin_lang_get("ttl_help") ?></span>
-					</td>
-					<td>
-						<input name="ttl" size="8" value="0"/>
-					</td>
-				</tr>
+							<tr>
+								<td class="category"><?php echo plugin_lang_get("project") ?></td>
+								<td><select name="project_id"><?php print_project_option_list() ?></select></td>
+							</tr>
 
-				<tr>
-					<td class="category"><?php echo plugin_lang_get("dismissable") ?></td>
-					<td><input type="checkbox" name="dismissable" checked="checked"/></td>
-				</tr>
-			</tbody>
+							<tr>
+								<td class="category">
+									<?php echo plugin_lang_get("access") ?>
+									<br>
+									<span class="small"><?php echo plugin_lang_get("access_help") ?></span>
+								</td>
+								<td>
+									<select name="access">
+										<?php print_enum_string_option_list("access_levels", VIEWER ) ?>
+									</select>
+								</td>
+							</tr>
 
-			<tfoot>
-				<tr>
-					<td class="center" colspan="2">
-						<input type="submit" value="<?php echo plugin_lang_get("action_create") ?>"/>
-					</td>
-				</tr>
-			</tfoot>
+							<tr>
+								<td class="category">
+									<?php echo plugin_lang_get("ttl") ?>
+									<br>
+									<span class="small"><?php echo plugin_lang_get("ttl_help") ?></span>
+								</td>
+								<td>
+									<input name="ttl" type="text" size="8" value="0"/>
+								</td>
+							</tr>
 
-		</table>
-	</fieldset>
+							<tr>
+								<td class="category"><?php echo plugin_lang_get("dismissable") ?></td>
+								<td><input type="checkbox" name="dismissable" checked="checked"/></td>
+							</tr>
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+
+			<div class="widget-toolbox padding-8 clearfix">
+				<input class="btn btn-primary btn-white btn-round"
+					   type="submit"
+					   value="<?php echo plugin_lang_get("action_create") ?>"/>
+			</div>
+
+		</div>
+	</div>
 </form>
 </div>
 
+</div>
+
 <?php
-html_page_bottom();
+layout_page_end();

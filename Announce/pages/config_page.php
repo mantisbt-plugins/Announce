@@ -6,45 +6,58 @@
 
 access_ensure_global_level(config_get("manage_plugin_threshold"));
 
-html_page_top(plugin_lang_get("plugin_title"));
+layout_page_header( plugin_lang_get( 'plugin_title' ) );
+layout_page_begin();
 print_manage_menu();
 ?>
 
-<br/>
+<div class="col-md-12 col-xs-12">
+<div class="space-10"></div>
+
 <div class="form-container width60">
 <form action="<?php echo plugin_page("config") ?>" method="post">
 	<fieldset>
-		<legend><?php echo plugin_lang_get("config_title") ?></legend>
+		<div class="widget-box widget-color-blue2">
+		<div class="widget-header widget-header-small">
+			<h4 class="widget-title lighter">
+				<i class="ace-icon fa fa-file-o"></i>
+				<?php echo plugin_lang_get( 'config_title' ) ?>
+			</h4>
+		</div>
 
 		<?php echo form_security_field("plugin_Announce_config") ?>
 
-		<table>
-			<tbody>
-				<tr>
-					<th class="category">
-						<?php echo plugin_lang_get( 'config_manage_threshold' ) ?>
-					</th>
-					<td>
-						<select name="manage_threshold">
-							<?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'manage_threshold' ) ) ?>
-						</select>
-					</td>
-				</tr>
-			</tbody>
+		<div class="widget-body">
+		<div class="widget-main no-padding">
+		<div class="table-responsive">
+		<table class="table table-bordered table-condensed table-striped">
 
-
-			<tfoot>
-				<tr>
-					<td class="center" colspan="2">
-						<input type="submit" value="<?php echo plugin_lang_get("action_update") ?>"/>
-					</td>
-				</tr>
-
-			</tfoot>
+			<tr>
+				<td class="category">
+					<?php echo plugin_lang_get( 'config_manage_threshold' ) ?>
+				</td>
+				<td>
+					<select name="manage_threshold">
+						<?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'manage_threshold' ) ) ?>
+					</select>
+				</td>
+			</tr>
 		</table>
+
+		</div>
+		</div>
+
+		<div class="widget-toolbox padding-8 clearfix">
+			<input type="submit" class="btn btn-primary btn-white btn-round" value="<?php echo plugin_lang_get('action_update') ?>"/>
+		</div>
+		</div>
+		</div>
+
 	</fieldset>
 </form>
 </div>
 
+</div>
+
 <?php
-html_page_bottom();
+layout_page_end();

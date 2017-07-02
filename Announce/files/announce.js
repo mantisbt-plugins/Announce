@@ -4,6 +4,9 @@
 
 jQuery(document).ready(function($) {
 
+		// Move announcement to the page's top, between navbar and breadcrumbs
+		$('div.main-content').prepend( $('div.announcement-header') );
+
 		$("div.announcement img.announcement-dismiss").click(function(event) {
 				var div = $(this).parent("div.announcement");
 				context_id = $(this).attr("value");
