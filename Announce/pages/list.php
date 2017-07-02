@@ -12,7 +12,7 @@ $locations = Announce::locations();
 
 layout_page_header( plugin_lang_get( 'plugin_title' ) );
 layout_page_begin();
-print_manage_menu();
+print_manage_menu( plugin_page( 'list' ) );
 ?>
 
 <script type="text/javascript" src="<?php echo plugin_file("list_action.js") ?>"></script>
