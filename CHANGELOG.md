@@ -14,7 +14,7 @@ specification.
 
 - Support for MantisBT 2.0
 - Screenshots to README file
-  ([#4](https://github.com/mantisbt-plugins/announce/issues/4))
+  ([#4](https://github.com/mantisbt-plugins/Announce/issues/4))
 
 ### Removed
 
@@ -23,7 +23,7 @@ specification.
 ### Fixed
 
 - Highlight menu item on manage page
-  ([#8](https://github.com/mantisbt-plugins/announce/issues/8))
+  ([#8](https://github.com/mantisbt-plugins/Announce/issues/8))
 
 
 ## [1.0.0] - 2017-06-20
@@ -59,10 +59,10 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/announce/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.0.0...HEAD
 
-[2.0.0]: https://github.com/mantisbt-plugins/announce/compare/v1.0.0...v2.0.0
-[1.0.0]: https://github.com/mantisbt-plugins/announce/compare/v0.3...v1.0.0
-[0.3]: https://github.com/mantisbt-plugins/announce/compare/v0.2...v0.3
-[0.2]: https://github.com/mantisbt-plugins/announce/compare/v0.1...v0.2
-[0.1]: https://github.com/mantisbt-plugins/announce/compare/2691884669c6cccf8b51bc1fdc1124d847dbd1d6...v0.1
+[2.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v0.3...v1.0.0
+[0.3]: https://github.com/mantisbt-plugins/Announce/compare/v0.2...v0.3
+[0.2]: https://github.com/mantisbt-plugins/Announce/compare/v0.1...v0.2
+[0.1]: https://github.com/mantisbt-plugins/Announce/compare/2691884669c6cccf8b51bc1fdc1124d847dbd1d6...v0.1

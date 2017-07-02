@@ -17,7 +17,7 @@ class AnnouncePlugin extends MantisPlugin {
 
 		$this->author		= "John Reese";
 		$this->contact		= "jreese@noswap.com";
-		$this->url			= "https://github.com/mantisbt-plugins/announce";
+		$this->url			= "https://github.com/mantisbt-plugins/Announce";
 	}
 
 	function config() {
