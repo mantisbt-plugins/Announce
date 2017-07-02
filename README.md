@@ -17,10 +17,15 @@ messages.
 
 ## Requirements
 
-- MantisBT 1.3.0 or above
+- MantisBT 2.0.0 or above
 
-If you need compatibility with MantisBT 1.2, please use legacy
-[version 0.3](https://github.com/mantisbt-plugins/announce/releases/tag/v0.3).
+If you need compatibility with older releases of MantisBT, please use legacy
+versions of the plugin, as per table below:
+
+MantisBT version | Plugin version 
+:---:|:---:
+| 1.3 | [1.0.0](https://github.com/mantisbt-plugins/announce/releases/tag/v1.0.0)
+| 1.2 | [0.3](https://github.com/mantisbt-plugins/announce/releases/tag/v0.3)
 
 
 ## Installation

@@ -59,8 +59,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/announce/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/announce/compare/v2.0.0...HEAD
 
+[2.0.0]: https://github.com/mantisbt-plugins/announce/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/mantisbt-plugins/announce/compare/v0.3...v1.0.0
 [0.3]: https://github.com/mantisbt-plugins/announce/compare/v0.2...v0.3
 [0.2]: https://github.com/mantisbt-plugins/announce/compare/v0.1...v0.2
