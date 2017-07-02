@@ -25,8 +25,19 @@ If you need compatibility with MantisBT 1.2, please use legacy
 
 ## Installation
 
-- Copy the whole *Announce* directory under mantisbt/plugins/
-- Go to Manage -> Manage Plugins and install the plugin.
+1. Install the plugin's code
+   - **From a zip/tarball**
+     1. [Download](https://github.com/mantisbt-plugins/announce/releases/latest)
+        the plugin's latest release from GitHub
+     2. Create a new directory `Announce` (note the capital 'A', it's case-sensitive)
+        under MantisBT's `/plugins` directory
+     3. Extract all files into the new directory
+   - **From the source repository**  
+     In MantisBT's `/plugins` directory, clone the repository 
+        ```
+        git clone https://github.com/mantisbt-plugins/announce Announce
+        ```
+2. Go to _Manage -> Manage Plugins_ and install the plugin.
 
 
 ## Usage
