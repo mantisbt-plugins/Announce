@@ -37,7 +37,7 @@ if ($action == "delete") {
 
 ### EDIT
 } elseif ($action == "edit") {
-	$messages = AnnounceMessage::clean($messages, "form");
+	$messages = AnnounceMessage::clean( $messages, AnnounceMessage::TARGET_FORM );
 	layout_page_header(plugin_lang_get("edit_title"));
 	layout_page_begin();
 ?>

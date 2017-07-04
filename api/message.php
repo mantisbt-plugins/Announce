@@ -12,6 +12,13 @@ class AnnounceMessage {
 
 	public $contexts = array();
 
+    /**
+     * Target types for messages cleaning operations
+     * @see clean()
+     */
+    const TARGET_VIEW = 'view';
+    const TARGET_FORM = 'form';
+
 	/**
 	 * Create a new message.
 	 *
@@ -278,7 +285,7 @@ class AnnounceMessage {
 	 * @param boolean Replacement patterns
 	 * @return object Cleaned message object
 	 */
-	public static function clean($dirty, $target="view", $pattern=false) {
+	public static function clean($dirty, $target=self::TARGET_VIEW, $pattern=false) {
 		if (is_array($dirty)) {
 			$cleaned = array();
 			foreach ($dirty as $id => $message) {
@@ -288,10 +295,10 @@ class AnnounceMessage {
 				$cleaned = self::patterns($cleaned, $pattern);
 			}
 		} else {
-			if( $target == 'form' ) {
+			if( $target == self::TARGET_FORM ) {
 				$title = string_attribute($dirty->title);
 				$message = string_textarea($dirty->message);
-			} else { # view
+			} else { # self::TARGET_VIEW
 				$title = string_display_line_links($dirty->title);
 				$message = string_display_links($dirty->message);
 			}

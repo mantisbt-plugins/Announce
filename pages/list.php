@@ -7,7 +7,10 @@
 access_ensure_global_level(plugin_config_get("manage_threshold"));
 $admin = access_has_global_level(config_get("manage_plugin_threshold"));
 
-$messages = AnnounceMessage::clean(AnnounceMessage::load_all(true), "view");
+$messages = AnnounceMessage::clean(
+	AnnounceMessage::load_all( true ),
+	AnnounceMessage::TARGET_VIEW
+);
 $locations = Announce::locations();
 
 layout_page_header( plugin_lang_get( 'plugin_title' ) );
