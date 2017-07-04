@@ -18,9 +18,14 @@ jQuery(document).ready(function($) {
 							if (data == context_id) {
 								$(div).fadeOut();
 							}
+						},
+					error: function(xhr, textStatus, errorThrown) {
+							console.error(
+								'Announcement dismissal failed',
+                                { error: errorThrown, request: this.url }
+							);
 						}
 					});
-				
 			});
 
 	});
