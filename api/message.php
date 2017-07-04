@@ -287,19 +287,13 @@ class AnnounceMessage {
 			if (false !== $pattern) {
 				$cleaned = self::patterns($cleaned, $pattern);
 			}
-
 		} else {
-			if ($target == "view") {
-				$title = string_display_line($dirty->title);
-				$message = string_display($dirty->message);
-
-			} elseif ($target == "links") {
-				$title = string_display_line_links($dirty->title);
-				$message = string_display_links($dirty->message);
-
-			} elseif ($target == "form") {
+			if( $target == 'form' ) {
 				$title = string_attribute($dirty->title);
 				$message = string_textarea($dirty->message);
+			} else { # view
+				$title = string_display_line_links($dirty->title);
+				$message = string_display_links($dirty->message);
 			}
 
 			$cleaned = new AnnounceMessage($title, $message);

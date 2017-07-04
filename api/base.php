@@ -25,7 +25,7 @@ class Announce {
 
 			if ($message !== null) {
 				$css_class = string_attribute($css_class);
-				$message = AnnounceMessage::clean($message, "links");
+				$message = AnnounceMessage::clean($message, "view");
 				$context = array_shift($message->contexts);
 
 				$html = "<span><strong>{$message->title}</strong><br/>{$message->message}<span>";
