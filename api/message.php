@@ -295,18 +295,15 @@ class AnnounceMessage {
 				$cleaned = self::patterns($cleaned, $pattern);
 			}
 		} else {
-			if( $target == self::TARGET_FORM ) {
-				$title = string_attribute($dirty->title);
-				$message = string_textarea($dirty->message);
-			} else { # self::TARGET_VIEW
-				$title = string_display_line_links($dirty->title);
-				$message = string_display_links($dirty->message);
-			}
+		    $cleaned = clone $dirty;
 
-			$cleaned = new AnnounceMessage($title, $message);
-			$cleaned->id = $dirty->id;
-			$cleaned->timestamp = $dirty->timestamp;
-			$cleaned->contexts = $dirty->contexts;
+			if( $target == self::TARGET_FORM ) {
+				$cleaned->title = string_attribute( $dirty->title );
+				$cleaned->message = string_textarea( $dirty->message );
+			} else { # self::TARGET_VIEW
+				$cleaned->title = string_display_line_links( $dirty->title );
+				$cleaned->message = string_display_links( $dirty->message );
+			}
 		}
 
 		return $cleaned;
