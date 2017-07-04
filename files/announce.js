@@ -12,7 +12,6 @@ jQuery(document).ready(function($) {
 				context_id = $(this).attr("value");
 
 				xhr = $.ajax({
-					async: false,
 					dataType: "json",
 					url: "xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id="+context_id,
 					success: function(data) {
