@@ -159,7 +159,7 @@ print_manage_menu( plugin_page( 'list' ) );
 						<tbody>
 							<tr>
 								<th class="category"><?php echo plugin_lang_get("title") ?></th>
-								<td><input name="title" type="text" size="30"/></td>
+								<td><input name="title" type="text" size="50"/></td>
 							</tr>
 
 							<tr>

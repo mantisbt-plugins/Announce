@@ -95,7 +95,9 @@ if ($action == "delete") {
 								<td class="category" colspan="2"><?php echo plugin_lang_get("title") ?></td>
 								<td colspan="4">
 									<input name="title_<?php echo $message_id ?>"
-										   value="<?php echo $message->title ?>"/>
+                                           type="text" size="50"
+										   value="<?php echo $message->title ?>"
+                                    />
 								</td>
 							</tr>
 
