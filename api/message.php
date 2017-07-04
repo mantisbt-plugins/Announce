@@ -280,10 +280,10 @@ class AnnounceMessage {
 	/**
 	 * Create a copy of the given object with strings cleaned for output.
 	 *
-	 * @param object Message object
-	 * @param string Target format
-	 * @param boolean Replacement patterns
-	 * @return object Cleaned message object
+	 * @param array|AnnounceMessage $dirty Message object(s) to clean
+	 * @param string $target Target format ('view' or 'form')
+	 * @param bool $pattern Apply replacement patterns
+	 * @return array|AnnounceMessage Cleaned message object(s)
 	 */
 	public static function clean($dirty, $target=self::TARGET_VIEW, $pattern=false) {
 		if (is_array($dirty)) {
