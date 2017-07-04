@@ -28,7 +28,9 @@ class Announce {
 				$message = AnnounceMessage::clean($message, AnnounceMessage::TARGET_VIEW);
 				$context = array_shift($message->contexts);
 
-				$html = "<span><strong>{$message->title}</strong><br/>{$message->message}<span>";
+				$html = "<span><strong>{$message->title}</strong></span>
+					<br/>
+					<span class=\"announcement-msg\">{$message->message}<span>";
 
 				if ($context->dismissable) {
 					$image = plugin_file("dismiss.png");

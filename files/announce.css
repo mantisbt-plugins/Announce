@@ -16,3 +16,7 @@
 	padding: 3px;
 	cursor: pointer;
 }
+
+.announcement-msg p {
+	margin: 0;
+}

@@ -78,7 +78,9 @@ print_manage_menu( plugin_page( 'list' ) );
 									   value="<?php echo $message_id ?>"/>
 							</td>
 							<td rowspan="<?php echo $rowspan ?>"><?php echo $message->title ?></td>
-							<td rowspan="<?php echo $rowspan ?>"><?php echo $message->message ?></td>
+                            <td rowspan="<?php echo $rowspan ?>" class="announcement-msg">
+							    <?php echo $message->message ?>
+                            </td>
 <?php
 		if ($context_count > 0) {
 			$first = true;
