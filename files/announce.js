@@ -11,11 +11,23 @@ jQuery(document).ready(function($) {
 	// Manual dismissal of announcement (user click)
 	$('img.announcement-dismiss').click(dismiss);
 
+	// Automatic dismissal based on announcement's time-to-live
+	var context_ttl = announcement.data('ttl');
+	var timeoutID;
+	if (context_ttl > 0) {
+		timeoutID = window.setTimeout(dismiss, context_ttl * 1000, announcement);
+	}
+
     /**
      * AJAX to dismiss an announcement
      */
 	function dismiss () {
 		var context_id = $(announcement).data('id');
+
+		// Clear the automatic dismissal timeout if it has been set
+		if (context_ttl > 0) {
+			clearTimeout(timeoutID);
+		}
 
 		$.ajax({
 			dataType: 'json',
