@@ -3,29 +3,47 @@
 // Licensed under the MIT license
 
 jQuery(document).ready(function($) {
+	var announcement = $('div.announcement');
 
-		// Move announcement to the page's top, between navbar and breadcrumbs
-		$('div.main-content').prepend( $('div.announcement-header') );
+	// Move announcement to the page's top, between navbar and breadcrumbs
+	$('div.main-content').prepend($(announcement));
 
-		$("div.announcement img.announcement-dismiss").click(function(event) {
-				var div = $(this).parent("div.announcement");
-				context_id = $(this).attr("value");
+	// Manual dismissal of announcement (user click)
+	$('img.announcement-dismiss').click(dismiss);
 
-				xhr = $.ajax({
-					dataType: "json",
-					url: "xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id="+context_id,
-					success: function(data) {
-							if (data == context_id) {
-								$(div).fadeOut();
-							}
-						},
-					error: function(xhr, textStatus, errorThrown) {
-							console.error(
-								'Announcement dismissal failed',
-                                { error: errorThrown, request: this.url }
-							);
-						}
-					});
-			});
+	// Automatic dismissal based on announcement's time-to-live
+	var context_ttl = announcement.data('ttl');
+	var timeoutID;
+	if (context_ttl > 0) {
+		timeoutID = window.setTimeout(dismiss, context_ttl * 1000, announcement);
+	}
 
-	});
+    /**
+     * AJAX to dismiss an announcement
+     */
+	function dismiss () {
+		var context_id = $(announcement).data('id');
+
+		// Clear the automatic dismissal timeout if it has been set
+		if (context_ttl > 0) {
+			clearTimeout(timeoutID);
+		}
+
+		$.ajax({
+			dataType: 'json',
+			url: 'xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id=' + context_id,
+			success: function(data) {
+				if (data == context_id) {
+					$(announcement).fadeOut();
+				}
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				console.error(
+					'Announcement dismissal failed',
+					{ error: errorThrown, request: this.url }
+				);
+			}
+		});
+	}
+
+});
