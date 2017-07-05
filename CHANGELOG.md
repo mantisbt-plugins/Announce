@@ -8,6 +8,28 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Added
+
+- Implement automatic delayed dismissal
+  ([#10](https://github.com/mantisbt-plugins/Announce/issues/10))
+- Logging errors on dismissal AJAX to javascript console
+  ([#12](https://github.com/mantisbt-plugins/Announce/issues/12))
+
+### Changed
+
+- Increase and fix size of Title input field
+  ([#13](https://github.com/mantisbt-plugins/Announce/issues/13))
+
+### Fixed
+
+- Markdown rendering in List view
+  ([#9](https://github.com/mantisbt-plugins/Announce/issues/9))
+- Announcement dismissal not working with detailed *$g_display_error_ settings
+  ([#11](https://github.com/mantisbt-plugins/Announce/issues/11))
+
+
 ## [2.0.0] - 2017-07-02
 
 ### Added
