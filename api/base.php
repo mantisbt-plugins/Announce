@@ -28,13 +28,19 @@ class Announce {
 				$message = AnnounceMessage::clean($message, AnnounceMessage::TARGET_VIEW);
 				$context = array_shift($message->contexts);
 
-				$html = "<span><strong>{$message->title}</strong></span>
-					<br/>
-					<span class=\"announcement-msg\">{$message->message}<span>";
+				$html = sprintf(
+					'<span><strong>%s</strong></span><br/><span class="announcement-msg">%s<span>' . "\n",
+					$message->title,
+					$message->message
+				);
 
 				if ($context->dismissable) {
-					$image = plugin_file("dismiss.png");
-					$html = "<img class=\"announcement-dismiss\" src=\"{$image}\" alt=\"Dismiss Announcement\" />{$html}";
+					$html = sprintf(
+							'<img class="announcement-dismiss" src="%s" alt="Dismiss Announcement" value="%d"/>',
+							plugin_file("dismiss.png"),
+							$context->id
+						)
+						. "\n" . $html;
 				}
 
 				printf(
