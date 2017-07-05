@@ -37,7 +37,13 @@ class Announce {
 					$html = "<img class=\"announcement-dismiss\" src=\"{$image}\" alt=\"Dismiss Announcement\" value=\"{$context->id}\"/>{$html}";
 				}
 
-				echo "<div class=\"announcement {$css_class}\">{$html}</div>";
+				printf(
+					'<div class="announcement %s" data-id="%d" data-ttl="%d">%s</div>',
+					$css_class,
+					$context->id, $context->ttl,
+					$html
+				);
+				echo "\n";
 			}
 		}
 	}
