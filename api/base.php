@@ -34,7 +34,7 @@ class Announce {
 
 				if ($context->dismissable) {
 					$image = plugin_file("dismiss.png");
-					$html = "<img class=\"announcement-dismiss\" src=\"{$image}\" alt=\"Dismiss Announcement\" value=\"{$context->id}\"/>{$html}";
+					$html = "<img class=\"announcement-dismiss\" src=\"{$image}\" alt=\"Dismiss Announcement\" />{$html}";
 				}
 
 				printf(
