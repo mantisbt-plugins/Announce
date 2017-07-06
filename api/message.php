@@ -4,6 +4,9 @@
 # Copyright (c) 2017 Damien Regad
 # Licensed under the MIT license
 
+/**
+ * Announcement Message class
+ */
 class AnnounceMessage {
 	public $id;
 	public $timestamp;
@@ -22,8 +25,8 @@ class AnnounceMessage {
 	/**
 	 * Create a new message.
 	 *
-	 * @param string Title
-	 * @param string Message
+	 * @param string $title Title
+	 * @param string $message Message
 	 */
 	public function __construct($title="", $message="") {
 		$this->timestamp = time();
@@ -84,8 +87,9 @@ class AnnounceMessage {
 	/**
 	 * Load message objects from the database with the given IDs.
 	 *
-	 * @param mixed Message ID (int or array)
-	 * @return mixed Message object (object or array)
+	 * @param int|array $id Message ID
+	 * @param bool $load_contexts
+	 * @return AnnounceMessage|array Message object(s)
 	 */
 	public static function load_by_id($id, $load_contexts=false) {
 		$message_table = plugin_table("message", "Announce");
@@ -115,6 +119,7 @@ class AnnounceMessage {
 	/**
 	 * Load a list of all message objects in the database.
 	 *
+	 * @param bool $load_contexts
 	 * @return array Message objects
 	 */
 	public static function load_all($load_contexts=false) {
@@ -130,9 +135,9 @@ class AnnounceMessage {
 	 * Load a list of message objects visible to a given user.
 	 * Optionally, specify a location or project to further narrow the results.
 	 *
-	 * @param int User ID
-	 * @param string Location name
-	 * @param int Project ID (optional)
+	 * @param int $user_id User ID
+	 * @param string $location Location name
+	 * @param int $project_id Project ID (optional)
 	 * @return array Message objects
 	 */
 	public static function load_visible($user_id, $location, $project_id=0) {
@@ -186,9 +191,9 @@ class AnnounceMessage {
 	 * Load a list of message objects visible to a given user.
 	 * Optionally, specify a location or project to further narrow the results.
 	 *
-	 * @param int User ID
-	 * @param string Location name
-	 * @param int Project ID (optional)
+	 * @param int $user_id User ID
+	 * @param string $location Location name
+	 * @param int $project_id Project ID (optional)
 	 * @return object Message object
 	 */
 	public static function load_random($user_id, $location, $project_id=0) {
@@ -208,7 +213,8 @@ class AnnounceMessage {
 	/**
 	 * Generate an array of message objects from a database result.
 	 *
-	 * @param object Database result
+	 * @param IteratorAggregate $result Database result
+	 * @param bool $load_contexts
 	 * @return array Message objects
 	 */
 	public static function from_db_result($result, $load_contexts=false) {
@@ -252,7 +258,7 @@ class AnnounceMessage {
 	/**
 	 * Delete messages with the given ID.
 	 *
-	 * @param mixed Message ID (int or array)
+	 * @param int|array $id Message ID
 	 */
 	public static function delete_by_id($id) {
 		$message_table = plugin_table("message");
@@ -313,7 +319,7 @@ class AnnounceMessage {
 	 * Replace placeholder patterns in the message with appropriate
 	 * strings before being sent to the client for usage.
 	 *
-	 * @param array Message objects
+	 * @param array $messages Message objects
 	 * @return array Updated message objects
 	 */
 	public static function patterns($messages) {
