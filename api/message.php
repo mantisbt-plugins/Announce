@@ -318,7 +318,7 @@ class AnnounceMessage {
 		$current_user = auth_get_current_user_id();
 		$username = user_get_name($current_user);
 
-		foreach ($messages as $messages) {
+		foreach ($messages as $message) {
 			$message->value = str_replace(
 				array('%u'),
 				array($username),
