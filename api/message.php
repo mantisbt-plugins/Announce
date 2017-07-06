@@ -1,5 +1,4 @@
 <?php
-
 # Copyright (c) 2010 John Reese
 # Copyright (c) 2017 Damien Regad
 # Licensed under the MIT license
@@ -15,12 +14,12 @@ class AnnounceMessage {
 
 	public $contexts = array();
 
-    /**
-     * Target types for messages cleaning operations
-     * @see clean()
-     */
-    const TARGET_VIEW = 'view';
-    const TARGET_FORM = 'form';
+	/**
+	 * Target types for messages cleaning operations
+	 * @see clean()
+	 */
+	const TARGET_VIEW = 'view';
+	const TARGET_FORM = 'form';
 
 	/**
 	 * Create a new message.
@@ -48,9 +47,9 @@ class AnnounceMessage {
 					title,
 					message
 				) VALUES (
-					".db_param().",
-					".db_param().",
-					".db_param()."
+					" . db_param() . ",
+					" . db_param() . ",
+					" . db_param() . "
 				)";
 
 			db_query($query, array(
@@ -64,10 +63,10 @@ class AnnounceMessage {
 		# update
 		} else {
 			$query = "UPDATE {$message_table} SET
-				timestamp=".db_param().",
-				title=".db_param().",
-				message=".db_param()."
-				WHERE id=".db_param();
+				timestamp=" . db_param() . ",
+				title=" . db_param() . ",
+				message=" . db_param() . "
+				WHERE id=" . db_param();
 
 			db_query($query, array(
 				$timestamp,
@@ -154,9 +153,9 @@ class AnnounceMessage {
   
 		$query = "SELECT m.*, c.*, c.id AS context_id FROM {$message_table} AS m
 			JOIN {$context_table} AS c ON c.message_id=m.id
-      			LEFT JOIN {$dismissed_table} as d ON d.context_id=c.id and d.user_id=".db_param()."
-      			WHERE (d.timestamp IS NULL or d.timestamp < m.timestamp)
-				AND c.location = ".db_param();
+			LEFT JOIN {$dismissed_table} as d ON d.context_id=c.id and d.user_id=".db_param()."
+			WHERE (d.timestamp IS NULL or d.timestamp < m.timestamp)
+			AND c.location = ".db_param();
 
 		$params = array($user_id, $location);
 
@@ -301,7 +300,7 @@ class AnnounceMessage {
 				$cleaned = self::patterns($cleaned, $pattern);
 			}
 		} else {
-		    $cleaned = clone $dirty;
+			$cleaned = clone $dirty;
 
 			if( $target == self::TARGET_FORM ) {
 				$cleaned->title = string_attribute( $dirty->title );
@@ -337,4 +336,3 @@ class AnnounceMessage {
 	}
 
 }
-
