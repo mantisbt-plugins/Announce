@@ -290,7 +290,7 @@ class AnnounceMessage {
 				$cleaned[$id] = self::clean($message, $target);
 			}
 			if (false !== $pattern) {
-				$cleaned = self::patterns($cleaned, $pattern);
+				$cleaned = self::patterns($cleaned);
 			}
 		} else {
 			$cleaned = clone $dirty;
