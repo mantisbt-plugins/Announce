@@ -18,9 +18,9 @@ jQuery(document).ready(function($) {
 		timeoutID = window.setTimeout(dismiss, context_ttl * 1000, announcement);
 	}
 
-    /**
-     * AJAX to dismiss an announcement
-     */
+	/**
+	 * AJAX to dismiss an announcement
+	 */
 	function dismiss () {
 		var context_id = $(announcement).data('id');
 
@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 			dataType: 'json',
 			url: 'xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id=' + context_id,
 			success: function(data) {
-				if (data == context_id) {
+				if (data === context_id) {
 					$(announcement).fadeOut();
 				}
 			},
