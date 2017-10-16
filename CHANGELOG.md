@@ -16,6 +16,8 @@ specification.
   ([#10](https://github.com/mantisbt-plugins/Announce/issues/10))
 - Logging errors on dismissal AJAX to javascript console
   ([#12](https://github.com/mantisbt-plugins/Announce/issues/12))
+- Warn admin when configured threshold is lower than '$g_manage_site_threshold'
+  ([#14](https://github.com/mantisbt-plugins/Announce/issues/14))
 
 ### Changed
 
@@ -70,7 +72,7 @@ specification.
 
 ### Added
 
-- Dismissal timestamps, allowing edited announcements to be shown again, 
+- Dismissal timestamps, allowing edited announcements to be shown again,
   until users dismiss them a second time
 
 

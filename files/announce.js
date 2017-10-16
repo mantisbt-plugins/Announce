@@ -5,6 +5,15 @@
 jQuery(document).ready(function($) {
 	var announcement = $('div.announcement');
 
+	// Display/hide warning if selected access level is lower than the minimum
+	$('#manage_threshold').change(function() {
+		if ($(this).data('access-level') > $(this).val()) {
+			$('#threshold_warning').show();
+		} else {
+			$('#threshold_warning').hide();
+		}
+	});
+
 	// Move announcement to the page's top, between navbar and breadcrumbs
 	$('div.main-content').prepend($(announcement));
 

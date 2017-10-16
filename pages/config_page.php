@@ -37,8 +37,15 @@ print_manage_menu();
 					<?php echo plugin_lang_get( 'config_manage_threshold' ) ?>
 				</td>
 				<td>
-					<select name="manage_threshold">
-						<?php print_enum_string_option_list( 'access_levels', plugin_config_get( 'manage_threshold' ) ) ?>
+					<select id="manage_threshold" name="manage_threshold" data-access-level="<?php
+						// Access level needed for Manage menu (used in announce.js)
+						$t_manage_site_threshold = config_get( 'manage_site_threshold' );
+						$t_plugin_threshold = plugin_config_get( 'manage_threshold' );
+						$t_hidden_warning = $t_manage_site_threshold <= $t_plugin_threshold ? 'hidden' : '';
+
+						echo string_attribute( $t_manage_site_threshold );
+					?>">
+						<?php print_enum_string_option_list( 'access_levels', $t_plugin_threshold ) ?>
 					</select>
 				</td>
 			</tr>
@@ -49,6 +56,10 @@ print_manage_menu();
 
 		<div class="widget-toolbox padding-8 clearfix">
 			<input type="submit" class="btn btn-primary btn-white btn-round" value="<?php echo plugin_lang_get('action_update') ?>"/>
+
+			<span id="threshold_warning" <?php echo $t_hidden_warning; ?>>
+				<?php echo plugin_lang_get( 'threshold_warning' ); ?>
+			<span>
 		</div>
 		</div>
 		</div>
