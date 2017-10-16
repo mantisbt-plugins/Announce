@@ -10,6 +10,8 @@ specification.
 
 ## [Unreleased]
 
+## [2.1.0] - 2017-10-16
+
 ### Added
 
 - Implement automatic delayed dismissal
@@ -83,8 +85,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.0...HEAD
 
+[2.1.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v0.3...v1.0.0
 [0.3]: https://github.com/mantisbt-plugins/Announce/compare/v0.2...v0.3
