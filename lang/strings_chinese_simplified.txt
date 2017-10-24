@@ -10,15 +10,12 @@ $s_plugin_Announce_plugin_description = '允许管理员发布公告给不同场
 
 $s_plugin_Announce_title = '标题';
 $s_plugin_Announce_message = '消息';
-$s_plugin_Announce_timestamp = '时间戳';
 $s_plugin_Announce_ttl = '有效时间';
 $s_plugin_Announce_ttl_help = '以秒计算，0 代表不会失效。';
 $s_plugin_Announce_location = '公告位置';
 $s_plugin_Announce_access = '查看权限';
 $s_plugin_Announce_access_help = '展示给该等级或者以上的用户。';
 $s_plugin_Announce_project = '项目';
-$s_plugin_Announce_dismiss = '忽略';
-$s_plugin_Announce_dismissed = '已忽略';
 $s_plugin_Announce_dismissable = '可忽略';
 $s_plugin_Announce_select_one = '(选择一个)';
 
