@@ -10,15 +10,12 @@ $s_plugin_Announce_plugin_description = 'Allows administrators to create announc
 
 $s_plugin_Announce_title = 'Title';
 $s_plugin_Announce_message = 'Message';
-$s_plugin_Announce_timestamp = 'Timestamp';
 $s_plugin_Announce_ttl = 'Time to Live';
 $s_plugin_Announce_ttl_help = 'Time in seconds; use zero (0) for no expiration';
 $s_plugin_Announce_location = 'Location';
 $s_plugin_Announce_access = 'Access Level';
 $s_plugin_Announce_access_help = 'Will show to anyone at or above this access level';
 $s_plugin_Announce_project = 'Project';
-$s_plugin_Announce_dismiss = 'Dismiss';
-$s_plugin_Announce_dismissed = 'Dismissed';
 $s_plugin_Announce_dismissable = 'Dismissable';
 $s_plugin_Announce_select_one = '(select one)';
 
