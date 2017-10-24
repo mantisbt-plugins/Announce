@@ -1,0 +1,39 @@
+<?php
+
+# Copyright (c) 2010 John Reese
+# Copyright (c) 2017 Damien Regad
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Ankündigungen';
+$s_plugin_Announce_plugin_description = 'Ermöglicht Administratoren das Erstellen von Ankündigungen für Benutzer.';
+
+$s_plugin_Announce_title = 'Titel';
+$s_plugin_Announce_message = 'Nachricht';
+$s_plugin_Announce_ttl = 'Verfallszeit';
+$s_plugin_Announce_ttl_help = 'Zeit in Sekunden, null (0) bedeutet kein Ablaufdatum';
+$s_plugin_Announce_location = 'Platzierungsstelle';
+$s_plugin_Announce_access = 'Zugangsberechtigung';
+$s_plugin_Announce_access_help = 'Wird jedem Benutzer mit dieser, oder einer höheren Zugangsberechtigung angezeigt';
+$s_plugin_Announce_project = 'Projekt';
+$s_plugin_Announce_dismissable = 'Abwählbar';
+$s_plugin_Announce_select_one = '(auswählen)';
+
+$s_plugin_Announce_list_title = 'Ankündigungen';
+$s_plugin_Announce_create_title = 'Neue Ankündigung';
+$s_plugin_Announce_edit_title = 'Ankündigungen bearbeiten';
+
+$s_plugin_Announce_config = 'Konfiguration';
+$s_plugin_Announce_config_title = 'Konfiguration Ankündigungen';
+$s_plugin_Announce_config_manage_threshold = 'Ankündigungen Verwalten';
+$s_plugin_Announce_threshold_warning = 'WARNUNG: die Zugangsberechtigung ist geringer als <em>$g_manage_site_threshold</em> ; Benutzer können möglicherweise nicht auf die Verwaltungsseite zugreifen.';
+
+$s_plugin_Announce_action_go = 'OK';
+$s_plugin_Announce_action_create = 'Anlegen';
+$s_plugin_Announce_action_edit = 'Ändern';
+$s_plugin_Announce_action_delete = 'Löschen';
+$s_plugin_Announce_action_delete_confirm = 'Wollen Sie wirklich die folgenden Ankündigungen löschen?';
+$s_plugin_Announce_action_update = 'Aktualisieren';
+
+$s_plugin_Announce_location_header = 'Seitenkopf';
+
