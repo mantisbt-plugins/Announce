@@ -77,6 +77,7 @@ class AnnounceContext {
 
 		# delete
 		} elseif ($this->_delete) {
+			AnnounceDismissed::delete_by_context_id($this->id);
 			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
 			db_query($query, array($this->id));
 

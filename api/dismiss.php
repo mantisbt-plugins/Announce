@@ -38,3 +38,31 @@ function xmlhttprequest_plugin_announce_dismiss() {
 
 	plugin_pop_current();
 }
+
+class AnnounceDismissed {
+	/**
+	 * Delete dismissals for the given Context ID.
+	 *
+	 * @param int|array $p_id Context ID
+	 * @return void
+	 */
+	public static function delete_by_context_id( $p_id ) {
+		$t_dismissed_table = plugin_table( 'dismissed' );
+		$t_query = "DELETE FROM {$t_dismissed_table} WHERE context_id ";
+
+		if( is_array( $p_id ) ) {
+			$t_ids = array_filter( $p_id, 'is_int' );
+			if (count($t_ids) < 1) {
+				return;
+			}
+			$t_ids = implode( ',', $t_ids );
+
+			$t_query .= "IN ({$t_ids})";
+			db_query( $t_query );
+		} else {
+			$t_query .= "= " . db_param();
+			db_query( $t_query, array( (int)$p_id ) );
+		}
+	}
+}
+
