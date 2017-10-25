@@ -62,6 +62,8 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function schema() {
+		require_once("api/install.php");
+
 		return array(
 			# 2010-04-08
 			array( "CreateTableSQL", array( plugin_table( "message" ), "
@@ -95,6 +97,9 @@ class AnnouncePlugin extends MantisPlugin {
 				"timestamp	I		NOTNULL UNSIGNED DEFAULT 0
 				",
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
+
+			# 2017-10-26 - v2.2.0
+			array( 'UpdateFunction', 'delete_orphans_dismissals' ),
 		);
 	}
 }
