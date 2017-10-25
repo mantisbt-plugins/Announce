@@ -64,5 +64,34 @@ class AnnounceDismissed {
 			db_query( $t_query, array( (int)$p_id ) );
 		}
 	}
+
+	/**
+	 * Delete dismissals for the given Message ID.
+	 *
+	 * @param int|array $p_id Message ID
+	 * @return void
+	 */
+	public static function delete_by_message_id( $p_id ) {
+		$t_dismissed_table = plugin_table( 'dismissed' );
+		$t_context_table = plugin_table( 'context' );
+		$t_query = "DELETE d.* 
+				FROM {$t_dismissed_table} d
+				JOIN {$t_context_table} c ON c.id = d.context_id
+				WHERE c.message_id ";
+
+		if( is_array( $p_id ) ) {
+			$t_ids = array_filter( $p_id, 'is_int' );
+			if (count($t_ids) < 1) {
+				return;
+			}
+			$t_ids = implode( ',', $t_ids );
+
+			$t_query .= "IN ({$t_ids})";
+			db_query( $t_query );
+		} else {
+			$t_query .= "= " . db_param();
+			db_query( $t_query, array( (int)$p_id ) );
+		}
+	}
 }
 

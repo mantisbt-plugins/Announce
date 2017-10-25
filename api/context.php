@@ -196,6 +196,8 @@ class AnnounceContext {
 	public static function delete_by_message_id($id) {
 		$context_table = plugin_table("context");
 
+		AnnounceDismissed::delete_by_message_id( $id );
+
 		if (is_array($id)) {
 			$ids = array_filter($id, "is_int");
 
