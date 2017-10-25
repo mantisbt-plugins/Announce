@@ -90,7 +90,8 @@ class AnnouncePlugin extends MantisPlugin {
 				array( "mysql" => "DEFAULT CHARSET=utf8" ) ) ),
 
 			# 2010-04-14
-			array( "CreateIndexSQL", array( "idx_plugin_announce_context", plugin_table( "context" ), "message_id, project_id, location", array( "UNIQUE" ) ) ),
+			array( "CreateIndexSQL", array( "idx_plugin_announce_context",
+				plugin_table( "context" ), "message_id, project_id, location", array( "UNIQUE" ) ) ),
 
 			# 2014-03-18
 			array( 'AddColumnSQL', array( plugin_table( 'dismissed' ),
