@@ -250,7 +250,7 @@ if ($action == "delete") {
 			$context->location = $new_locations[$i];
 			$context->access = $new_access[$i];
 			$context->ttl = $new_ttls[$i];
-			$context->dismissable = $new_dismissables[$i];
+			$context->dismissable = isset( $new_dismissables[$i] ) ? $new_dismissables[$i] : false;
 
 			if (
 				($context->project_id == 0 || project_exists($context->project_id)) &&
