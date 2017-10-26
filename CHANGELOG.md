@@ -14,6 +14,8 @@ specification.
 
 - German translation
   ([#15](https://github.com/mantisbt-plugins/Announce/issues/15))
+- Schema update to cleanup orphan records in dismissed table
+  [#17](https://github.com/mantisbt-plugins/Announce/issues/17))
 
 ### Removed
 
@@ -24,6 +26,8 @@ specification.
 - Setting of Dismissable property when adding a new Context
   ([#18](https://github.com/mantisbt-plugins/Announce/issues/18),
   [#19](https://github.com/mantisbt-plugins/Announce/issues/19))
+- Cascade delete Dismissals when removing a Context or Message
+  [#17](https://github.com/mantisbt-plugins/Announce/issues/17))
 
 
 ## [2.1.0] - 2017-10-16
