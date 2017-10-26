@@ -241,7 +241,7 @@ if ($action == "delete") {
 		$new_projects = gpc_get_int_array("project_new", array());
 		$new_access = gpc_get_int_array("access_new", array());
 		$new_ttls = gpc_get_int_array("ttl_new", array());
-		$new_dismissables = gpc_get_int_array("dismissable_new", array());
+		$new_dismissables = gpc_get_bool_array("dismissable_new", array());
 
 		for($i = 0; $i < count($new_contexts); $i++) {
 			$context = new AnnounceContext();
