@@ -10,6 +10,22 @@ specification.
 
 ## [Unreleased]
 
+### Added
+
+- German translation
+  ([#15](https://github.com/mantisbt-plugins/Announce/issues/15))
+
+### Removed
+
+- Unused language strings
+
+### Fixed
+
+- Setting of Dismissable property when adding a new Context
+  ([#18](https://github.com/mantisbt-plugins/Announce/issues/18),
+  [#19](https://github.com/mantisbt-plugins/Announce/issues/19))
+
+
 ## [2.1.0] - 2017-10-16
 
 ### Added
