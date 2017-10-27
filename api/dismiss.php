@@ -17,7 +17,8 @@ function xmlhttprequest_plugin_announce_dismiss() {
 	# make sure the message context actually exists
 	$context = AnnounceContext::load_by_id($context_id);
 
-	if ($context && $context->dismissable) {
+	# Dismiss announcement if dismissable or a time-to-live has been set
+	if ($context && ( $context->dismissable || $context->ttl > 0 ) ) {
 		$dismissed_table = plugin_table("dismissed");
 
 		# check for existing dismissal

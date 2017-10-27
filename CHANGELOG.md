@@ -32,6 +32,8 @@ specification.
   [#19](https://github.com/mantisbt-plugins/Announce/issues/19))
 - Cascade delete Dismissals when removing a Context or Message
   [#17](https://github.com/mantisbt-plugins/Announce/issues/17))
+- Time-to-live for non-dismissable announcements
+  ([#16](https://github.com/mantisbt-plugins/Announce/issues/16))
 
 
 ## [2.1.0] - 2017-10-16
