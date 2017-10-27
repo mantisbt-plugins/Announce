@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			dataType: 'json',
-			url: 'xmlhttprequest.php?entrypoint=plugin_announce_dismiss&context_id=' + context_id,
+			url: 'api/rest/plugins/Announce/dismiss/' + context_id,
 			success: function(data) {
 				if (data === context_id) {
 					$(announcement).fadeOut();
