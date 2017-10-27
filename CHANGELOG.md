@@ -17,6 +17,10 @@ specification.
 - Schema update to cleanup orphan records in dismissed table
   [#17](https://github.com/mantisbt-plugins/Announce/issues/17))
 
+### Changed
+
+- Improve error handling of announcements dismissals
+
 ### Removed
 
 - Unused language strings

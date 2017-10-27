@@ -44,6 +44,11 @@ jQuery(document).ready(function($) {
 			success: function(data) {
 				if (data === context_id) {
 					$(announcement).fadeOut();
+				} else {
+					console.error(
+						'Unexpected output received from announcement dismissal',
+						{ output: data, request: this.url }
+					)
 				}
 			},
 			error: function(xhr, textStatus, errorThrown) {
