@@ -121,7 +121,7 @@ class AnnouncePlugin extends MantisPlugin {
 		$t_app->group(
 			plugin_route_group(),
 			function() use ( $t_app, $t_plugin ) {
-				$t_app->get( '/dismiss/{context_id}', [$t_plugin, 'route_dismiss'] );
+				$t_app->post( '/dismiss/{context_id}', [$t_plugin, 'route_dismiss'] );
 			}
 		);
 	}
@@ -129,9 +129,10 @@ class AnnouncePlugin extends MantisPlugin {
 	/**
 	 * RESTful route for Announcement dismissal.
 	 *
-	 * Returned JSON structure
-	 *   - {string} title
-	 *   - {string} text
+	 * Return status
+	 * - 200 announcement was successfully dismissed
+	 * - 400 invalid context or announcement not dismissable
+	 * - 500 dismissal failed (db insert/update error)
 	 *
 	 * @param Psr\Http\Message\ServerRequestInterface $request
 	 * @param Psr\Http\Message\ResponseInterface $response
@@ -146,43 +147,47 @@ class AnnouncePlugin extends MantisPlugin {
 		$t_context_id = (int)$args['context_id'];
 
 		# Make sure the message context actually exists
+		# and that it can actually be dismissed (i.e. marked as dismissable,
+		# or  a time-to-live has been set).
 		$t_context = AnnounceContext::load_by_id( $t_context_id );
-		if( !$t_context ) {
+		if( !$t_context || !$t_context->dismissable && $t_context->ttl == 0 ) {
 			return $response->withStatus( HTTP_STATUS_BAD_REQUEST );
 		}
 
 		plugin_push_current( $this->basename );
+		$t_dismissed_table = plugin_table( 'dismissed' );
 
-		# Dismiss announcement if dismissable or a time-to-live has been set
-		if( $t_context->dismissable || $t_context->ttl > 0 ) {
-			$t_dismissed_table = plugin_table( 'dismissed' );
+		# check for existing dismissal
+		$t_query = "SELECT * FROM {$t_dismissed_table}
+			WHERE context_id=" . db_param() . "
+			AND user_id=" . db_param();
+		$t_result = db_query( $t_query,
+			array( $t_context_id, $t_user_id )
+		);
 
-			# check for existing dismissal
-			$t_query = "SELECT * FROM {$t_dismissed_table} 
+		if( db_num_rows( $t_result ) < 1 ) {
+			$t_query = "INSERT INTO {$t_dismissed_table}
+				(context_id, user_id, timestamp)
+				VALUES
+				(" . db_param() . ", " . db_param() . ", " . db_param(
+				) . ")";
+			$t_param = array( $t_context_id, $t_user_id, $t_timestamp );
+		}
+		else {
+			$t_query = "UPDATE {$t_dismissed_table}
+				SET timestamp = " . db_param() . "
 				WHERE context_id=" . db_param() . " 
-				AND user_id=".db_param();
-			$t_result = db_query( $t_query, array( $t_context_id, $t_user_id ) );
-
-			if( db_num_rows( $t_result ) < 1 ) {
-				$t_query = "INSERT INTO {$t_dismissed_table} 
-					(context_id, user_id, timestamp) 
-					VALUES 
-					(" . db_param( ) . ", " . db_param() . ", " . db_param() . ")";
-				$t_param = array( $t_context_id, $t_user_id, $t_timestamp );
-			} else  {
-				$t_query = "UPDATE {$t_dismissed_table} 
-					SET timestamp = " . db_param() . " 
-					WHERE context_id=" . db_param() . " 
-					AND user_id=" . db_param();
-				$t_param = array( $t_timestamp, $t_context_id, $t_user_id );
-			}
-			db_query( $t_query, $t_param );
-
-			$response = $response->withJson( $t_context_id );
+				AND user_id=" . db_param();
+			$t_param = array( $t_timestamp, $t_context_id, $t_user_id );
+		}
+		if( db_query( $t_query, $t_param ) ) {
+			$t_status = HTTP_STATUS_SUCCESS;
+		} else {
+			$t_status = HTTP_STATUS_INTERNAL_SERVER_ERROR;
 		}
 
 		plugin_pop_current();
 
-		return $response->withStatus( HTTP_STATUS_SUCCESS );
+		return $response->withStatus( $t_status );
 	}
 }

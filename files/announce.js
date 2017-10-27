@@ -44,17 +44,10 @@ jQuery(document).ready(function($) {
 		}
 
 		$.ajax({
-			dataType: 'json',
+			type: 'POST',
 			url: 'api/rest/plugins/Announce/dismiss/' + context_id,
-			success: function(data) {
-				if (data === context_id) {
-					$(announcement).fadeOut();
-				} else {
-					console.error(
-						'Unexpected output received from announcement dismissal',
-						{ output: data, request: this.url }
-					)
-				}
+			success: function() {
+				$(announcement).fadeOut();
 			},
 			error: function(xhr, textStatus, errorThrown) {
 				console.error(
