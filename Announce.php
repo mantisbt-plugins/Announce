@@ -148,10 +148,18 @@ class AnnouncePlugin extends MantisPlugin {
 
 		# Make sure the message context actually exists
 		# and that it can actually be dismissed (i.e. marked as dismissable,
-		# or  a time-to-live has been set).
+		# or a time-to-live has been set).
 		$t_context = AnnounceContext::load_by_id( $t_context_id );
-		if( !$t_context || !$t_context->dismissable && $t_context->ttl == 0 ) {
-			return $response->withStatus( HTTP_STATUS_BAD_REQUEST );
+		if( !$t_context ) {
+			return $response->withStatus(
+				HTTP_STATUS_BAD_REQUEST,
+				'Invalid Context Id'
+			);
+		} elseif( !$t_context->dismissable && $t_context->ttl == 0 ) {
+			return $response->withStatus(
+				HTTP_STATUS_BAD_REQUEST,
+				'Non-dismissible announcement'
+			);
 		}
 
 		plugin_push_current( $this->basename );
@@ -182,12 +190,14 @@ class AnnouncePlugin extends MantisPlugin {
 		}
 		if( db_query( $t_query, $t_param ) ) {
 			$t_status = HTTP_STATUS_SUCCESS;
+			$t_msg = '';
 		} else {
 			$t_status = HTTP_STATUS_INTERNAL_SERVER_ERROR;
+			$t_msg = 'Announcement dismissal failed';
 		}
 
 		plugin_pop_current();
 
-		return $response->withStatus( $t_status );
+		return $response->withStatus( $t_status, $t_msg );
 	}
 }
