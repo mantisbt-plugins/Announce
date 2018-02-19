@@ -15,7 +15,12 @@ jQuery(document).ready(function($) {
 	});
 
 	// Move announcement to the page's top, between navbar and breadcrumbs
-	$('div.main-content').prepend($(announcement));
+	var main_div = $('div.main-content');
+	if (!main_div.length) {
+		// Admin pages don't have a main-content div
+		main_div = $('div.main-container');
+	}
+	main_div.prepend($(announcement));
 
 	// Manual dismissal of announcement (user click)
 	$('img.announcement-dismiss').click(dismiss);
