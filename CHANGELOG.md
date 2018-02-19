@@ -36,6 +36,14 @@ specification.
   ([#16](https://github.com/mantisbt-plugins/Announce/issues/16))
 
 
+## [2.1.1] - 2018-02-19
+
+### Fixed
+
+- Display of announcement banner on Admin pages
+  ([#25](https://github.com/mantisbt-plugins/Announce/issues/25))
+
+
 ## [2.1.0] - 2017-10-16
 
 ### Added
@@ -111,8 +119,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.1...HEAD
 
+[2.1.1]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v0.3...v1.0.0
