@@ -53,7 +53,6 @@ jQuery(document).ready(function($) {
 		var categoryrow = $(this).parents("tr");
 
 		$.ajax({
-			async: false,
 			dataType: "html",
 			url: Announce.rest_api('context/') + message_id,
 			success: function(data) {
