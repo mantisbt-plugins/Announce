@@ -45,7 +45,9 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			type: 'POST',
-			url: 'api/rest/plugins/Announce/dismiss/' + context_id,
+			// Using the full URL (through index.php) to avoid issues on sites
+			// where URL rewriting is not working (#31)
+			url: 'api/rest/index.php/plugins/Announce/dismiss/' + context_id,
 			success: function() {
 				$(announcement).fadeOut();
 			},
