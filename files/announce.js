@@ -2,6 +2,22 @@
 // Copyright (c) 2017 Damien Regad
 // Licensed under the MIT license
 
+/**
+ * Namespace for global function used in list_action.js
+ */
+var Announce = Announce || {};
+
+/**
+ * Return MantisBT REST API URL for given endpoint
+ * @param {string} endpoint
+ * @returns {string} REST API URL
+ */
+Announce.rest_api = function(endpoint) {
+	// Using the full URL (through index.php) to avoid issues on sites
+	// where URL rewriting is not working (#31)
+	return "api/rest/index.php/plugins/Announce/" + endpoint;
+};
+
 jQuery(document).ready(function($) {
 	var announcement = $('div.announcement');
 
@@ -45,9 +61,7 @@ jQuery(document).ready(function($) {
 
 		$.ajax({
 			type: 'POST',
-			// Using the full URL (through index.php) to avoid issues on sites
-			// where URL rewriting is not working (#31)
-			url: 'api/rest/index.php/plugins/Announce/dismiss/' + context_id,
+			url: Announce.rest_api('dismiss/') + context_id,
 			success: function() {
 				$(announcement).fadeOut();
 			},
