@@ -44,7 +44,7 @@ class Announce {
 				}
 
 				printf(
-					'<div class="announcement %s" data-id="%d" data-ttl="%d">%s</div>',
+					'<div class="announcement noprint %s" data-id="%d" data-ttl="%d">%s</div>',
 					$css_class,
 					$context->id, $context->ttl,
 					$html
