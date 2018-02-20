@@ -19,6 +19,9 @@ specification.
 
 ### Changed
 
+- Minimum requirement: MantisBT 2.0.0 → 2.3.0  
+- Use REST API instead of XmlHttpRequest
+  ([#21](https://github.com/mantisbt-plugins/snippets/issues/21))
 - Improve error handling of announcements dismissals
 - Code cleanup
 
@@ -32,7 +35,7 @@ specification.
   ([#18](https://github.com/mantisbt-plugins/Announce/issues/18),
   [#19](https://github.com/mantisbt-plugins/Announce/issues/19))
 - Cascade delete Dismissals when removing a Context or Message
-  [#17](https://github.com/mantisbt-plugins/Announce/issues/17))
+  ([#17](https://github.com/mantisbt-plugins/Announce/issues/17))
 - Time-to-live for non-dismissable announcements
   ([#16](https://github.com/mantisbt-plugins/Announce/issues/16))
 

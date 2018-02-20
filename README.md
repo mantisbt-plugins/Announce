@@ -17,7 +17,7 @@ messages.
 
 ## Requirements
 
-- MantisBT 2.0.0 or above
+- MantisBT 2.3.0 or above
 
 If you need compatibility with older releases of MantisBT, please use legacy
 versions of the plugin, as per table below:
