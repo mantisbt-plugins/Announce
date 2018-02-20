@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 		$.ajax({
 			async: false,
 			dataType: "html",
-			url: "xmlhttprequest.php?entrypoint=plugin_announce_add_context&row=1&message_id="+message_id,
+			url: Announce.rest_api('context/') + message_id,
 			success: function(data) {
 				var row = $("td.announce_list_"+message_id);
 				row.prop("rowspan", row.prop("rowspan")+1);

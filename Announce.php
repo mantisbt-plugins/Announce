@@ -122,6 +122,7 @@ class AnnouncePlugin extends MantisPlugin {
 			plugin_route_group(),
 			function() use ( $t_app, $t_plugin ) {
 				$t_app->post( '/dismiss/{context_id}', [$t_plugin, 'route_dismiss'] );
+				$t_app->get( '/context/{message_id}', [$t_plugin, 'route_generate_context_form_fields'] );
 			}
 		);
 	}
@@ -199,5 +200,50 @@ class AnnouncePlugin extends MantisPlugin {
 		plugin_pop_current();
 
 		return $response->withStatus( $t_status, $t_msg );
+	}
+
+	/**
+	 * RESTful route to generate HTML for new Announcement context.
+	 *
+	 * Return status
+	 * - 200 HTML was successfully generated
+	 * - 400 invalid message
+	 *
+	 * @param Psr\Http\Message\ServerRequestInterface $request
+	 * @param Psr\Http\Message\ResponseInterface $response
+	 * @param array $args
+	 * @return Psr\Http\Message\ResponseInterface
+	 */
+	public function route_generate_context_form_fields( $request, $response, $args) {
+		$t_message_id = (int)$args['message_id'];
+
+		# Make sure the message actually exists
+		$t_message = AnnounceMessage::load_by_id( $t_message_id );
+		if( !$t_message ) {
+			return $response->withStatus(
+				HTTP_STATUS_BAD_REQUEST,
+				'Invalid Message Id'
+			);
+		}
+
+		plugin_push_current( $this->basename );
+?>
+<tr class="row-new">
+	<td class="center">
+		<a class="announce_delete_context_new" href="#" data-message-id="<?php echo $t_message_id ?>">
+			<img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0" />
+		</a>
+		<input type="hidden" name="context_new[]" value="<?php echo $t_message_id ?>"/>
+	</td>
+	<td class="center"><select name="location_new[]"><?php Announce::print_location_option_list() ?></select></td>
+	<td class="center"><select name="project_new[]"><?php print_project_option_list() ?></select></td>
+	<td class="center"><select name="access_new[]"><?php print_enum_string_option_list("access_levels", VIEWER) ?></select></td>
+	<td class="center"><input name="ttl_new[]" value="0" size="8"/></td>
+	<td class="center"><input type="checkbox" name="dismissable_new[]" checked="checked"/></td>
+</tr>
+<?php
+		plugin_pop_current();
+
+		return $response->withStatus( HTTP_STATUS_SUCCESS );
 	}
 }
