@@ -111,7 +111,8 @@ class AnnounceMessage {
 			$query = "SELECT * FROM {$message_table} WHERE id=".db_param();
 			$result = db_query($query, array($id));
 
-			return array_shift(self::from_db_result($result, $load_contexts));
+			$t_messages = self::from_db_result($result, $load_contexts);
+			return array_shift( $t_messages );
 		}
 	}
 
