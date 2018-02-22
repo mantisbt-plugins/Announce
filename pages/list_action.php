@@ -157,7 +157,7 @@ if ($action == "delete") {
 								</td>
 								<td class="center">
 									<input type="checkbox" name="dismissable_<?php echo $context->id ?>"
-										<?php echo check_checked((bool)$context->dismissable) ?>/>
+										<?php check_checked((bool)$context->dismissable) ?>/>
 								</td>
 							</tr>
 <?php
