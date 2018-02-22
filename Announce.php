@@ -49,12 +49,14 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function menu_manage($event, $user_id) {
-		if (access_has_global_level(plugin_config_get("manage_threshold"))) {
-			$page = plugin_page("list");
-			$label = plugin_lang_get("list_title");
-
-			return "<a href=\"{$page}\">{$label}</a>";
+		if( !access_has_global_level( plugin_config_get( "manage_threshold" ) ) ) {
+			return '';
 		}
+
+		$page = plugin_page( "list" );
+		$label = plugin_lang_get( "list_title" );
+
+		return "<a href=\"{$page}\">{$label}</a>";
 	}
 
 	function body_begin() {
