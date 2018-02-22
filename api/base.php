@@ -82,8 +82,9 @@ class Announce {
 		}
 
 		foreach(Announce::locations() as $loc => $locname) {
-			$selected = check_selected($loc, (string)$value);
-			echo "<option value=\"{$loc}\" {$selected}>{$locname}</option>";
+			echo "<option value=\"{$loc}\"";
+			check_selected( $loc, (string)$value );
+			echo ">{$locname}</option>\n";
 		}
 	}
 }
