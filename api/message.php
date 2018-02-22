@@ -187,7 +187,7 @@ class AnnounceMessage {
 	 * @param int $user_id User ID
 	 * @param string $location Location name
 	 * @param int $project_id Project ID (optional)
-	 * @return object Message object
+	 * @return AnnounceMessage Message object
 	 */
 	public static function load_random($user_id, $location, $project_id=0) {
 		$visible = self::load_visible($user_id, $location, $project_id);

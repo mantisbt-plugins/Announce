@@ -75,6 +75,8 @@ class Announce {
 
 	/**
 	 * Generate HTML dropdown options for the list of available locations.
+	 * @param string $value Default value
+	 * @return void
 	 */
 	public static function print_location_option_list($value=null) {
 		if ($value === null) {
