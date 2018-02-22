@@ -10,13 +10,13 @@ jQuery(document).ready(function($) {
 
 	function delete_action (event){
 		if ($(this).hasClass("announce_delete_context_added")) {
-			var row = $("td.announce_list_"+$(this).attr("value"));
+			var row = $("td.announce_list_" + $(this).data('message-id'));
 			row.prop("rowspan", row.prop("rowspan")-1);
 			$(this).parents("tr").remove();
 			return;
 		}
 
-		var context_id = $(this).attr("value");
+		var context_id = $(this).data("context-id");
 
 		var input_deleted = "input[name='context_delete_"+context_id+"']";
 		var input_location = "select[name='location_"+context_id+"']";
@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 
 	// "adding" a new context from edit list
 	$("a.announce_add_context").click(function(event){
-		var message_id = $(this).attr("value");
+		var message_id = $(this).data('message-id');
 		var categoryrow = $(this).parents("tr");
 
 		$.ajax({
