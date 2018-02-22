@@ -36,9 +36,8 @@ class Announce {
 
 				if ($context->dismissable) {
 					$html = sprintf(
-							'<img class="announcement-dismiss" src="%s" alt="Dismiss Announcement" value="%d"/>',
-							plugin_file("dismiss.png"),
-							$context->id
+							'<img class="announcement-dismiss" src="%s" alt="Dismiss Announcement" />',
+							plugin_file("dismiss.png")
 						)
 						. "\n" . $html;
 				}

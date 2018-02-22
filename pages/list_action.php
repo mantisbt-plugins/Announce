@@ -113,7 +113,7 @@ if ($action == "delete") {
 
 							<tr class="row-category">
 								<td class="category">
-									<a class="announce_add_context" href="#" value="<?php echo $message_id ?>">
+									<a class="announce_add_context" href="#">
 										<img src="<?php echo plugin_file("add.png") ?>" alt="+" border="0"/>
 									</a>
 								</td>
@@ -129,8 +129,7 @@ if ($action == "delete") {
 ?>
 							<tr>
 								<td class="center">
-									<a class="announce_delete_context" href="#"
-									   value="<?php echo $context->id ?>">
+									<a class="announce_delete_context" href="#">
 										<img src="<?php echo plugin_file("delete.png") ?>"
 											 alt="-" border="0"/>
 									</a>
