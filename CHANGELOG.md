@@ -20,6 +20,7 @@ specification.
 ### Changed
 
 - Improve error handling of announcements dismissals
+- Code cleanup
 
 ### Removed
 
