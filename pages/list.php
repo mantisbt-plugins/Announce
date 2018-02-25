@@ -69,7 +69,7 @@ print_manage_menu( plugin_page( 'list' ) );
 	foreach($messages as $message_id => $message) {
 		$context_count = count($message->contexts);
 		$odd_rows = $context_count & 1;
-		$rowspan = max( $context_count, 1 ) + 1 - $odd_rows;
+		$rowspan = max( $context_count, 0 ) + 1 - $odd_rows;
 		$first = true;
 ?>
 						<tr>

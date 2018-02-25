@@ -40,7 +40,8 @@ specification.
   ([#17](https://github.com/mantisbt-plugins/Announce/issues/17))
 - Time-to-live for non-dismissable announcements
   ([#16](https://github.com/mantisbt-plugins/Announce/issues/16))
-
+- Messed up display when an announcement has no contexts
+  ([#29](https://github.com/mantisbt-plugins/Announce/issues/29))
 
 ## [2.1.1] - 2018-02-19
 
