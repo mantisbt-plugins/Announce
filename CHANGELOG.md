@@ -24,6 +24,8 @@ specification.
   ([#21](https://github.com/mantisbt-plugins/snippets/issues/21))
 - Improve error handling of announcements dismissals
 - Code cleanup
+- Center '+' button on Edit Announcements page
+  ([#28](https://github.com/mantisbt-plugins/snippets/issues/28))
 
 ### Removed
 

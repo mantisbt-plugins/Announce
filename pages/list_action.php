@@ -112,7 +112,7 @@ if ($action == "delete") {
 							</tr>
 
 							<tr class="row-category">
-								<td class="category">
+								<td class="category center">
 									<a class="announce_add_context" href="#" data-message-id="<?php echo $message_id ?>">
 										<img src="<?php echo plugin_file("add.png") ?>" alt="+" border="0"/>
 									</a>
