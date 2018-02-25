@@ -26,6 +26,8 @@ specification.
 - Code cleanup
 - Center '+' button on Edit Announcements page
   ([#28](https://github.com/mantisbt-plugins/snippets/issues/28))
+- Show announcements without context as disabled on the list page
+  ([#30](https://github.com/mantisbt-plugins/snippets/issues/30))
 
 ### Removed
 

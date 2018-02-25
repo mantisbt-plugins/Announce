@@ -105,7 +105,9 @@ print_manage_menu( plugin_page( 'list' ) );
 			}
 		} else {
 ?>
-						<td colspan="2"></td>
+						<td colspan="2" class="center">
+							<?php echo plugin_lang_get( 'no_context' ); ?>
+						</td>
 <?php
 		}
 ?>
