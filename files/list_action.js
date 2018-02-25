@@ -14,7 +14,22 @@ jQuery(document).ready(function($) {
 	 * @return integer Number of non-deleted siblings
 	 */
 	function num_siblings(row) {
-		return row.siblings('.row-context').not('.row-deleted').length;
+		// Note: we can't use jQuery's siblings() method, as there can be
+		// multiple announcements in the same table. To calculate the number, we
+		// go back to the first category row, then back down to the next spacer
+		// row, excluding deleted contexts.
+		var siblings = row
+			.prevUntil('.row-category').addBack()
+			.nextUntil('.spacer').addBack()
+			.not('.row-deleted');
+		var num = siblings.length;
+
+		// If we're removing a newly added context, exclude it from the count
+		if(row.hasClass('row-new')) {
+			num--;
+		}
+
+		return num;
 	}
 
 	/**
