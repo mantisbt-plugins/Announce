@@ -95,9 +95,13 @@ if ($action == "delete") {
 								<td class="category" colspan="2"><?php echo plugin_lang_get("title") ?></td>
 								<td colspan="4">
 									<input name="title_<?php echo $message_id ?>"
-                                           type="text" size="50"
+										   type="text" size="50"
 										   value="<?php echo $message->title ?>"
-                                    />
+									/>
+									<div id="warning_last_context_<?php echo $message_id ?>"
+										 class="alert alert-warning warning-last-context">
+										<?php echo plugin_lang_get( 'delete_last_context'); ?>
+									</div>
 								</td>
 							</tr>
 
@@ -127,9 +131,12 @@ if ($action == "delete") {
 <?php
 		foreach($message->contexts as $context_id => $context) {
 ?>
-							<tr>
+							<tr class="row-context">
 								<td class="center">
-									<a class="announce_delete_context" href="#" data-context-id="<?php echo $context_id ?>">
+									<a class="announce_delete_context" href="#"
+									   data-message-id="<?php echo $message_id ?>"
+									   data-context-id="<?php echo $context_id ?>"
+									>
 										<img src="<?php echo plugin_file("delete.png") ?>"
 											 alt="-" border="0"/>
 									</a>

@@ -8,11 +8,38 @@ jQuery(document).ready(function($) {
 		$("input[name='message_list[]']").prop("checked", $(this).prop("checked"));
 	});
 
+	/**
+	 * Count the number of non-deleted siblings for the given context row
+	 * @param row
+	 * @return integer Number of non-deleted siblings
+	 */
+	function num_siblings(row) {
+		return row.siblings('.row-context').not('.row-deleted').length;
+	}
+
+	/**
+	 * Display or hide the "last context" warning message
+	 * @param message_id Message for which the warning applies
+	 * @param show True to show the warning, false to hide it
+	 */
+	function toggle_last_context_warning(message_id, show) {
+		var warning = $('#warning_last_context_' + message_id);
+		if(show) {
+			warning.show();
+		} else {
+			warning.hide();
+		}
+	}
+
 	function delete_action (event){
+		var parent_row = $(this).parents("tr");
+		var message_id = $(this).data('message-id');
+
 		if ($(this).hasClass("announce_delete_context_added")) {
-			var row = $("td.announce_list_" + $(this).data('message-id'));
-			row.prop("rowspan", row.prop("rowspan")-1);
-			$(this).parents("tr").remove();
+			var cell = $("td.announce_list_" + message_id);
+			cell.prop("rowspan", cell.prop("rowspan") - 1);
+			toggle_last_context_warning(message_id, num_siblings(parent_row) === 0);
+			parent_row.remove();
 			return;
 		}
 
@@ -25,15 +52,17 @@ jQuery(document).ready(function($) {
 		var input_ttl = "input[name='ttl_"+context_id+"']";
 		var input_dismissable = "input[name='dismissable_"+context_id+"']";
 
+		// Mark the row as deleted and disable the form's inputs
 		var context_deleted = $(input_deleted).attr("value");
-
-		if (context_deleted == "0") {
+		parent_row.toggleClass('row-deleted');
+		if (context_deleted === "0") {
 			$(input_deleted).prop("value", "1");
 			$(input_location).prop("disabled", "disabled");
 			$(input_project).prop("disabled", "disabled");
 			$(input_access).prop("disabled", "disabled");
 			$(input_ttl).prop("disabled", "disabled");
 			$(input_dismissable).prop("disabled", "disabled");
+			toggle_last_context_warning(message_id, num_siblings(parent_row) === 0);
 		} else {
 			$(input_deleted).prop("value", "0");
 			$(input_location).prop("disabled", "");
@@ -41,6 +70,7 @@ jQuery(document).ready(function($) {
 			$(input_access).prop("disabled", "");
 			$(input_ttl).prop("disabled", "");
 			$(input_dismissable).prop("disabled", "");
+			toggle_last_context_warning(message_id, false);
 		}
 	}
 
@@ -65,6 +95,8 @@ jQuery(document).ready(function($) {
 					.click(delete_action)
 					.removeClass("announce_delete_context_new")
 					.addClass("announce_delete_context_added");
+
+				toggle_last_context_warning(message_id, false);
 			}
 		});
 	});

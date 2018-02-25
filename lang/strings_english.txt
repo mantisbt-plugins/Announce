@@ -19,6 +19,7 @@ $s_plugin_Announce_project = 'Project';
 $s_plugin_Announce_dismissable = 'Dismissable';
 $s_plugin_Announce_select_one = '(select one)';
 $s_plugin_Announce_no_context = 'No context defined - announcement disabled';
+$s_plugin_Announce_delete_last_context = 'The Announcement does not have any associated Contexts and will be disabled.';
 
 $s_plugin_Announce_list_title = 'Announcements';
 $s_plugin_Announce_create_title = 'New Announcement';

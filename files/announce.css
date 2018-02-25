@@ -20,3 +20,8 @@
 .announcement-msg p {
 	margin: 0;
 }
+
+.warning-last-context {
+	margin-top: 0.5em;
+	display: none;
+}

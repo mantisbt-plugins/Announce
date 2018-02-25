@@ -228,7 +228,7 @@ class AnnouncePlugin extends MantisPlugin {
 
 		plugin_push_current( $this->basename );
 ?>
-<tr class="row-new">
+<tr class="row-context row-new">
 	<td class="center">
 		<a class="announce_delete_context_new" href="#" data-message-id="<?php echo $t_message_id ?>">
 			<img src="<?php echo plugin_file("delete.png") ?>" alt="-" border="0" />
