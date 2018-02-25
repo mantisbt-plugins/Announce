@@ -5,12 +5,14 @@
 # Licensed under the MIT license
 
 class AnnouncePlugin extends MantisPlugin {
+	const VERSION = '2.2.0';
+
 	function register() {
 		$this->name = plugin_lang_get("plugin_title");
 		$this->description = plugin_lang_get("plugin_description");
 		$this->page = 'config_page';
 
-		$this->version = "2.2.0-dev";
+		$this->version = self::VERSION;
 		$this->requires		= array(
 			"MantisCore" => "2.3.0",
 		);

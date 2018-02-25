@@ -8,7 +8,7 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased]
+## [2.2.0] - 2018-02-26
 
 ### Added
 
@@ -21,9 +21,11 @@ specification.
 
 - Minimum requirement: MantisBT 2.0.0 → 2.3.0  
 - Use REST API instead of XmlHttpRequest
-  ([#21](https://github.com/mantisbt-plugins/snippets/issues/21))
+  ([#22](https://github.com/mantisbt-plugins/snippets/issues/22))
 - Improve error handling of announcements dismissals
 - Code cleanup
+  ([#26](https://github.com/mantisbt-plugins/snippets/issues/26),
+  [#27](https://github.com/mantisbt-plugins/snippets/issues/27)...)
 - Center '+' button on Edit Announcements page
   ([#28](https://github.com/mantisbt-plugins/snippets/issues/28))
 - Show announcements without context as disabled on the list page
@@ -130,8 +132,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.2.0...HEAD
 
+[2.2.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/mantisbt-plugins/Announce/compare/v1.0.0...v2.0.0
