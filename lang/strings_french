@@ -1,0 +1,41 @@
+<?php
+
+# Copyright (c) 2010 John Reese
+# Copyright (c) 2017 Damien Regad
+# French translation by Celemo
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Annonces';
+$s_plugin_Announce_plugin_description = 'Permet aux administrateurs de créer des annonces pour les utilisateurs à différents emplacements sur le site.';
+
+$s_plugin_Announce_title = 'Titre';
+$s_plugin_Announce_message = 'Message';
+$s_plugin_Announce_ttl = 'Temps de vie';
+$s_plugin_Announce_ttl_help = 'Temps en secondes ou le message seras affiché, mettre zéro pour en permanence';
+$s_plugin_Announce_location = 'Emplacement';
+$s_plugin_Announce_access = 'Niveau d'accés';
+$s_plugin_Announce_access_help = 'Seras montré à n'importe qui au niveau ou au-dessus de ce niveau d'accès';
+$s_plugin_Announce_project = 'Projet';
+$s_plugin_Announce_dismissable = 'Fermeture possible';
+$s_plugin_Announce_select_one = '(choisir un)';
+$s_plugin_Announce_no_context = 'Pas de contexte défini - Annonce désactivée';
+$s_plugin_Announce_delete_last_context = 'L'annonce n'a aucun contexte associé et sera désactivée.';
+
+$s_plugin_Announce_list_title = 'Annonces';
+$s_plugin_Announce_create_title = 'Nouvelle annonce';
+$s_plugin_Announce_edit_title = 'Editer les annonces';
+
+$s_plugin_Announce_config = 'Configuration';
+$s_plugin_Announce_config_title = 'Configuration des annonces';
+$s_plugin_Announce_config_manage_threshold = 'Gérer les annonces';
+$s_plugin_Announce_threshold_warning = 'ATTENTION: le niveau d'accès est inférieur à <em>$g_manage_site_threshold</em>; les utilisateurs peuvent ne pas être en mesure d'accéder aux pages de gestion.';
+
+$s_plugin_Announce_action_go = 'Go';
+$s_plugin_Announce_action_create = 'Créer';
+$s_plugin_Announce_action_edit = 'Editer';
+$s_plugin_Announce_action_delete = 'Supprimer';
+$s_plugin_Announce_action_delete_confirm = 'Voulez-vous vraiment supprimer les annonces suivantes?';
+$s_plugin_Announce_action_update = 'Mettre à jour';
+
+$s_plugin_Announce_location_header = 'En-tête de page';
