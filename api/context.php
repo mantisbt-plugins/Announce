@@ -27,8 +27,31 @@ class AnnounceContext {
 			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
 			db_query($query, array($this->id));
 
+			return;
+		}
+
+		# Make sure there is no existing context for the given location/project
+		$query = "SELECT id
+			FROM $context_table
+			WHERE location = " . db_param() . "
+			AND project_id = " . db_param() . "
+			AND message_id = " . db_param();
+		$param = array(
+			$this->location,
+			$this->project_id,
+			$this->message_id,
+		);
+		$existing_context = db_result( db_query( $query, $param ) );
+		if( $existing_context && ( $this->id === null || $this->id != $existing_context ) ) {
+			error_parameters(
+				$this->location,
+				project_get_name( $this->project_id )
+			);
+			plugin_error( AnnouncePlugin::ERROR_DUPLICATE_CONTEXT, ERROR, 'Announce' );
+		}
+
 		# create
-		} elseif ( $this->id === null ) {
+		if ( $this->id === null ) {
 			$query = "INSERT INTO {$context_table}
 				(
 					message_id,

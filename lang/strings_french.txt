@@ -39,3 +39,5 @@ $s_plugin_Announce_action_delete_confirm = 'Voulez-vous vraiment supprimer les a
 $s_plugin_Announce_action_update = 'Mettre à jour';
 
 $s_plugin_Announce_location_header = 'En-tête de page';
+
+$s_plugin_Announce_error_duplicate_context = 'L’emplacement "%1$s" est déjà défini pour le projet "%2$s".';

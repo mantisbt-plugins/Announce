@@ -7,6 +7,11 @@
 class AnnouncePlugin extends MantisPlugin {
 	const VERSION = '2.2.0';
 
+	/**
+	 * Error strings
+	 */
+	const ERROR_DUPLICATE_CONTEXT = 'error_duplicate_context';
+
 	function register() {
 		$this->name = plugin_lang_get("plugin_title");
 		$this->description = plugin_lang_get("plugin_description");
@@ -37,6 +42,12 @@ class AnnouncePlugin extends MantisPlugin {
 			"EVENT_LAYOUT_BODY_BEGIN" => "body_begin",
 
 			'EVENT_REST_API_ROUTES' => 'routes',
+		);
+	}
+
+	function errors() {
+		return array(
+			self::ERROR_DUPLICATE_CONTEXT => plugin_lang_get( self::ERROR_DUPLICATE_CONTEXT ),
 		);
 	}
 

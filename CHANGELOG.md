@@ -15,6 +15,11 @@ specification.
 - French translation
   ([#34](https://github.com/mantisbt-plugins/Announce/issues/34))
 
+### Fixed
+
+- Duplicate key error when inserting/updating an already existing context
+  ([#35](https://github.com/mantisbt-plugins/Announce/issues/35))
+
 
 ## [2.2.0] - 2018-02-26
 
