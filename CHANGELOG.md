@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased] - 2018-02-26
+
+### Added
+
+- French translation
+  ([#34](https://github.com/mantisbt-plugins/Announce/issues/34))
+
+
 ## [2.2.0] - 2018-02-26
 
 ### Added
@@ -19,7 +27,7 @@ specification.
 
 ### Changed
 
-- Minimum requirement: MantisBT 2.0.0 → 2.3.0  
+- Minimum requirement: MantisBT 2.0.0 → 2.3.0
 - Use REST API instead of XmlHttpRequest
   ([#22](https://github.com/mantisbt-plugins/snippets/issues/22))
 - Improve error handling of announcements dismissals
