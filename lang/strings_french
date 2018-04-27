@@ -33,7 +33,7 @@ $s_plugin_Announce_threshold_warning = 'ATTENTION : le niveau d’accès est inf
 
 $s_plugin_Announce_action_go = 'Valider';
 $s_plugin_Announce_action_create = 'Créer';
-$s_plugin_Announce_action_edit = 'Editer';
+$s_plugin_Announce_action_edit = 'Éditer';
 $s_plugin_Announce_action_delete = 'Supprimer';
 $s_plugin_Announce_action_delete_confirm = 'Voulez-vous vraiment supprimer les annonces suivantes ?';
 $s_plugin_Announce_action_update = 'Mettre à jour';
