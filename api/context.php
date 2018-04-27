@@ -21,8 +21,14 @@ class AnnounceContext {
 	public function save() {
 		$context_table = plugin_table("context", "Announce");
 
+		# delete
+		if ($this->_delete) {
+			AnnounceDismissed::delete_by_context_id($this->id);
+			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
+			db_query($query, array($this->id));
+
 		# create
-		if ($this->id === null && !$this->_delete) {
+		} elseif ( $this->id === null ) {
 			$query = "INSERT INTO {$context_table}
 				(
 					message_id,
@@ -50,12 +56,6 @@ class AnnounceContext {
 			));
 
 			$this->id = db_insert_id($context_table);
-
-		# delete
-		} elseif ($this->_delete) {
-			AnnounceDismissed::delete_by_context_id($this->id);
-			$query = "DELETE FROM {$context_table} WHERE id=".db_param();
-			db_query($query, array($this->id));
 
 		# update
 		} else {
