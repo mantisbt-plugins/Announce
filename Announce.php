@@ -187,7 +187,7 @@ class AnnouncePlugin extends MantisPlugin {
 		else {
 			$t_query = "UPDATE {$t_dismissed_table}
 				SET timestamp = " . db_param() . "
-				WHERE context_id=" . db_param() . " 
+				WHERE context_id=" . db_param() . "
 				AND user_id=" . db_param();
 			$t_param = array( $t_timestamp, $t_context_id, $t_user_id );
 		}
