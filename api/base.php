@@ -85,6 +85,20 @@ class Announce {
 	}
 
 	/**
+	 * Return the display value for the given location.
+	 * If the location does not exist in the array, it is returned as-is.
+	 *
+	 * @param string $p_loc Location
+	 * @return string Display value for $p_loc
+	 */
+	public static function getLocation( $p_loc ) {
+		self::initLocations();
+		return array_key_exists( $p_loc, self::$locations )
+			? self::$locations[$p_loc]
+			: $p_loc;
+	}
+
+	/**
 	 * Generate HTML dropdown options for the list of available locations.
 	 * @param string $value Default value
 	 * @return void
