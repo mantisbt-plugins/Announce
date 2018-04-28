@@ -15,12 +15,19 @@ specification.
 - French translation
   ([#34](https://github.com/mantisbt-plugins/Announce/issues/34))
 
+### Changed
+
+- Improve time-to-live input boxes: numbers >= 0 only, help tooltip
+  ([#36](https://github.com/mantisbt-plugins/Announce/issues/36))
+
 ### Fixed
 
 - Duplicate key error when inserting/updating an already existing context
   ([#35](https://github.com/mantisbt-plugins/Announce/issues/35))
 - Consistent display of default in Location selects
   ([#38](https://github.com/mantisbt-plugins/Announce/issues/38))
+- Styling of time-to-live input boxes
+  ([#36](https://github.com/mantisbt-plugins/Announce/issues/36))
 
 
 ## [2.2.0] - 2018-02-26

@@ -25,3 +25,7 @@
 	margin-top: 0.5em;
 	display: none;
 }
+
+input.ttl {
+	width: 5em;
+}

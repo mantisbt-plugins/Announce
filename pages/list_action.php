@@ -158,8 +158,10 @@ if ($action == "delete") {
 									</select>
 								</td>
 								<td class="center">
-									<input name="ttl_<?php echo $context->id ?>"
-										   value="<?php echo $context->ttl ?>" size="8"/>
+									<input name="ttl_<?php echo $context->id ?>" class="ttl"
+										   title="<?php echo plugin_lang_get("ttl_help") ?>"
+										   type="number" value="<?php echo $context->ttl ?>" min="0"
+									/>
 								</td>
 								<td class="center">
 									<input type="checkbox" name="dismissable_<?php echo $context->id ?>"

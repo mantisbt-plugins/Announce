@@ -203,7 +203,7 @@ print_manage_menu( plugin_page( 'list' ) );
 									<span class="small"><?php echo plugin_lang_get("ttl_help") ?></span>
 								</td>
 								<td>
-									<input name="ttl" type="text" size="8" value="0"/>
+									<input name="ttl" class="ttl" type="number" value="0" min="0"/>
 								</td>
 							</tr>
 

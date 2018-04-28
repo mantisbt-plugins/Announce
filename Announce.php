@@ -251,7 +251,12 @@ class AnnouncePlugin extends MantisPlugin {
 	<td class="center"><select name="location_new[]"><?php Announce::print_location_option_list() ?></select></td>
 	<td class="center"><select name="project_new[]"><?php print_project_option_list() ?></select></td>
 	<td class="center"><select name="access_new[]"><?php print_enum_string_option_list("access_levels", VIEWER) ?></select></td>
-	<td class="center"><input name="ttl_new[]" value="0" size="8"/></td>
+	<td class="center">
+		<input name="ttl_new[]" class="ttl"
+			   title="<?php echo plugin_lang_get("ttl_help") ?>"
+			   type="number" value="0" min="0"
+		/>
+	</td>
 	<td class="center"><input type="checkbox" name="dismissable_new[]" checked="checked"/></td>
 </tr>
 <?php
