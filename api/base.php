@@ -107,7 +107,13 @@ class Announce {
 		self::initLocations();
 
 		if ($value === null) {
-			echo '<option value="">', plugin_lang_get("select_one", "Announce"), '</option>';
+			if( count(self::$locations) == 1 ) {
+				$value = reset( self::$locations );
+			} else {
+				echo '<option value="">',
+					plugin_lang_get( "select_one","Announce" ),
+					"</option>\n";
+			}
 		}
 
 		foreach(self::$locations as $loc => $locname) {

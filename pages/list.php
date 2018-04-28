@@ -173,7 +173,7 @@ print_manage_menu( plugin_page( 'list' ) );
 								<td class="category"><?php echo plugin_lang_get("location") ?></td>
 								<td>
 									<select name="location">
-										<?php Announce::print_location_option_list(count($locations) == 1 ? end($locations) : null) ?>
+										<?php Announce::print_location_option_list() ?>
 									</select>
 								</td>
 							</tr>

@@ -19,6 +19,8 @@ specification.
 
 - Duplicate key error when inserting/updating an already existing context
   ([#35](https://github.com/mantisbt-plugins/Announce/issues/35))
+- Consistent display of default in Location selects
+  ([#38](https://github.com/mantisbt-plugins/Announce/issues/38))
 
 
 ## [2.2.0] - 2018-02-26
@@ -61,6 +63,7 @@ specification.
   ([#16](https://github.com/mantisbt-plugins/Announce/issues/16))
 - Messed up display when an announcement has no contexts
   ([#29](https://github.com/mantisbt-plugins/Announce/issues/29))
+
 
 ## [2.1.1] - 2018-02-19
 
