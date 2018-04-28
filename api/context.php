@@ -44,7 +44,7 @@ class AnnounceContext {
 		$existing_context = db_result( db_query( $query, $param ) );
 		if( $existing_context && ( $this->id === null || $this->id != $existing_context ) ) {
 			error_parameters(
-				$this->location,
+				Announce::getLocation( $this->location ),
 				project_get_name( $this->project_id )
 			);
 			plugin_error( AnnouncePlugin::ERROR_DUPLICATE_CONTEXT, ERROR, 'Announce' );
