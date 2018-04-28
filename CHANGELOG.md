@@ -19,6 +19,8 @@ specification.
 
 - Improve time-to-live input boxes: numbers >= 0 only, help tooltip
   ([#36](https://github.com/mantisbt-plugins/Announce/issues/36))
+- Use specific error messages for invalid TTL or unknown location
+  ([#39](https://github.com/mantisbt-plugins/Announce/issues/39))
 
 ### Fixed
 
