@@ -5,6 +5,16 @@
 # Licensed under the MIT license
 
 class Announce {
+
+	/**
+	 * List of valid locations and corresponding names (display values).
+	 * Language strings are initialized via initLocations() method as needed.
+	 * @var array $locations
+	 */
+	protected static $locations = array(
+		'header' => null,
+	);
+
 	/**
 	 * Generate the HTML for displaying (and potentially dismissing) an announcement.
 	 * A div element is created with the CSS class "announcement", which can optionally
@@ -54,22 +64,24 @@ class Announce {
 	}
 
 	/**
-	 * Generate a list of available announcement locations.
+	 * Initialize the locations' names (display values).
+	 */
+	 protected static function initLocations() {
+		if( reset( self::$locations ) === null ) {
+			foreach( self::$locations as $loc => &$locname ) {
+				$locname = plugin_lang_get( 'location_' . $loc );
+			}
+		}
+	}
+
+	/**
+	 * Return the list of available announcement locations.
 	 *
 	 * @return array Location names
 	 */
 	public static function locations() {
-		static $locs = null;
-
-		if ($locs !== null) {
-			return $locs;
-		}
-
-		$locs = array(
-			"header" => plugin_lang_get("location_header", "Announce"),
-		);
-
-		return $locs;
+		self::initLocations();
+		return self::$locations;
 	}
 
 	/**
@@ -78,11 +90,13 @@ class Announce {
 	 * @return void
 	 */
 	public static function print_location_option_list($value=null) {
+		self::initLocations();
+
 		if ($value === null) {
 			echo '<option value="">', plugin_lang_get("select_one", "Announce"), '</option>';
 		}
 
-		foreach(Announce::locations() as $loc => $locname) {
+		foreach(self::$locations as $loc => $locname) {
 			echo "<option value=\"{$loc}\"";
 			check_selected( $loc, (string)$value );
 			echo ">{$locname}</option>\n";
