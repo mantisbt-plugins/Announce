@@ -40,4 +40,5 @@ $s_plugin_Announce_action_update = 'Update';
 $s_plugin_Announce_location_header = 'Page Header';
 
 $s_plugin_Announce_error_duplicate_context = 'A "%1$s" context is already defined for project "%2$s".';
+$s_plugin_Announce_error_unknown_location = 'Unknown context location "%1$s".';
 $s_plugin_Announce_error_invalid_ttl = 'Time to Live must be a positive number, or 0 for no expiration.';

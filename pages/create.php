@@ -17,7 +17,8 @@ $ttl = gpc_get_int("ttl");
 $dismissable = gpc_get_bool("dismissable");
 
 if (!in_array($location, array_keys(Announce::locations()))) {
-	trigger_error(ERROR_GENERIC, ERROR);
+	error_parameters( $location );
+	plugin_error(AnnouncePlugin::ERROR_UNKNOWN_LOCATION, ERROR);
 }
 
 if ($ttl < 0) {

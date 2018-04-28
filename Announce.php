@@ -11,6 +11,7 @@ class AnnouncePlugin extends MantisPlugin {
 	 * Error strings
 	 */
 	const ERROR_DUPLICATE_CONTEXT = 'error_duplicate_context';
+	const ERROR_UNKNOWN_LOCATION = 'error_unknown_location';
 	const ERROR_INVALID_TTL = 'error_invalid_ttl';
 
 	function register() {
@@ -49,6 +50,7 @@ class AnnouncePlugin extends MantisPlugin {
 	function errors() {
 		return array(
 			self::ERROR_DUPLICATE_CONTEXT => plugin_lang_get( self::ERROR_DUPLICATE_CONTEXT ),
+			self::ERROR_UNKNOWN_LOCATION => plugin_lang_get( self::ERROR_UNKNOWN_LOCATION ),
 			self::ERROR_INVALID_TTL => plugin_lang_get( self::ERROR_INVALID_TTL ),
 		);
 	}
