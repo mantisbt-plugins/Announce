@@ -41,3 +41,4 @@ $s_plugin_Announce_action_update = 'Mettre à jour';
 $s_plugin_Announce_location_header = 'En-tête de page';
 
 $s_plugin_Announce_error_duplicate_context = 'L’emplacement "%1$s" est déjà défini pour le projet "%2$s".';
+$s_plugin_Announce_error_invalid_ttl = 'Le temps de vie doit être un nombre positif, ou 0 pour un affichage permanent.';

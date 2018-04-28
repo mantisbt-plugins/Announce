@@ -11,6 +11,7 @@ class AnnouncePlugin extends MantisPlugin {
 	 * Error strings
 	 */
 	const ERROR_DUPLICATE_CONTEXT = 'error_duplicate_context';
+	const ERROR_INVALID_TTL = 'error_invalid_ttl';
 
 	function register() {
 		$this->name = plugin_lang_get("plugin_title");
@@ -48,6 +49,7 @@ class AnnouncePlugin extends MantisPlugin {
 	function errors() {
 		return array(
 			self::ERROR_DUPLICATE_CONTEXT => plugin_lang_get( self::ERROR_DUPLICATE_CONTEXT ),
+			self::ERROR_INVALID_TTL => plugin_lang_get( self::ERROR_INVALID_TTL ),
 		);
 	}
 

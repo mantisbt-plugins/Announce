@@ -21,7 +21,7 @@ if (!in_array($location, array_keys(Announce::locations()))) {
 }
 
 if ($ttl < 0) {
-	trigger_error(ERROR_GENERIC, ERROR);
+	plugin_error(AnnouncePlugin::ERROR_INVALID_TTL, ERROR);
 }
 
 if ($project_id != 0) {
