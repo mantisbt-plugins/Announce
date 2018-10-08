@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Fixed
+
+- SQL Syntax error on PostgreSQL using DELETE statements with JOIN
+  ([#40](https://github.com/mantisbt-plugins/Announce/issues/40))
+
+
 ## [2.3.0] - 2018-04-28
 
 ### Added

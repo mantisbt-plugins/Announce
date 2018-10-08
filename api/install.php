@@ -16,10 +16,12 @@ function install_delete_orphans_dismissals() {
 	$t_dismissed_table = plugin_table( 'dismissed' );
 	$t_context_table = plugin_table( 'context' );
 
-	$t_query = "DELETE d.* 
-		FROM {$t_dismissed_table} d
-		LEFT JOIN {$t_context_table} c on c.id = d.context_id 
-		WHERE c.id IS NULL";
+	$t_query = "DELETE FROM {$t_dismissed_table}
+		WHERE NOT EXISTS (
+			SELECT 1 FROM {$t_context_table} AS c 
+			WHERE c.id = context_id
+		)";
+
 	if( db_query( $t_query ) === false ) {
 		return false;
 	};

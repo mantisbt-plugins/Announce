@@ -39,10 +39,6 @@ class AnnounceDismissed {
 	public static function delete_by_message_id( $p_id ) {
 		$t_dismissed_table = plugin_table( 'dismissed' );
 		$t_context_table = plugin_table( 'context' );
-		$t_query = "DELETE d.* 
-				FROM {$t_dismissed_table} d
-				JOIN {$t_context_table} c ON c.id = d.context_id
-				WHERE c.message_id ";
 
 		if( is_array( $p_id ) ) {
 			$t_ids = array_filter( $p_id, 'is_int' );
@@ -51,12 +47,20 @@ class AnnounceDismissed {
 			}
 			$t_ids = implode( ',', $t_ids );
 
-			$t_query .= "IN ({$t_ids})";
-			db_query( $t_query );
+			$t_where = "IN ({$t_ids})";
+			$t_param = null;
 		} else {
-			$t_query .= "= " . db_param();
-			db_query( $t_query, array( (int)$p_id ) );
+			$t_where = "= " . db_param();
+			$t_param = array( (int)$p_id );
 		}
+
+		$t_query = "DELETE FROM {$t_dismissed_table}
+			WHERE context_id IN (
+				SELECT id 
+				FROM {$t_context_table}
+				WHERE message_id $t_where
+			)";
+		db_query( $t_query, $t_param );
 	}
 }
 
