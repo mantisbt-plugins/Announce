@@ -86,16 +86,27 @@ class Announce {
 
 	/**
 	 * Return the display value for the given location.
-	 * If the location does not exist in the array, it is returned as-is.
+	 * If the location does not exist in the array, it is returned as-is by
+	 * default, unless $p_errmsg = true.
 	 *
 	 * @param string $p_loc Location
+	 * @param boolean $p_errmsg If true, displays an error message instead of
+	 *                          returning the invalid location as-is.
 	 * @return string Display value for $p_loc
 	 */
-	public static function getLocation( $p_loc ) {
+	public static function getLocation( $p_loc, $p_errmsg = false ) {
 		self::initLocations();
-		return array_key_exists( $p_loc, self::$locations )
-			? self::$locations[$p_loc]
-			: $p_loc;
+		if( !array_key_exists( $p_loc, self::$locations ) ) {
+			if( !$p_errmsg ) {
+				return $p_loc;
+			}
+			return sprintf(
+				plugin_lang_get( AnnouncePlugin::ERROR_UNKNOWN_LOCATION ),
+				$p_loc
+			);
+		}
+
+		return self::$locations[$p_loc];
 	}
 
 	/**

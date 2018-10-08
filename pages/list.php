@@ -97,7 +97,7 @@ print_manage_menu( plugin_page( 'list' ) );
 								<?php echo string_display_line( project_get_name( $context->project_id ) ) ?>
 							</td>
 							<td class="center">
-								<?php echo Announce::getLocation( $context->location ) ?>
+								<?php echo Announce::getLocation( $context->location, true ) ?>
 							</td>
 				<?php
 				$first = false;
