@@ -28,7 +28,6 @@ $s_plugin_Announce_config_title = 'Konfiguration Ankündigungen';
 $s_plugin_Announce_config_manage_threshold = 'Ankündigungen Verwalten';
 $s_plugin_Announce_threshold_warning = 'WARNUNG: die Zugangsberechtigung ist geringer als <em>$g_manage_site_threshold</em> ; Benutzer können möglicherweise nicht auf die Verwaltungsseite zugreifen.';
 
-$s_plugin_Announce_action_go = 'OK';
 $s_plugin_Announce_action_create = 'Anlegen';
 $s_plugin_Announce_action_edit = 'Ändern';
 $s_plugin_Announce_action_delete = 'Löschen';

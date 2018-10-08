@@ -31,7 +31,6 @@ $s_plugin_Announce_config_title = 'Configuration des annonces';
 $s_plugin_Announce_config_manage_threshold = 'Gérer les annonces';
 $s_plugin_Announce_threshold_warning = 'ATTENTION : le niveau d’accès est inférieur à <em>$g_manage_site_threshold</em>; les utilisateurs peuvent ne pas être en mesure d’accéder aux pages de gestion.';
 
-$s_plugin_Announce_action_go = 'Valider';
 $s_plugin_Announce_action_create = 'Créer';
 $s_plugin_Announce_action_edit = 'Éditer';
 $s_plugin_Announce_action_delete = 'Supprimer';
