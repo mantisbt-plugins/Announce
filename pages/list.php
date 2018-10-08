@@ -54,6 +54,10 @@ print_manage_menu( plugin_page( 'list' ) );
 
 				<table class="table table-striped table-bordered table-condensed">
 
+<?php
+	if( count( $messages ) > 0 ) {
+?>
+
 					<thead>
 						<tr class="row-category">
 							<th width="4%"></th>
@@ -63,6 +67,7 @@ print_manage_menu( plugin_page( 'list' ) );
 							<th><?php echo plugin_lang_get("location") ?></th>
 						</tr>
 					</thead>
+<?php } ?>
 
 					<tbody>
 <?php
@@ -114,6 +119,8 @@ print_manage_menu( plugin_page( 'list' ) );
 						</tr>
 <?php
 	}
+
+	if( count( $messages ) > 0 ) {
 ?>
 					</tbody>
 
@@ -130,6 +137,7 @@ print_manage_menu( plugin_page( 'list' ) );
 								</td>
 							</tr>
 					</tfoot>
+<?php } ?>
 
 				</table>
 			</div>

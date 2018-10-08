@@ -10,6 +10,11 @@ specification.
 
 ## [Unreleased]
 
+### Changed
+
+- Hide table header/footer in Announcements list when none are defined
+  ([#44](https://github.com/mantisbt-plugins/Announce/issues/44))
+
 ### Fixed
 
 - SQL Syntax error on PostgreSQL using DELETE statements with JOIN
