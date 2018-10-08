@@ -16,7 +16,6 @@ if (count($message_list) < 1) {
 }
 
 $messages = AnnounceMessage::load_by_id($message_list, true);
-$locations = Announce::locations();
 
 function array_object_properties($arr, $prop) {
 	$props = array();
@@ -217,7 +216,7 @@ if ($action == "delete") {
 				$new_ttl = gpc_get_int("ttl_{$context_id}");
 				$new_dismissable = gpc_get_bool("dismissable_{$context_id}");
 
-				if (!is_blank($new_location) && in_array($new_location, $locations)) {
+				if (!is_blank($new_location) && Announce::isValidLocation( $new_location ) ) {
 					$context->location = $new_location;
 				}
 				if ($new_project == 0 || project_exists($new_project)) {
@@ -262,7 +261,7 @@ if ($action == "delete") {
 
 			if (
 				($context->project_id == 0 || project_exists($context->project_id)) &&
-				(!is_blank($context->location) && array_key_exists($context->location, $locations)) &&
+				(!is_blank($context->location) && Announce::isValidLocation( $context->location ) ) &&
 				($context->access >= 0 && $context->ttl >= 0)
 			) {
 				$context->save();

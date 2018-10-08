@@ -16,7 +16,7 @@ $access = gpc_get_int("access");
 $ttl = gpc_get_int("ttl");
 $dismissable = gpc_get_bool("dismissable");
 
-if (!in_array($location, array_keys(Announce::locations()))) {
+if (!Announce::isValidLocation( $location ) ) {
 	error_parameters( $location );
 	plugin_error(AnnouncePlugin::ERROR_UNKNOWN_LOCATION, ERROR);
 }

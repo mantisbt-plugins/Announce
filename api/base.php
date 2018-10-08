@@ -85,6 +85,15 @@ class Announce {
 	}
 
 	/**
+	 * Returns true if the given location is valid.
+	 * @param $p_loc
+	 * @return boolean
+	 */
+	public static function isValidLocation( $p_loc ) {
+		return array_key_exists( $p_loc, self::$locations );
+	}
+
+	/**
 	 * Return the display value for the given location.
 	 * If the location does not exist in the array, it is returned as-is by
 	 * default, unless $p_errmsg = true.
@@ -96,7 +105,7 @@ class Announce {
 	 */
 	public static function getLocation( $p_loc, $p_errmsg = false ) {
 		self::initLocations();
-		if( !array_key_exists( $p_loc, self::$locations ) ) {
+		if( !self::isValidLocation( $p_loc ) ) {
 			if( !$p_errmsg ) {
 				return $p_loc;
 			}
