@@ -14,6 +14,9 @@ specification.
 
 - Hide table header/footer in Announcements list when none are defined
   ([#44](https://github.com/mantisbt-plugins/Announce/issues/44))
+- Improve UI for Announcements list actions (2 submit buttons)
+  ([#45](https://github.com/mantisbt-plugins/Announce/issues/45))
+ 
 
 ### Fixed
 

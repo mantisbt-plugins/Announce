@@ -127,12 +127,14 @@ print_manage_menu( plugin_page( 'list' ) );
 							<tr>
 								<td class="center"><input class="announce_select_all" type="checkbox"/></td>
 								<td colspan="4">
-									<select class="" name="action">
-										<option value="edit"><?php echo plugin_lang_get("action_edit") ?></option>
-										<option value="delete"><?php echo plugin_lang_get("action_delete") ?></option>
-									</select>
-									<input class="announce_select_submit btn btn-sm btn-primary btn-white btn-round"
-										   type="submit" value="<?php echo plugin_lang_get("action_go") ?>"/>
+									<button name="action" value="edit" type="submit"
+											class="btn btn-primary btn-white btn-round">
+										<?php echo plugin_lang_get( "action_edit" ) ?>
+									</button>
+									<button name="action" value="delete" type="submit"
+											class="btn btn-primary btn-white btn-round">
+										<?php echo plugin_lang_get( "action_delete" ) ?>
+									</button>
 								</td>
 							</tr>
 					</tfoot>
