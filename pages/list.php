@@ -11,7 +11,6 @@ $messages = AnnounceMessage::clean(
 	AnnounceMessage::load_all( true ),
 	AnnounceMessage::TARGET_VIEW
 );
-$locations = Announce::locations();
 
 layout_page_header( plugin_lang_get( 'plugin_title' ) );
 layout_page_begin();
@@ -98,7 +97,7 @@ print_manage_menu( plugin_page( 'list' ) );
 								<?php echo string_display_line( project_get_name( $context->project_id ) ) ?>
 							</td>
 							<td class="center">
-								<?php echo $locations[$context->location] ?>
+								<?php echo Announce::getLocation( $context->location ) ?>
 							</td>
 				<?php
 				$first = false;

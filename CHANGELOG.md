@@ -19,6 +19,8 @@ specification.
 
 - SQL Syntax error on PostgreSQL using DELETE statements with JOIN
   ([#40](https://github.com/mantisbt-plugins/Announce/issues/40))
+- PHP Notice in Announcements List 
+  ([#43](https://github.com/mantisbt-plugins/Announce/issues/43))
 
 
 ## [2.3.0] - 2018-04-28
