@@ -38,9 +38,9 @@ if ($action == "edit") {
 <div class="space-10"></div>
 
 <div class="form-container">
-<form action="<?php echo plugin_page("list_action") ?>" method="post">
+<form action="<?php echo plugin_page("list_action_update") ?>" method="post">
 
-	<?php echo form_security_field( 'plugin_Announce_list_action' ); ?>
+	<?php echo form_security_field( 'plugin_Announce_list_action_update' ); ?>
 	<input type="hidden" name="action" value="update" />
 
 	<div class="widget-box widget-color-blue2">
@@ -187,80 +187,4 @@ if ($action == "edit") {
 
 <?php
 	layout_page_end();
-
-### UPDATE
-} elseif ($action == "update") {
-	foreach($messages as $message_id => $message) {
-		$new_title = gpc_get_string("title_{$message_id}");
-		$new_message = gpc_get_string("message_{$message_id}");
-
-		foreach($message->contexts as $context_id => $context) {
-			$delete = gpc_get_bool("context_delete_{$context_id}");
-
-			if ($delete) {
-				$context->_delete = $delete;
-
-			} else {
-				$new_location = gpc_get_string("location_{$context_id}");
-				$new_project = gpc_get_int("project_{$context_id}");
-				$new_access = gpc_get_int("access_{$context_id}");
-				$new_ttl = gpc_get_int("ttl_{$context_id}");
-				$new_dismissable = gpc_get_bool("dismissable_{$context_id}");
-
-				if (!is_blank($new_location) && Announce::isValidLocation( $new_location ) ) {
-					$context->location = $new_location;
-				}
-				if ($new_project == 0 || project_exists($new_project)) {
-					$context->project_id = $new_project;
-				}
-				if ($new_access >= 0) {
-					$context->access = $new_access;
-				}
-				if ($new_ttl >= 0) {
-					$context->ttl = $new_ttl;
-				}
-				$context->dismissable = $new_dismissable;
-			}
-		}
-
-		if (!is_blank($new_title)) {
-			$message->title = $new_title;
-		}
-		if (!is_blank($new_message)) {
-			$message->message = $new_message;
-		}
-
-		$message->save();
-	}
-
-	$new_contexts = gpc_get_int_array("context_new", array());
-	if (count($new_contexts) > 0) {
-		$new_locations = gpc_get_string_array("location_new", array());
-		$new_projects = gpc_get_int_array("project_new", array());
-		$new_access = gpc_get_int_array("access_new", array());
-		$new_ttls = gpc_get_int_array("ttl_new", array());
-		$new_dismissables = gpc_get_bool_array("dismissable_new", array());
-
-		for($i = 0; $i < count($new_contexts); $i++) {
-			$context = new AnnounceContext();
-			$context->message_id = $new_contexts[$i];
-			$context->project_id = $new_projects[$i];
-			$context->location = $new_locations[$i];
-			$context->access = $new_access[$i];
-			$context->ttl = $new_ttls[$i];
-			$context->dismissable = isset( $new_dismissables[$i] ) ? $new_dismissables[$i] : false;
-
-			if (
-				($context->project_id == 0 || project_exists($context->project_id)) &&
-				(!is_blank($context->location) && Announce::isValidLocation( $context->location ) ) &&
-				($context->access >= 0 && $context->ttl >= 0)
-			) {
-				$context->save();
-			}
-		}
-	}
-
-	form_security_purge("plugin_Announce_list_action");
-	print_successful_redirect(plugin_page("list", true));
-
 }
