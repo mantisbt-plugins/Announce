@@ -24,6 +24,8 @@ specification.
   ([#40](https://github.com/mantisbt-plugins/Announce/issues/40))
 - PHP Notice in Announcements List 
   ([#43](https://github.com/mantisbt-plugins/Announce/issues/43))
+- Fix Edit button style and align it to the left 
+  ([#46](https://github.com/mantisbt-plugins/Announce/issues/46))
 
 
 ## [2.3.0] - 2018-04-28

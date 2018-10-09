@@ -154,8 +154,11 @@ foreach( $t_messages as $t_message_id => $t_message ) {
 								<td class="center">
 									<input type="checkbox" class="announce_select_all" checked="checked"/>
 								</td>
-								<td class="center" colspan="6">
-									<input type="submit" value="<?php echo plugin_lang_get( "action_edit" ) ?>"/>
+								<td colspan="6">
+									<button name="update" type="submit"
+											class="btn btn-primary btn-white btn-round">
+										<?php echo plugin_lang_get( 'action_edit' ) ?>
+									</button>
 								</td>
 							</tr>
 						</tfoot>
