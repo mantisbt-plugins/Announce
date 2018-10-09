@@ -16,7 +16,7 @@ specification.
   ([#44](https://github.com/mantisbt-plugins/Announce/issues/44))
 - Improve UI for Announcements list actions (2 submit buttons)
   ([#45](https://github.com/mantisbt-plugins/Announce/issues/45))
- 
+- Refactor action page into separate scripts (edit/update/delete) 
 
 ### Fixed
 
