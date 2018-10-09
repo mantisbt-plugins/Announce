@@ -24,9 +24,6 @@ print_manage_menu( plugin_page( 'list' ) );
 
 <div class="form-container">
 <form action="<?php echo plugin_page("list_action") ?>" method="post">
-
-	<?php echo form_security_field("plugin_Announce_list_action") ?>
-
 	<div class="widget-box widget-color-blue2">
 		<div class="widget-header widget-header-small">
 			<h4 class="widget-title lighter">
@@ -131,6 +128,8 @@ print_manage_menu( plugin_page( 'list' ) );
 											class="btn btn-primary btn-white btn-round">
 										<?php echo plugin_lang_get( "action_edit" ) ?>
 									</button>
+
+									<?php echo form_security_field( 'plugin_Announce_list_action_delete' ) ?>
 									<button name="action" value="delete" type="submit"
 											formaction="<?php echo plugin_page( 'list_action_delete' ) ?>"
 											class="btn btn-primary btn-white btn-round">
