@@ -132,6 +132,7 @@ print_manage_menu( plugin_page( 'list' ) );
 										<?php echo plugin_lang_get( "action_edit" ) ?>
 									</button>
 									<button name="action" value="delete" type="submit"
+											formaction="<?php echo plugin_page( 'list_action_delete' ) ?>"
 											class="btn btn-primary btn-white btn-round">
 										<?php echo plugin_lang_get( "action_delete" ) ?>
 									</button>

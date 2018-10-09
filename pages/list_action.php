@@ -25,17 +25,8 @@ function array_object_properties($arr, $prop) {
 	return $props;
 }
 
-### DELETE
-if ($action == "delete") {
-	$message_names = array_object_properties(AnnounceMessage::clean($messages), "title");
-	helper_ensure_confirmed(plugin_lang_get("action_delete_confirm") . "<br/>" . implode(", ", $message_names), plugin_lang_get("action_delete"));
-	AnnounceMessage::delete_by_id(array_keys($messages));
-
-	form_security_purge("plugin_Announce_list_action");
-	print_successful_redirect(plugin_page("list", true));
-
 ### EDIT
-} elseif ($action == "edit") {
+if ($action == "edit") {
 	$messages = AnnounceMessage::clean( $messages, AnnounceMessage::TARGET_FORM );
 	layout_page_header(plugin_lang_get("edit_title"));
 	layout_page_begin();
