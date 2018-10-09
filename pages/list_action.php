@@ -6,7 +6,6 @@
 
 access_ensure_global_level(plugin_config_get("manage_threshold"));
 
-$action = gpc_get_string("action");
 $message_list = gpc_get_int_array("message_list", array());
 
 if (count($message_list) < 1) {
@@ -14,20 +13,10 @@ if (count($message_list) < 1) {
 }
 
 $messages = AnnounceMessage::load_by_id($message_list, true);
+$messages = AnnounceMessage::clean( $messages, AnnounceMessage::TARGET_FORM );
 
-function array_object_properties($arr, $prop) {
-	$props = array();
-	foreach($arr as $key => $obj) {
-		$props[$key] = $obj->$prop;
-	}
-	return $props;
-}
-
-### EDIT
-if ($action == "edit") {
-	$messages = AnnounceMessage::clean( $messages, AnnounceMessage::TARGET_FORM );
-	layout_page_header(plugin_lang_get("edit_title"));
-	layout_page_begin();
+layout_page_header(plugin_lang_get("edit_title"));
+layout_page_begin();
 ?>
 
 <script type="text/javascript" src="<?php echo plugin_file("list_action.js") ?>"></script>
@@ -39,7 +28,6 @@ if ($action == "edit") {
 <form action="<?php echo plugin_page("list_action_update") ?>" method="post">
 
 	<?php echo form_security_field( 'plugin_Announce_list_action_update' ); ?>
-	<input type="hidden" name="action" value="update" />
 
 	<div class="widget-box widget-color-blue2">
 		<div class="widget-header widget-header-small">
@@ -184,5 +172,4 @@ if ($action == "edit") {
 </div>
 
 <?php
-	layout_page_end();
-}
+layout_page_end();
