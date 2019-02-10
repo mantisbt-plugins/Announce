@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+### Added
+
+- Dutch translation
+  ([#49](https://github.com/mantisbt-plugins/Announce/issues/49))
+
+
 ## [2.4.0] - 2018-10-10
 
 ### Changed

@@ -1,0 +1,43 @@
+<?php
+
+# Copyright (c) 2019 Damien Regad
+# Dutch Translation by sander16091992 https://github.com/sander16091992
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Mededelingen';
+$s_plugin_Announce_plugin_description = 'Staat beheerders toe om aankondigingen te maken voor gebruikers op verschillende locaties.';
+
+$s_plugin_Announce_title = 'Titel';
+$s_plugin_Announce_message = 'Mededeling';
+$s_plugin_Announce_ttl = 'Duur';
+$s_plugin_Announce_ttl_help = 'Duur in seconde. Gebruik (0) voor oneindig';
+$s_plugin_Announce_location = 'Plaats';
+$s_plugin_Announce_access = 'Gebruikers niveau';
+$s_plugin_Announce_access_help = 'Laat de mededeling zien aan iedereen met een hoger toegangsniveau als:';
+$s_plugin_Announce_project = 'Project';
+$s_plugin_Announce_dismissable = 'Wegklikbaar';
+$s_plugin_Announce_select_one = '(selecteer één)';
+$s_plugin_Announce_no_context = 'Geen context gedefinieerd - mededeling uitgeschakeld';
+$s_plugin_Announce_delete_last_context = 'De mededeling heeft geen bijbehorende contexten en zal worden uitgeschakeld.';
+
+$s_plugin_Announce_list_title = 'Mededelingen';
+$s_plugin_Announce_create_title = 'Nieuwe mededeling';
+$s_plugin_Announce_edit_title = 'Wijzig mededeling';
+
+$s_plugin_Announce_config = 'Configuratie';
+$s_plugin_Announce_config_title = 'Mededeling configuratie';
+$s_plugin_Announce_config_manage_threshold = 'Beheer mededelingen';
+$s_plugin_Announce_threshold_warning = 'WAARSCHUWING toegangsniveau lager dan  <em>$g_manage_site_threshold</em> ; gebruikers zullen de beheerderspagina niet kunnen bereiken.';
+
+$s_plugin_Announce_action_create = 'Maken';
+$s_plugin_Announce_action_edit = 'Bewerken';
+$s_plugin_Announce_action_delete = 'Verwijderen';
+$s_plugin_Announce_action_delete_confirm = 'Weet je zeker dat je de volgende mededeling wil verwijderen?';
+$s_plugin_Announce_action_update = 'Update';
+
+$s_plugin_Announce_location_header = 'Pagina header';
+
+$s_plugin_Announce_error_duplicate_context = 'een "%1$s" context is al gedefinieerd voor project "%2$s".';
+$s_plugin_Announce_error_unknown_location = 'Onbekende contextlocatie "%1$s".';
+$s_plugin_Announce_error_invalid_ttl = 'Duur moet een positief nummer zijn of 0 voor Oneindig.';
