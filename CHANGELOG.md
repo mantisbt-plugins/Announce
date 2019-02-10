@@ -8,7 +8,7 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased]
+## [2.4.1] - 2019-02-10
 
 ### Added
 
@@ -185,8 +185,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.1...HEAD
 
+[2.4.1]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.0...v2.1.0
 [2.4.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.1.1...v2.2.0
