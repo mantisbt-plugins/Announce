@@ -32,6 +32,11 @@ class Announce {
 			}
 
 			$message = AnnounceMessage::load_random(auth_get_current_user_id(), "header", $project_id);
+			
+			if($message === null) {
+			    $t_parent = project_hierarchy_get_parent( $project_id );
+			    $message = AnnounceMessage::load_random(auth_get_current_user_id(), "header", $t_parent);
+			}
 
 			if ($message !== null) {
 				$css_class = string_attribute($css_class);
