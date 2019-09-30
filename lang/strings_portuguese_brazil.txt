@@ -1,0 +1,43 @@
+<?php
+
+# Copyright (c) 2010 John Reese
+# Copyright (c) 2017 Damien Regad
+# Licensed under the MIT license
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Anúncios';
+$s_plugin_Announce_plugin_description = 'Permite que os administradores criem anúncios para usuários em vários locais.';
+
+$s_plugin_Announce_title = 'Título';
+$s_plugin_Announce_message = 'Mensagem';
+$s_plugin_Announce_ttl = 'Tempo de Vida';
+$s_plugin_Announce_ttl_help = 'Tempo em segundos; use zero (0) para sem expiração';
+$s_plugin_Announce_location = 'Localização';
+$s_plugin_Announce_access = 'Nível de Acesso';
+$s_plugin_Announce_access_help = 'Será exibido para qualquer pessoa nesse nível de acesso ou acima dele';
+$s_plugin_Announce_project = 'Projeto';
+$s_plugin_Announce_dismissable = 'Descartável';
+$s_plugin_Announce_select_one = '(selecione um)';
+$s_plugin_Announce_no_context = 'Nenhum contexto definido - anúncio desativado';
+$s_plugin_Announce_delete_last_context = 'O Anúncio não possui Contextos associados e será desativado.';
+
+$s_plugin_Announce_list_title = 'Anúncios';
+$s_plugin_Announce_create_title = 'Novo Anúncio';
+$s_plugin_Announce_edit_title = 'Editar Anúncios';
+
+$s_plugin_Announce_config = 'Configuração';
+$s_plugin_Announce_config_title = 'Configuração de Anúncios';
+$s_plugin_Announce_config_manage_threshold = 'Gerenciar Anúncios';
+$s_plugin_Announce_threshold_warning = 'AVISO: o nível de acesso é inferior a <em>$g_manage_site_threshold</em> ; os usuários podem não conseguir acessar as páginas de gerenciamento.';
+
+$s_plugin_Announce_action_create = 'Criar';
+$s_plugin_Announce_action_edit = 'Editar';
+$s_plugin_Announce_action_delete = 'Apagar';
+$s_plugin_Announce_action_delete_confirm = 'Deseja realmente excluir os seguintes anúncios?';
+$s_plugin_Announce_action_update = 'Atualizar';
+
+$s_plugin_Announce_location_header = 'Cabeçalho da Página';
+
+$s_plugin_Announce_error_duplicate_context = 'O contexto "%1$s" já foi definido para o projeto "%2$s".';
+$s_plugin_Announce_error_unknown_location = 'Localização do texto desconhecida "%1$s".';
+$s_plugin_Announce_error_invalid_ttl = 'O tempo de vida deve ser um número positivo ou 0, sem vencimento.';
