@@ -1,0 +1,47 @@
+<?php
+/**
+ * Announce plugin for MantisBT - Spanish Translation
+ *
+ * @copyright 2019 Damien Regad and contributors
+ * @license MIT
+ *
+ * @author Javier Cámara https://github.com/jotacamara
+ */
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Anuncios';
+$s_plugin_Announce_plugin_description = 'Permite a los administradores crear anuncios para los usuarios en varias ubicaciones.';
+
+$s_plugin_Announce_title = 'Título';
+$s_plugin_Announce_message = 'Mensaje';
+$s_plugin_Announce_ttl = 'Tiempo de visualización';
+$s_plugin_Announce_ttl_help = 'Tiempo en segundos; use cero (0) para que no expire';
+$s_plugin_Announce_location = 'Ubicación';
+$s_plugin_Announce_access = 'Nivel de acceso';
+$s_plugin_Announce_access_help = 'Se mostrará a cualquier usuario de este nivel de acceso o superior';
+$s_plugin_Announce_project = 'Proyecto';
+$s_plugin_Announce_dismissable = 'Descartable';
+$s_plugin_Announce_select_one = '(seleccione uno)';
+$s_plugin_Announce_no_context = 'Sin contexto definido - anuncio deshabilitado';
+$s_plugin_Announce_delete_last_context = 'El Anuncio no tiene ningún Contexto asociado y será deshabilitado.';
+
+$s_plugin_Announce_list_title = 'Anuncios';
+$s_plugin_Announce_create_title = 'Nuevo Anuncio';
+$s_plugin_Announce_edit_title = 'Editar Anuncios';
+
+$s_plugin_Announce_config = 'Configuración';
+$s_plugin_Announce_config_title = 'Configuración de Anuncio';
+$s_plugin_Announce_config_manage_threshold = 'Gestionar Anuncios';
+$s_plugin_Announce_threshold_warning = 'AVISO: el nivel de acceso es menor que <em>$g_manage_site_threshold</em> ; es posible que los usuarios no podrán acceder a las páginas de administración.';
+
+$s_plugin_Announce_action_create = 'Crear';
+$s_plugin_Announce_action_edit = 'Editar';
+$s_plugin_Announce_action_delete = 'Eliminar';
+$s_plugin_Announce_action_delete_confirm = '¿Quiere eliminar realmente los siguientes anuncios?';
+$s_plugin_Announce_action_update = 'Actualizar';
+
+$s_plugin_Announce_location_header = 'Cabecera';
+
+$s_plugin_Announce_error_duplicate_context = 'Un "%1$s" contexto está actualmente definido para el proyecto "%2$s".';
+$s_plugin_Announce_error_unknown_location = 'Ubicación de context desconocida "%1$s".';
+$s_plugin_Announce_error_invalid_ttl = 'El tiempo de visualización debe ser un número positivo, o 0 para que no expire.';
