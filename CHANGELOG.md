@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## Unreleased
+
+### Added
+
+- Portuguese-Brazil translation
+  ([#52](https://github.com/mantisbt-plugins/Announce/issues/52))
+
+
 ## [2.4.1] - 2019-02-10
 
 ### Added
