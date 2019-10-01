@@ -1,8 +1,11 @@
 <?php
-
-# Copyright (c) 2010 John Reese
-# Copyright (c) 2017 Damien Regad
-# Licensed under the MIT license
+/**
+ * Announce plugin for MantisBT - English Translation
+ *
+ * @copyright 2010 John Reese
+ * @copyright 2017 Damien Regad
+ * @license MIT
+ */
 
 $s_plugin_Announce_ = '';
 $s_plugin_Announce_plugin_title = 'Announcements';

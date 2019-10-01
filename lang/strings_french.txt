@@ -1,9 +1,14 @@
 <?php
-
-# Copyright (c) 2010 John Reese
-# Copyright (c) 2017 Damien Regad
-# French translation by Celemo
-# Licensed under the MIT license
+/**
+ * Announce plugin for MantisBT - French Translation
+ *
+ * @copyright 2018 Damien Regad and contributors
+ * @license MIT
+ *
+ * @author Celemo https://github.com/Celemo
+ * @author Damien Regad https://github.com/dregad
+ * @author Jérôme https://github.com/jeromeip
+ */
 
 $s_plugin_Announce_ = '';
 $s_plugin_Announce_plugin_title = 'Annonces';

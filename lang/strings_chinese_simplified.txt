@@ -1,8 +1,12 @@
 <?php
-
-# Copyright (c) 2010 John Reese
-# Copyright (c) 2017 Damien Regad
-# Licensed under the MIT license
+/**
+ * Announce plugin for MantisBT - Chinese Simplified Translation
+ *
+ * @copyright 2014 Damien Regad and contributors
+ * @license MIT
+ *
+ * @author Simon https://github.com/shenxihui
+ */
 
 $s_plugin_Announce_ = '';
 $s_plugin_Announce_plugin_title = '设置公告';

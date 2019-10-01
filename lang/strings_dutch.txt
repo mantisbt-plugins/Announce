@@ -1,8 +1,12 @@
 <?php
-
-# Copyright (c) 2019 Damien Regad
-# Dutch Translation by sander16091992 https://github.com/sander16091992
-# Licensed under the MIT license
+/**
+ * Announce plugin for MantisBT - Dutch Translation
+ *
+ * @copyright 2019 Damien Regad and contributors
+ * @license MIT
+ *
+ * @author sander16091992 https://github.com/sander16091992
+ */
 
 $s_plugin_Announce_ = '';
 $s_plugin_Announce_plugin_title = 'Mededelingen';
