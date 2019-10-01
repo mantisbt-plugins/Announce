@@ -12,6 +12,8 @@ specification.
 
 ### Added
 
+- Spanish translation
+  ([#51](https://github.com/mantisbt-plugins/Announce/issues/51))
 - Portuguese-Brazil translation
   ([#52](https://github.com/mantisbt-plugins/Announce/issues/52))
 
