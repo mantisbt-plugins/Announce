@@ -1,0 +1,47 @@
+<?php
+/**
+ * Announce plugin for MantisBT - Russian Translation
+ *
+ * @copyright 2020 Damien Regad
+ * @license MIT
+ *
+ * @author cc08 https://github.com/cc08
+ */
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Оповещения';
+$s_plugin_Announce_plugin_description = 'Позволяет администраторам создать объявления для пользователей.';
+
+$s_plugin_Announce_title = 'Заголовок';
+$s_plugin_Announce_message = 'Сообщение';
+$s_plugin_Announce_ttl = 'Продолжительность показа';
+$s_plugin_Announce_ttl_help = 'Время указываем в секундах. Для неограниченного срока указываем 0.';
+$s_plugin_Announce_location = 'Место размещения';
+$s_plugin_Announce_access = 'Уровень доступа';
+$s_plugin_Announce_access_help = 'Путь показано всем, начиная с этого уровня и выше.';
+$s_plugin_Announce_project = 'Проект';
+$s_plugin_Announce_dismissable = 'Скрываемое';
+$s_plugin_Announce_select_one = '(выберите один)';
+$s_plugin_Announce_no_context = 'Не указан контекст - объявление не активно.';
+$s_plugin_Announce_delete_last_context = 'Объявление не имеет приявязанного контекста и будет удалено.';
+
+$s_plugin_Announce_list_title = 'Объявления';
+$s_plugin_Announce_create_title = 'Новое объявление';
+$s_plugin_Announce_edit_title = 'Редактировать объявление';
+
+$s_plugin_Announce_config = 'Конфигурация';
+$s_plugin_Announce_config_title = 'Настройки плагина объявлений';
+$s_plugin_Announce_config_manage_threshold = 'Управление объявлениями';
+$s_plugin_Announce_threshold_warning = 'WARNING: Уровень доступа менее <em>$g_manage_site_threshold</em>; доступ к странице управления ограничен.';
+
+$s_plugin_Announce_action_create = 'Создать';
+$s_plugin_Announce_action_edit = 'Изменить';
+$s_plugin_Announce_action_delete = 'Удалить';
+$s_plugin_Announce_action_delete_confirm = 'Вы действительно хотите удалить это объявление ?';
+$s_plugin_Announce_action_update = 'Обновить';
+
+$s_plugin_Announce_location_header = 'Page Header';
+
+$s_plugin_Announce_error_duplicate_context = 'Этот контекст "%1$s", уже определён для проекта "%2$s".';
+$s_plugin_Announce_error_unknown_location = 'Неопознаный контекст "%1$s".';
+$s_plugin_Announce_error_invalid_ttl = 'Время должно быть больше нуля, или ноль для постоянного показа.';

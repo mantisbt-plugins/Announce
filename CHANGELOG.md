@@ -8,6 +8,12 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [Unreleased]
+
+- Russian translation
+  ([#53](https://github.com/mantisbt-plugins/Announce/issues/53))
+
+
 ## [2.4.2] - 2019-10-01
 
 ### Added
