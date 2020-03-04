@@ -8,7 +8,7 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased]
+## [2.4.3] - 2020-03-04
 
 - Russian translation
   ([#53](https://github.com/mantisbt-plugins/Announce/issues/53))
@@ -201,8 +201,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.2...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.3...HEAD
 
+[2.4.3]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.2...v2.4.3
 [2.4.2]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.1...v2.4.2
 [2.4.1]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.3.0...v2.4.0
