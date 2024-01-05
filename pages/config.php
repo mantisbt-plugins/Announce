@@ -16,5 +16,5 @@ function maybe_set_option( $name, $value ) {
 maybe_set_option("manage_threshold", gpc_get_int("manage_threshold"));
 
 form_security_purge("plugin_Announce_config");
-print_successful_redirect(plugin_page("config_page", true));
+print_header_redirect(plugin_page("config_page", true));
 

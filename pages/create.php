@@ -42,5 +42,5 @@ $message->contexts[] = $context;
 $message->save();
 
 form_security_purge("plugin_Announce_create");
-print_successful_redirect(plugin_page("list", true));
+print_header_redirect(plugin_page("list", true));
 

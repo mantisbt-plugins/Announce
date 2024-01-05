@@ -86,4 +86,4 @@ if( count( $t_message_list ) > 0 ) {
 }
 
 form_security_purge( 'plugin_Announce_list_action_update' );
-print_successful_redirect( plugin_page( 'list', true ) );
+print_header_redirect( plugin_page( 'list', true ) );
