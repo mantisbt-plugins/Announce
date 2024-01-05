@@ -8,7 +8,22 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.4.4] - 2024-01-05
+
+### Added
+
+- Chinese Traditional translation
+  ([#59](https://github.com/mantisbt-plugins/Announce/issues/59))
+
+### Fixed
+
+- Page redirections trigger a deprecation warning since MantisBT 2.26.0
+  ([#60](https://github.com/mantisbt-plugins/Announce/issues/60))
+
+
 ## [2.4.3] - 2020-03-04
+
+### Added
 
 - Russian translation
   ([#53](https://github.com/mantisbt-plugins/Announce/issues/53))
@@ -201,9 +216,9 @@ specification.
 - Initial release
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.3...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.4...HEAD
 
-[2.4.3]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.2...v2.4.3
+[2.4.4]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.3...v2.4.4
 [2.4.2]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.1...v2.4.2
 [2.4.1]: https://github.com/mantisbt-plugins/Announce/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/mantisbt-plugins/Announce/compare/v2.3.0...v2.4.0
