@@ -5,7 +5,7 @@
 # Licensed under the MIT license
 
 class AnnouncePlugin extends MantisPlugin {
-	const VERSION = '2.4.3';
+	const VERSION = '2.4.4';
 
 	/**
 	 * Error strings
