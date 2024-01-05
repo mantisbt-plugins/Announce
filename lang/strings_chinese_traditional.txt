@@ -1,0 +1,48 @@
+<?php
+/**
+ * Announce plugin for MantisBT - Chinese Traditional Translation
+ *
+ * @copyright 2010 John Reese
+ * @copyright 2017 Damien Regad
+ * @license MIT
+ *
+ * @author PasserDreamer
+ */
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = '公告';
+$s_plugin_Announce_plugin_description = '允許管理員發布公告給不同區域中的使用者。';
+
+$s_plugin_Announce_title = '公告標題';
+$s_plugin_Announce_message = '公告訊息';
+$s_plugin_Announce_ttl = '有效期間';
+$s_plugin_Announce_ttl_help = '單位為「秒」，「0」代表永久有效。';
+$s_plugin_Announce_location = '公告位置';
+$s_plugin_Announce_access = '可檢視權限';
+$s_plugin_Announce_access_help = '讓該等級以上權限的使用者檢視';
+$s_plugin_Announce_project = '專案';
+$s_plugin_Announce_dismissable = '可被關閉(右上角顯示X)';
+$s_plugin_Announce_select_one = '(請選擇一個)';
+$s_plugin_Announce_no_context = '尚未定義情境，公告已停用。';
+$s_plugin_Announce_delete_last_context = '當公告未附加在任何情境上時，公告將會停用';
+
+$s_plugin_Announce_list_title = '公告列表';
+$s_plugin_Announce_create_title = '新增公告';
+$s_plugin_Announce_edit_title = '編輯公告';
+
+$s_plugin_Announce_config = '設定';
+$s_plugin_Announce_config_title = '設定公告';
+$s_plugin_Announce_config_manage_threshold = '管理公告';
+$s_plugin_Announce_threshold_warning = '警告：使用者權限低於<em>$g_manage_site_threshold</em>！使用者將無法進入管理頁面！';
+
+$s_plugin_Announce_action_create = '建立';
+$s_plugin_Announce_action_edit = '編輯';
+$s_plugin_Announce_action_delete = '刪除';
+$s_plugin_Announce_action_delete_confirm = '請問是否真的要刪除以下公告？';
+$s_plugin_Announce_action_update = '更新';
+
+$s_plugin_Announce_location_header = '頁首';
+
+$s_plugin_Announce_error_duplicate_context = '專案「%2$s」中已經附加「%1$s」情境。';
+$s_plugin_Announce_error_unknown_location = '找不到名為「%1$s」的公告位置。';
+$s_plugin_Announce_error_invalid_ttl = '有效期間必須設定為正整數，或設定為「0」永久有效';
