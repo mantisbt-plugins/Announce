@@ -1,0 +1,48 @@
+<?php
+/**
+ * Announce plugin for MantisBT - Magyar fordítás
+ *
+ * @copyright 2010 John Reese
+ * @copyright 2017 Damien Regad
+ * @copyright 2024 András Klima
+ * @license MIT
+ */
+
+$s_plugin_Announce_ = '';
+$s_plugin_Announce_plugin_title = 'Közlemények';
+$s_plugin_Announce_plugin_description = 'Lehetővé teszi az adminisztrátorok számára, hogy közleményeket hozzanak létre különböző helyeken a felhasználók számára.';
+
+$s_plugin_Announce_title = 'Cím';
+$s_plugin_Announce_message = 'Üzenet';
+$s_plugin_Announce_ttl = 'Élettartam';
+$s_plugin_Announce_ttl_help = 'Idő másodpercben; használjon nullát (0) a lejárat nélküli állapothoz';
+$s_plugin_Announce_location = 'Hely';
+$s_plugin_Announce_access = 'Hozzáférési szint';
+$s_plugin_Announce_access_help = 'Mindenkinek megjelenik, aki ezen vagy magasabb hozzáférési szinten van';
+$s_plugin_Announce_project = 'Projekt';
+$s_plugin_Announce_dismissable = 'Elvethető';
+$s_plugin_Announce_select_one = '(válasszon egyet)';
+$s_plugin_Announce_no_context = 'Nincs meghatározott kontextus - a közlemény le van tiltva';
+$s_plugin_Announce_delete_last_context = 'A közleményhez nincs társított kontextus, ezért le lesz tiltva.';
+
+$s_plugin_Announce_list_title = 'Közlemények';
+$s_plugin_Announce_create_title = 'Új közlemény';
+$s_plugin_Announce_edit_title = 'Közlemények szerkesztése';
+
+$s_plugin_Announce_config = 'Beállítások';
+$s_plugin_Announce_config_title = 'Közlemény konfiguráció';
+$s_plugin_Announce_config_manage_threshold = 'Közlemények kezelése';
+$s_plugin_Announce_threshold_warning = 'FIGYELEM: a hozzáférési szint alacsonyabb, mint az <em>$g_manage_site_threshold</em>; a felhasználók nem biztos, hogy hozzáférnek a kezelőfelületekhez.';
+
+$s_plugin_Announce_action_create = 'Létrehozás';
+$s_plugin_Announce_action_edit = 'Szerkesztés';
+$s_plugin_Announce_action_delete = 'Törlés';
+$s_plugin_Announce_action_delete_confirm = 'Valóban törölni szeretné a következő közleményeket?';
+$s_plugin_Announce_action_update = 'Frissítés';
+
+$s_plugin_Announce_location_header = 'Oldal fejléc';
+$s_plugin_Announce_location_footer = 'Oldal lábléc';
+
+$s_plugin_Announce_error_duplicate_context = 'Egy "%1$s" kontextus már definiálva van a(z) "%2$s" étteremhez.';
+$s_plugin_Announce_error_unknown_location = 'Ismeretlen kontextus hely: "%1$s".';
+$s_plugin_Announce_error_invalid_ttl = 'Az élettartamnak pozitív számnak kell lennie, vagy 0-nak lejárat nélküli állapothoz.';
