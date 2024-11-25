@@ -33,11 +33,13 @@ $s_plugin_Announce_config = 'Beállítások';
 $s_plugin_Announce_config_title = 'Közlemény konfiguráció';
 $s_plugin_Announce_config_manage_threshold = 'Közlemények kezelése';
 $s_plugin_Announce_threshold_warning = 'FIGYELEM: a hozzáférési szint alacsonyabb, mint az <em>$g_manage_site_threshold</em>; a felhasználók nem biztos, hogy hozzáférnek a kezelőfelületekhez.';
+$s_plugin_Announce_config_display_all = 'Összes közlemény megjelenítése';
+$s_plugin_Announce_config_default_dismissable = 'Elvethető alapértelmezésként';
 
 $s_plugin_Announce_action_create = 'Létrehozás';
 $s_plugin_Announce_action_edit = 'Szerkesztés';
 $s_plugin_Announce_action_delete = 'Törlés';
-$s_plugin_Announce_action_delete_confirm = 'Valóban törölni szeretné a következő közleményeket?';
+$s_plugin_Announce_action_delete_confirm = 'Valóban törölni szeretné a következő közleményt?';
 $s_plugin_Announce_action_update = 'Frissítés';
 
 $s_plugin_Announce_location_header = 'Oldal fejléc';

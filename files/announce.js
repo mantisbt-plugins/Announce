@@ -29,14 +29,18 @@ jQuery(document).ready(function($) {
 			$('#threshold_warning').hide();
 		}
 	});
-
-	// Move announcement to the page's top, between navbar and breadcrumbs
+	
 	var main_div = $('div.main-content');
 	if (!main_div.length) {
 		// Admin pages don't have a main-content div
 		main_div = $('div.main-container');
 	}
-	main_div.prepend($(announcement));
+	// Move header announcement to the page's top, between navbar and breadcrumbs
+	var announcement_header = announcement.filter('.announcement-header');
+	main_div.prepend($(announcement_header));
+	// Move footer announcement to the page's bottom, between page content and footer
+	var announcement_footer = announcement.filter('.announcement-footer');
+	main_div.append($(announcement_footer));
 
 	// Manual dismissal of announcement (user click)
 	$('img.announcement-dismiss').click(dismiss);
