@@ -41,7 +41,6 @@ $s_plugin_Announce_action_delete_confirm = 'Valóban törölni szeretné a köve
 $s_plugin_Announce_action_update = 'Frissítés';
 
 $s_plugin_Announce_location_header = 'Oldal fejléc';
-$s_plugin_Announce_location_footer = 'Oldal lábléc';
 
 $s_plugin_Announce_error_duplicate_context = 'Egy "%1$s" kontextus már definiálva van a(z) "%2$s" étteremhez.';
 $s_plugin_Announce_error_unknown_location = 'Ismeretlen kontextus hely: "%1$s".';
