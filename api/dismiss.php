@@ -48,7 +48,7 @@ class AnnounceDismissed {
 			$t_ids = implode( ',', $t_ids );
 
 			$t_where = "IN ({$t_ids})";
-			$t_param = null;
+			$t_param = [];
 		} else {
 			$t_where = "= " . db_param();
 			$t_param = array( (int)$p_id );
