@@ -13,6 +13,7 @@ class Announce {
 	 */
 	protected static $locations = array(
 		'header' => null,
+		'footer' => null,
 	);
 
 	/**
@@ -31,7 +32,7 @@ class Announce {
 				$project_id = helper_get_current_project();
 			}
 
-			$message = AnnounceMessage::load_random(auth_get_current_user_id(), "header", $project_id);
+			$message = AnnounceMessage::load_random(auth_get_current_user_id(), $location, $project_id);
 
 			if ($message !== null) {
 				$css_class = string_attribute($css_class);
@@ -59,6 +60,59 @@ class Announce {
 					$html
 				);
 				echo "\n";
+			}
+		}
+	}
+
+	/**
+	 * Generate the HTML for displaying all visible announcements.
+	 * A div element is created with the CSS class "announcement" for each announcement.
+	 * Dismissable announcements will include an image to hook to an AJAX call for dismissal.
+	 *
+	 * @param string $location Location name
+	 * @param int|null $project_id Project ID (optional)
+	 * @param string $css_class Additional CSS classes for styling (optional)
+	 */
+	public static function display_all($location, $project_id = null, $css_class = "") {
+		if (auth_is_user_authenticated()) {
+			if ($project_id === null) {
+				$project_id = helper_get_current_project();
+			}
+
+			// Load all visible announcements for the user
+			$messages = AnnounceMessage::load_visible(auth_get_current_user_id(), $location, $project_id);
+
+			if (!empty($messages)) {
+				$css_class = string_attribute($css_class);
+
+				foreach ($messages as $message) {
+					$message = AnnounceMessage::clean($message, AnnounceMessage::TARGET_VIEW);
+					$context = array_shift($message->contexts);
+
+					$html = sprintf(
+						'<span><strong>%s</strong></span><br/><span class="announcement-msg">%s<span>' . "\n",
+						$message->title,
+						$message->message
+					);
+
+					// Include dismiss button if dismissable
+					if ($context->dismissable) {
+						$html = sprintf(
+								'<img class="announcement-dismiss" src="%s" alt="Dismiss Announcement" />',
+								plugin_file("dismiss.png")
+							)
+							. "\n" . $html;
+					}
+
+					// Print the complete announcement div
+					printf(
+						'<div class="announcement noprint %s" data-id="%d" data-ttl="%d">%s</div>',
+						$css_class,
+						$context->id, $context->ttl,
+						$html
+					);
+					echo "\n";
+				}
 			}
 		}
 	}
@@ -127,9 +181,10 @@ class Announce {
 		self::initLocations();
 
 		if ($value === null) {
-			if( count(self::$locations) == 1 ) {
-				$value = reset( self::$locations );
-			} else {
+			// The first location is automatically selected for backward compatibility reasons.
+			reset( self::$locations );
+			$value = key( self::$locations );
+			if( count(self::$locations) !== 1 ) {
 				echo '<option value="">',
 					plugin_lang_get( "select_one","Announce" ),
 					"</option>\n";

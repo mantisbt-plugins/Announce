@@ -32,14 +32,17 @@ $s_plugin_Announce_config = 'Configuration';
 $s_plugin_Announce_config_title = 'Announcement Configuration';
 $s_plugin_Announce_config_manage_threshold = 'Manage Announcements';
 $s_plugin_Announce_threshold_warning = 'WARNING: access level is lower than <em>$g_manage_site_threshold</em> ; users may not be able to access the management pages.';
+$s_plugin_Announce_config_display_all = 'Display all announcements';
+$s_plugin_Announce_config_default_dismissable = 'Dismissable is enabled by default';
 
 $s_plugin_Announce_action_create = 'Create';
 $s_plugin_Announce_action_edit = 'Edit';
 $s_plugin_Announce_action_delete = 'Delete';
-$s_plugin_Announce_action_delete_confirm = 'Do you really want to delete the following announcements?';
+$s_plugin_Announce_action_delete_confirm = 'Do you really want to delete the following announcement?';
 $s_plugin_Announce_action_update = 'Update';
 
 $s_plugin_Announce_location_header = 'Page Header';
+$s_plugin_Announce_location_footer = 'Page Footer';
 
 $s_plugin_Announce_error_duplicate_context = 'A "%1$s" context is already defined for project "%2$s".';
 $s_plugin_Announce_error_unknown_location = 'Unknown context location "%1$s".';

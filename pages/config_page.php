@@ -49,6 +49,26 @@ print_manage_menu();
 					</select>
 				</td>
 			</tr>
+
+			<tr>
+				<td class="category">
+					<?php echo plugin_lang_get( 'config_display_all' ) ?>
+				</td>
+				<td>
+					<input type="checkbox" name="display_all"
+						<?php check_checked( (bool)plugin_config_get( "display_all" ) ) ?>/>				
+				</td>
+			</tr>
+
+			<tr>
+				<td class="category">
+					<?php echo plugin_lang_get( 'config_default_dismissable' ) ?>
+				</td>
+				<td>
+					<input type="checkbox" name="default_dismissable"
+						<?php check_checked( (bool)plugin_config_get( "default_dismissable" ) ) ?>/>				
+				</td>
+			</tr>
 		</table>
 
 		</div>

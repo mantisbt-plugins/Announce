@@ -15,6 +15,10 @@ function maybe_set_option( $name, $value ) {
 
 maybe_set_option("manage_threshold", gpc_get_int("manage_threshold"));
 
+maybe_set_option("display_all", gpc_get_bool("display_all"));
+
+maybe_set_option("default_dismissable", gpc_get_bool("default_dismissable"));
+
 form_security_purge("plugin_Announce_config");
 print_header_redirect(plugin_page("config_page", true));
 

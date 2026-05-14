@@ -196,7 +196,7 @@ print_manage_menu( plugin_page( 'list' ) );
 								<td class="category">
 									<?php echo plugin_lang_get("access") ?>
 									<br>
-									<span class="small"><?php echo plugin_lang_get("access_help") ?></span>
+									<span class="small wrap"><?php echo plugin_lang_get("access_help") ?></span>
 								</td>
 								<td>
 									<select name="access">
@@ -209,16 +209,16 @@ print_manage_menu( plugin_page( 'list' ) );
 								<td class="category">
 									<?php echo plugin_lang_get("ttl") ?>
 									<br>
-									<span class="small"><?php echo plugin_lang_get("ttl_help") ?></span>
+									<span class="small wrap"><?php echo plugin_lang_get("ttl_help") ?></span>
 								</td>
 								<td>
 									<input name="ttl" class="ttl" type="number" value="0" min="0"/>
 								</td>
 							</tr>
 
-							<tr>
+							<tr>							
 								<td class="category"><?php echo plugin_lang_get("dismissable") ?></td>
-								<td><input type="checkbox" name="dismissable" checked="checked"/></td>
+								<td><input type="checkbox" name="dismissable" <?php check_checked( (bool)plugin_config_get( "default_dismissable" ) ) ?>/></td>
 							</tr>
 						</tbody>
 

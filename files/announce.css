@@ -26,6 +26,11 @@
 	display: none;
 }
 
+/* Mobile-first: Ensures text wraps normally on small screens for better readability. */
+.category .small.wrap {
+	white-space: normal;
+}
+
 input.ttl {
 	width: 5em;
 }

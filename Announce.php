@@ -32,6 +32,8 @@ class AnnouncePlugin extends MantisPlugin {
 	function config() {
 		return array(
 			"manage_threshold" => MANAGER,
+			"display_all" => NO,
+			"default_dismissable" => YES,
 		);
 	}
 
@@ -40,8 +42,9 @@ class AnnouncePlugin extends MantisPlugin {
 			"EVENT_CORE_READY" => "api",
 			"EVENT_LAYOUT_RESOURCES" => "resources",
 			"EVENT_MENU_MANAGE" => "menu_manage",
-
+			
 			"EVENT_LAYOUT_BODY_BEGIN" => "body_begin",
+			"EVENT_LAYOUT_BODY_END" => "body_end",
 
 			'EVENT_REST_API_ROUTES' => 'routes',
 		);
@@ -79,8 +82,21 @@ class AnnouncePlugin extends MantisPlugin {
 	}
 
 	function body_begin() {
-		Announce::display("header", null, "announcement-header");
+		if (plugin_config_get( "display_all" )) {
+			Announce::display_all("header", null, "announcement-header");
+		} else {
+			Announce::display("header", null, "announcement-header");
+		}
 	}
+
+	function body_end() {
+		if (plugin_config_get( "display_all" )) {
+			Announce::display_all("footer", null, "announcement-footer");
+		} else {
+			Announce::display("footer", null, "announcement-footer");
+		}
+	}
+
 
 	function schema() {
 		require_once("api/install.php");

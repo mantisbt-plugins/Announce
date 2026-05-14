@@ -46,12 +46,10 @@ if( count( $t_message_list ) > 0 ) {
 			}
 		}
 
-		if( !is_blank( $t_new_title ) ) {
-			$t_message->title = $t_new_title;
-		}
-		if( !is_blank( $t_new_message ) ) {
-			$t_message->message = $t_new_message;
-		}
+		// Allow saving empty values for title and message to support scenarios where 
+		// clearing these fields is intentional (e.g., resetting or removing content).
+		$t_message->title = $t_new_title;
+		$t_message->message = $t_new_message;
 
 		$t_message->save();
 	}
