@@ -206,8 +206,9 @@ class AnnounceMessage {
 	/**
 	 * Generate an array of message objects from a database result.
 	 *
-	 * @param IteratorAggregate $result Database result
+	 * @param ADORecordSet $result Database result
 	 * @param bool $load_contexts
+	 *
 	 * @return array Message objects
 	 */
 	public static function from_db_result($result, $load_contexts=false) {
